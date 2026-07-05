@@ -1,0 +1,31 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\begin{document}
+\begin{tikzpicture}[
+  font=\small,>=Latex,
+  io/.style={draw, rounded corners, fill=gray!10, align=center, minimum height=10mm, text width=20mm, inner sep=4pt, font=\footnotesize},
+  gate/.style={draw, rounded corners, fill=blue!8, align=center, minimum height=15mm, text width=36mm, inner sep=4pt, font=\footnotesize},
+  cov/.style={draw, rounded corners, fill=orange!14, align=center, text width=42mm, inner sep=4pt, font=\footnotesize},
+  op/.style={draw, rounded corners, fill=blue!12, align=center, minimum height=9mm, minimum width=22mm, inner sep=4pt, font=\footnotesize},
+]
+% runtime flow row (bottom): entity -> inhibition -> praxis -> world
+\node[io] (entity) {entity:\\proposed action};
+\node[gate, right=9mm of entity] (inh) {\textbf{Executive inhibition}\\[1pt]Syneidesis withholds the broadcast below threshold; Volition derives no intent from an inhibited snapshot};
+\node[gate, right=9mm of inh] (praxis) {\textbf{Praxis action gate}\\[1pt]effector whitelist (empty by default) $+$ filesystem sandbox; blocks and logs anything outside};
+\node[io, right=9mm of praxis] (world) {effectors / world};
+\draw[->, thick] (entity) -- (inh);
+\draw[->, thick] (inh) -- (praxis);
+\draw[->, thick] (praxis) -- (world);
+\node[draw, dashed, fit=(entity)(inh)(praxis)(world), inner sep=9pt] (regA) {};
+\node[font=\footnotesize\bfseries, below=1.5mm of regA] {In the architecture (runtime enforcement)};
+% operator above praxis
+\node[op, above=22mm of praxis] (op) {operator};
+\draw[->] (op) -- node[right, font=\footnotesize, align=left]{chooses which\\effectors exist\\(configures the whitelist)} (praxis.north);
+% covenants to the left of operator (top legal region)
+\node[cov, left=20mm of op] (cov) {\textbf{License covenants}\\[1pt]no weapons, surveillance, or carceral use};
+\draw[->, dashed] (cov) -- node[above, font=\footnotesize]{bind} (op);
+\node[draw, dashed, fit=(cov)(op), inner sep=9pt] (regB) {};
+\node[font=\footnotesize\bfseries, above=1.5mm of regB] {Legal / contractual (binds the operator, not a runtime filter)};
+\end{tikzpicture}
+\end{document}

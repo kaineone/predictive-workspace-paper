@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you reference this work, please cite it as below."
+title: "A Predictive Global Neuronal Workspace for a Continuously Running Synthetic Mind: Architecture and a Falsifiability-First Evaluation Framework"
+authors:
+  - family-names: Chevalier
+    given-names: Erik
+type: article
+license: CC-BY-4.0
+date-released: "2026-07-05"
+url: "https://github.com/kaineone/predictive-workspace-paper"
