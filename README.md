@@ -1,5 +1,7 @@
 # A Predictive Global Neuronal Workspace for a Continuously Running Synthetic Mind
 
+Part of the Kaine project — **[kaine.one](https://kaine.one)**
+
 **Architecture and a Falsifiability-First Evaluation Framework**
 
 Erik Chevalier, Independent Researcher
