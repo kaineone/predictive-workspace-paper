@@ -1,5 +1,6 @@
-# Rendered output
+# Rendered output (keep the published paper PDF, ignore other renders)
 *.pdf
+!paper.pdf
 *.html
 *.docx
 *.epub
