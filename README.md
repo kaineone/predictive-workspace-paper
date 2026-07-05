@@ -2,6 +2,8 @@
 
 Part of the Kaine project — **[kaine.one](https://kaine.one)**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21203506.svg)](https://doi.org/10.5281/zenodo.21203506)
+
 **Architecture and a Falsifiability-First Evaluation Framework**
 
 Erik Chevalier, Independent Researcher
@@ -48,7 +50,7 @@ pandoc paper.md -o paper.pdf \
 
 ## Citation
 
-Until a Zenodo DOI or arXiv identifier exists, cite as:
+Archived on Zenodo, DOI [10.5281/zenodo.21203506](https://doi.org/10.5281/zenodo.21203506). Cite as:
 
 ```bibtex
 @misc{chevalier_predictive_workspace,
@@ -57,8 +59,9 @@ Until a Zenodo DOI or arXiv identifier exists, cite as:
                   Running Synthetic Mind: Architecture and a Falsifiability-First
                   Evaluation Framework},
   year         = {2026},
-  note         = {Preprint},
-  howpublished = {\url{https://github.com/kaineone/predictive-workspace-paper}}
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.21203506},
+  url          = {https://doi.org/10.5281/zenodo.21203506}
 }
 ```
 
