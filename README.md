@@ -2,7 +2,8 @@
 
 Part of the Kaine project — **[kaine.one](https://kaine.one)**
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21203506.svg)](https://doi.org/10.5281/zenodo.21203506)
+[![DOI (this version)](https://zenodo.org/badge/DOI/10.5281/zenodo.21203506.svg)](https://doi.org/10.5281/zenodo.21203506)
+[![DOI (all versions)](https://zenodo.org/badge/DOI/10.5281/zenodo.21203505.svg)](https://doi.org/10.5281/zenodo.21203505)
 
 **Architecture and a Falsifiability-First Evaluation Framework**
 
@@ -50,7 +51,12 @@ pandoc paper.md -o paper.pdf \
 
 ## Citation
 
-Archived on Zenodo, DOI [10.5281/zenodo.21203506](https://doi.org/10.5281/zenodo.21203506). Cite as:
+Archived on Zenodo. The DOI for **this version** is
+[10.5281/zenodo.21203506](https://doi.org/10.5281/zenodo.21203506); the
+**all-versions (concept) DOI**, which always resolves to the latest version, is
+[10.5281/zenodo.21203505](https://doi.org/10.5281/zenodo.21203505)
+([all versions on Zenodo](https://zenodo.org/records/21203505)). Cite the version
+DOI for reproducibility, or the all-versions DOI to point at the newest. Cite as:
 
 ```bibtex
 @misc{chevalier_predictive_workspace,
