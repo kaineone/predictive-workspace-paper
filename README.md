@@ -42,7 +42,7 @@ We make access-level claims only, remaining agnostic on whether anything is expe
 
 ## Building the PDF
 
-A pre-built [`paper.pdf`](paper.pdf) is included and is the canonical rendered version. To rebuild it you need [Pandoc](https://pandoc.org/) and a TeX Live install with `xelatex` (on Debian or Ubuntu: `texlive-xetex`, `texlive-latex-recommended`, `texlive-fonts-recommended`, `texlive-latex-extra`). The figures live in `figures/` and are referenced by relative path, so build from the repository root.
+A pre-built [`paper.pdf`](paper.pdf) is included and is the canonical rendered version. To rebuild it you need [Pandoc](https://pandoc.org/) and a TeX Live install with `xelatex` (on Debian or Ubuntu: `texlive-xetex`, `texlive-latex-recommended`, `texlive-fonts-recommended`, `texlive-latex-extra`). The figures live in `figures/` and are referenced by relative path, so build from the repository root. [`header-preprint.tex`](header-preprint.tex) draws the rotated "Preprint. Not peer-reviewed." note in the page margin.
 
 ```bash
 pandoc paper.md -o paper.pdf \
@@ -50,7 +50,8 @@ pandoc paper.md -o paper.pdf \
   -V fontsize=11pt \
   -V mainfont="Noto Serif" \
   -V geometry:margin=1in \
-  -V colorlinks=true -V linkcolor=blue
+  -V colorlinks=true -V linkcolor=blue \
+  --include-in-header=header-preprint.tex
 ```
 
 ## Citation

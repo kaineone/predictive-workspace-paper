@@ -1,0 +1,10 @@
+% Renders a rotated "Preprint. Not peer-reviewed." note in the right margin of
+% every page. Included at build time via pandoc's --include-in-header.
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\AddToShipoutPictureFG{%
+  \put(\LenToUnit{\dimexpr\paperwidth-1.05cm\relax},\LenToUnit{0.5\paperheight}){%
+    \rotatebox{90}{\makebox[0pt][c]{\textsf{\textcolor{gray}{\small Preprint. Not peer-reviewed.}}}}%
+  }%
+}
