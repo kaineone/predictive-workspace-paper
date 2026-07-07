@@ -15,6 +15,10 @@ This repository holds the theory paper for KAINE (Kaine Autonomous Intelligent N
 
 **Status: preprint, not peer reviewed.** This is a working draft. Numbers, claims, and the companion empirical results are subject to revision.
 
+## What's new in this version
+
+This revision engages Gurnee, Sofroniew et al. (2026), *Verbalizable Representations Form a Global Workspace in Language Models* (Transformer Circuits Thread, Anthropic). Section 2.8 relates their result — an emergent workspace found *inside* a single trained transformer via the Jacobian lens — to this architecture, which instead builds the workspace explicitly from competing modules and supplies the two pieces they note are missing (separable input processors and a recurrent broadcast loop). Section 3 cites it as independent, converging evidence that the workspace framing captures something real about how such systems process information.
+
 ## Contents
 
 - [`paper.md`](paper.md): the full paper in Markdown.
