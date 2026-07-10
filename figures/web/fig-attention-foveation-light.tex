@@ -1,0 +1,52 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\definecolor{fg}{HTML}{3B3220}
+\definecolor{fgbody}{HTML}{544736}
+\definecolor{stroke}{HTML}{7A5A10}
+\definecolor{surf}{HTML}{FAF6EE}
+\definecolor{surfemph}{HTML}{F2E9D4}
+\definecolor{surfact}{HTML}{F6E7E0}
+\definecolor{bdim}{HTML}{CFC6B2}
+\definecolor{bemph}{HTML}{7A5A10}
+\definecolor{bact}{HTML}{8F1D1D}
+\begin{document}
+\begin{tikzpicture}[
+  font=\small,>=Latex,
+  mod/.style={draw=bdim, rounded corners, fill=surf, text=fgbody, align=center, font=\footnotesize},
+  work/.style={draw=bemph, thick, rounded corners, fill=surfemph, text=fgbody, align=center},
+  act/.style={draw=bact, rounded corners, fill=surfact, text=fgbody, align=center, font=\footnotesize},
+  lbl/.style={font=\footnotesize, text=fgbody, align=center},
+]
+% main vision flow (left -> right)
+\node[mod, text width=22mm, minimum height=11mm] (cam) at (0,0) {camera frame\\(in memory)};
+\node[mod, text width=24mm] (emb) at (3.1,0.9) {whole-frame embedding};
+\node[mod, text width=24mm] (sal) at (3.1,-0.9) {spatial saliency map};
+\node[work, text width=32mm, minimum height=14mm] (comp) at (6.7,0)
+  {\textcolor{fg}{\textbf{precision-weighted competition}}\\[2pt]bottom-up salience $\times$ top-down bias};
+\node[act, text width=24mm, minimum height=11mm] (fov) at (10.1,0)
+  {\textcolor{fg}{\textbf{fovea}}\\location $+$ size};
+\node[mod, text width=28mm] (crop) at (13.2,0) {peripheral (coarse) $+$ foveal crop (high-res)};
+\node[mod, text width=26mm] (coord) at (16.3,0) {content-free coordinates $\rightarrow$ workspace};
+% top-down source
+\node[work, text width=20mm] (wsn) at (6.7,2.6) {\textcolor{fg}{\textbf{workspace}}};
+% arousal source
+\node[mod, text width=22mm] (ar) at (10.1,-2.4) {arousal (Thymos)};
+
+% flows
+\draw[->, draw=stroke] (cam.east) to[out=0,in=180] (emb.west);
+\draw[->, draw=stroke] (cam.east) to[out=0,in=180] (sal.west);
+\draw[->, draw=stroke] (emb.east) to[out=0,in=150] (comp.north west);
+\draw[->, draw=stroke] (sal.east) to[out=0,in=210] (comp.south west);
+\draw[->, draw=stroke] (comp.east) -- (fov.west);
+\draw[->, draw=stroke] (fov.east) -- (crop.west);
+\draw[->, draw=stroke] (crop.east) -- (coord.west);
+\draw[->, draw=stroke] (wsn.south) -- node[lbl, right]{top-down bias} (comp.north);
+\draw[->, draw=stroke] (ar.north) --
+  node[lbl, right, text width=34mm]{arousal $\rightarrow$ fovea size (narrows as arousal rises)} (fov.south);
+
+% audition band
+\node[mod, text width=150mm] (aud) at (8.1,-3.9)
+  {\textcolor{fg}{\textbf{Audition}} --- the same shape: attend the most salient sound stream; arousal sets the auditory window.};
+\end{tikzpicture}
+\end{document}

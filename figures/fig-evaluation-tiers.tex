@@ -1,0 +1,53 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\definecolor{fg}{HTML}{000000}
+\definecolor{fgbody}{HTML}{000000}
+\definecolor{stroke}{HTML}{000000}
+\definecolor{surf}{HTML}{F2F2FF}
+\definecolor{surfemph}{HTML}{E0E0FF}
+\definecolor{surfact}{HTML}{FFEDDB}
+\definecolor{bdim}{HTML}{000000}
+\definecolor{bemph}{HTML}{000000}
+\definecolor{bact}{HTML}{000000}
+\begin{document}
+\begin{tikzpicture}[
+  font=\small,>=Latex,
+  mod/.style={draw=bdim, rounded corners, fill=surf, text=fgbody, align=center, font=\footnotesize},
+  work/.style={draw=bemph, thick, rounded corners, fill=surfemph, text=fgbody, align=center},
+  act/.style={draw=bact, rounded corners, fill=surfact, text=fgbody, align=center, font=\footnotesize},
+  lbl/.style={font=\footnotesize, text=fgbody, align=center},
+]
+% left: reproducible sources (top)
+\node[mod, text width=32mm] (r1) at (0,2.7) {seeded synthetic feed};
+\node[mod, text width=32mm] (r2) at (0,1.85) {checksummed media corpus};
+\node[draw=bdim, dashed, fit=(r1)(r2), inner sep=6pt] (repro) {};
+\node[lbl, above=0.4mm of repro] {reproducible by construction};
+% left: arbitrary sources (bottom)
+\node[mod, text width=32mm] (a1) at (0,-0.2) {camera $+$ microphone};
+\node[mod, text width=32mm] (a2) at (0,-1.05) {shared screen $+$ audio};
+\node[mod, text width=32mm] (a3) at (0,-1.9) {public broadcast};
+\node[mod, text width=32mm] (a4) at (0,-2.75) {virtual body};
+\node[draw=bdim, dashed, fit=(a1)(a2)(a3)(a4), inner sep=6pt] (arb) {};
+\node[lbl, below=0.4mm of arb] {arbitrary, operator-chosen};
+% center: seam and architecture
+\node[mod, text width=20mm, minimum height=11mm] (seam) at (5.0,-0.05) {perception\\seam};
+\node[work, text width=24mm, minimum height=14mm] (arch) at (8.2,-0.05)
+  {\textcolor{fg}{\textbf{running architecture}}};
+% right: two tiers
+\node[work, text width=48mm] (mech) at (13.0,1.9)
+  {\textcolor{fg}{\textbf{Mechanism-validation tier}}\\[2pt]computationally reproducible; exact reproduction from a seed; positive / negative / counterfactual controls};
+\node[work, text width=48mm] (field) at (13.0,-2.0)
+  {\textcolor{fg}{\textbf{Field tier}}\\[2pt]arbitrary stimulus; pool many content-free records; pre-registered effect-size estimate};
+% bottom note
+\node[mod, text width=92mm] (note) at (6.6,-4.1)
+  {verdicts: WIN $\cdot$ NULL $\cdot$ NEGATIVE \quad$|$\quad gates: PASS $\cdot$ FAIL};
+
+% flows
+\draw[->, draw=stroke] (repro.east) to[out=0,in=150] (seam.north west);
+\draw[->, draw=stroke] (arb.east)   to[out=0,in=210] (seam.south west);
+\draw[->, draw=stroke] (seam.east) -- (arch.west);
+\draw[->, draw=stroke] (arch.north east) to[out=55,in=180] (mech.west);
+\draw[->, draw=stroke] (arch.south east) to[out=-55,in=180] (field.west);
+\end{tikzpicture}
+\end{document}
