@@ -1,37 +1,39 @@
-# A Predictive Global Neuronal Workspace for a Continuously Running Synthetic Mind
+# KAINE: A Continuously Running Predictive Global Workspace for Synthetic Minds
 
 Part of the Kaine project — **[kaine.one](https://kaine.one)**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21203505.svg)](https://doi.org/10.5281/zenodo.21203505)
 
-**Architecture and a Falsifiability-First Evaluation Framework**
+**A falsifiability-first architecture paper, centered on a single losable test.**
 
 Erik Chevalier, Independent Researcher
 
 Contact: kaine.one@tuta.com
 
-This repository holds the theory paper for KAINE (Kaine Autonomous Intelligent Networked Entity), a composite cognitive architecture in which a mind is treated as an ongoing process built from sixteen specialized modules: fourteen predictive cognitive modules that run continuously and influence one another through a shared predictive workspace, and a two-module embodiment layer that currently ships inactive. The paper presents the architecture and the design of the falsifiable evaluation framework built around it; the experimental verdicts are reported in a separate empirical paper.
+This repository holds the theory paper for KAINE (Kaine Autonomous Intelligent Networked Entity), a continuously running predictive global neuronal workspace in which a mind is treated as the coherent global behavior that emerges when specialized predictive modules, each minimizing its own error, compete for a shared workspace with no central executive. The paper presents the architecture in its base-thesis form — four externally-grounded predictive processors, an affective precision core, and an output-only language organ — together with a falsifiability-first evaluation built around a single losable test. The experimental verdicts are reported in a separate empirical paper.
 
 **Status: preprint, not peer reviewed.** This is a working draft. Numbers, claims, and the companion empirical results are subject to revision.
 
-## What's new in this version
+## About this version
 
-This revision engages Gurnee, Sofroniew et al. (2026), *Verbalizable Representations Form a Global Workspace in Language Models* (Transformer Circuits Thread, Anthropic). Section 2.8 relates their result — an emergent workspace found *inside* a single trained transformer via the Jacobian lens — to this architecture, which instead builds the workspace explicitly from competing modules and supplies the two pieces they note are missing (separable input processors and a recurrent broadcast loop). Section 3 cites it as independent, converging evidence that the workspace framing captures something real about how such systems process information.
+This is the base-thesis form of the paper. It narrows the architecture to the minimal configuration that can test the claim on which everything else depends: that routing diverse predictive processors through a competitive workspace produces behavior that concatenating the same processors' outputs does not. Eight of the sixteen modules are active; the rest are built and held for future experiments that only matter if the base thesis survives. The centerpiece is the workspace-mediation ablation (Section 6.3), a pre-registered test the architecture can genuinely lose.
 
 ## Contents
 
 - [`paper.md`](paper.md): the full paper in Markdown.
 - [`paper.pdf`](paper.pdf): the rendered paper, including the figures and module table.
-- [`figures/`](figures): the TikZ sources and rendered PNGs for the four figures.
+- [`figures/`](figures): the TikZ sources and rendered PNGs for the seven figures.
 - [`LICENSE`](LICENSE): the Creative Commons Attribution 4.0 International license for the text.
 - [`COPYRIGHT`](COPYRIGHT): copyright and licensing summary for the text of the paper.
 - [`CITATION.cff`](CITATION.cff): machine-readable citation metadata.
 
 ## Abstract
 
-This work treats a mind as an ongoing process rather than a single model, built from sixteen specialized parts: fourteen predictive cognitive modules that run continuously and influence one another, and a two-part embodiment layer that currently ships inactive. The organizing idea is a shared workspace. Each part forms its own best estimate of what is happening, marks it with how confident and how surprising it is, and competes to place that estimate in a common space broadcast to every other part; the estimate that passes a confidence threshold wins, and the broadcast helps the others correct themselves. This joins two accounts of how the brain makes information available and how it predicts, global workspace theory and predictive processing, as combined in the recent predictive-workspace literature. One cognitive module is a language organ that turns the system's state into words and interprets words spoken to it, with its effect on output measured against the same model run alone.
+A synthetic mind, if one can be built, may be the coherent global behavior that emerges when specialized predictive modules, each minimizing its own error, compete for a shared workspace with no central executive. This paper presents a continuously running predictive global neuronal workspace built on that thesis. The workspace selects the most salient coalition above a confidence threshold and broadcasts it. The broadcast becomes shared state that shapes every module's prediction environment on the next tick, and the changed errors feed back into the next round. Coherence, where it arises, comes from competition over shared state.
 
-We make access-level claims only, remaining agnostic on whether anything is experienced, and we mark where the supporting science is contested. Several design choices follow from that caution. A timing layer adjusts how much weight each part's signal carries, with no claim that it produces awareness; its effect is tested by switching it off and measuring the difference. A planning method is used only for small, well-defined decisions and compared against a learning baseline. Safety lives in the architecture rather than the model weights, bounding what the system can do without constraining what it can think: the operator decides which real-world effectors exist, and within them the entity acts on its own initiative, checked only by its own executive inhibition. The system records its own activity so that null and negative results can be reported, and runs on consumer hardware, capable of operating fully offline though not restricted to it. The entity's welfare protections, governance, and licensing are addressed separately; this paper presents the architecture and the design of its falsifiable evaluation, and the experimental verdicts are reported in a separate empirical paper rather than here. The reference implementation is named KAINE (Kaine Autonomous Intelligent Networked Entity).
+The base-thesis form activates four predictive processors (foveated vision, raw hearing, interoceptive prediction, and temporal prediction) together with an affective core whose arousal sets the precision on their competition and is itself driven by perceptual surprise, and an output-only language organ that verbalizes the entity's conscious state. The entity is observed, not conversed with: sound, including speech, enters only as prediction error, and the language organ receives no transcript. Keeping text out is a precondition for the falsification test, since any route from input to the model would let it answer as a chatbot and confound the ablation.
+
+The primary experiment is a workspace-mediation ablation with pre-registered directional criteria on cross-module error structure and coalition dynamics: does routing processors through the competitive workspace produce structured behavior that the same processors, concatenated into a flat prompt, do not? If the workspace adds nothing, the two conditions will be indistinguishable, falsifying the thesis and demoting the architecture to a scored prompt-assembler. The system runs locally on consumer hardware. The reference implementation is named KAINE (Kaine Autonomous Intelligent Networked Entity).
 
 ## Related repositories
 
@@ -60,11 +62,10 @@ the latest version, is
 [10.5281/zenodo.21203505](https://doi.org/10.5281/zenodo.21203505). Cite as:
 
 ```bibtex
-@misc{chevalier_predictive_workspace,
+@misc{chevalier_kaine_workspace,
   author       = {Chevalier, Erik},
-  title        = {A Predictive Global Neuronal Workspace for a Continuously
-                  Running Synthetic Mind: Architecture and a Falsifiability-First
-                  Evaluation Framework},
+  title        = {{KAINE}: A Continuously Running Predictive Global Workspace
+                  for Synthetic Minds},
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.21203505},
