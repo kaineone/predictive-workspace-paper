@@ -4,35 +4,34 @@
 \begin{document}
 \begin{tikzpicture}[
   font=\small,>=Latex,
-  mod/.style={draw, rounded corners, fill=blue!5, align=center, minimum width=22mm, minimum height=6.5mm, font=\footnotesize},
+  mod/.style={draw, rounded corners, fill=blue!5, align=center, minimum width=34mm, minimum height=6.5mm, font=\footnotesize},
+  aff/.style={draw, rounded corners, fill=red!8, align=center, minimum width=34mm, minimum height=8mm, font=\footnotesize},
   work/.style={draw, thick, rounded corners, fill=blue!12, align=center, minimum width=34mm, minimum height=18mm},
-  osc/.style={draw, rounded corners, fill=gray!12, align=center, font=\footnotesize, minimum width=34mm},
-  act/.style={draw, rounded corners, fill=orange!14, align=center, minimum width=26mm, minimum height=9mm, font=\footnotesize},
+  act/.style={draw, rounded corners, fill=orange!14, align=center, minimum width=30mm, minimum height=9mm, font=\footnotesize},
 ]
-% modules on the left
-\node[mod] (m1) {Prediction (4)};
-\node[mod, below=2.6mm of m1] (m2) {Cognition (5)};
-\node[mod, below=2.6mm of m2] (m3) {Motivation (1)};
-\node[mod, below=2.6mm of m3] (m4) {Expression (3)};
-\node[mod, below=2.6mm of m4] (m5) {Maintenance (1)};
-\node[draw, dashed, fit=(m1)(m2)(m3)(m4)(m5), inner sep=7pt] (mods) {};
-\node[font=\footnotesize, above=0.5mm of mods] {14 predictive modules};
-% workspace center
-\node[work, right=34mm of m3] (syn) {\textbf{Syneidesis}\\[1pt]\footnotesize precision-weighted\\\footnotesize scoring $+$ threshold\\\footnotesize selection};
-% oscillatory layer
-\node[osc, below=12mm of syn] (osc) {oscillatory precision layer\\phase coherence $\rightarrow$ precision gain};
-% volition/action
+% four predictive processors on the left
+\node[mod] (m1) {Topos \textemdash{} foveated vision};
+\node[mod, below=2.4mm of m1] (m2) {Audition \textemdash{} raw hearing};
+\node[mod, below=2.4mm of m2] (m3) {Soma \textemdash{} interoception};
+\node[mod, below=2.4mm of m3] (m4) {Chronos \textemdash{} timing};
+\node[draw, dashed, fit=(m1)(m2)(m3)(m4), inner sep=7pt] (mods) {};
+\node[font=\footnotesize, above=0.5mm of mods] {four predictive processors};
+% workspace centre
+\node[work, right=30mm of m2, yshift=-2mm] (syn) {\textbf{Syneidesis}\\[1pt]\footnotesize precision-weighted\\\footnotesize scoring $+$ threshold\\\footnotesize selection};
+% affect below the workspace
+\node[aff, below=12mm of syn] (aff) {\textbf{Thymos} \textemdash{} affect / arousal};
+% report-or-act and the language organ on the right
 \node[act, right=26mm of syn] (vol) {\textbf{Volition}\\report-or-act};
-\node[act, below=9mm of vol] (prax) {\textbf{Praxis} action gate\\effectors};
-% arrows: modules -> syn (errors)
-\draw[->] (mods.east) -- node[above, font=\footnotesize, align=center, pos=0.5]{precision-weighted\\prediction errors} (syn.west);
-% broadcast back (loop) over the top
-\draw[->, thick] (syn.north) to[out=150,in=30,looseness=0.9] node[above, font=\footnotesize, align=center]{broadcast snapshot\\(top-down prediction, correction)} (mods.north east);
-% osc -> syn
-\draw[->] (osc) -- node[right, font=\footnotesize]{modulates precision} (syn);
-% syn -> volition
+\node[act, below=9mm of vol] (lin) {\textbf{Lingua} \textemdash{} language organ\\output-only voice};
+% modules -> workspace (errors)
+\draw[->] (mods.east) -- node[above, font=\footnotesize, align=center]{precision-weighted\\prediction errors} (syn.west);
+% affect -> workspace (precision)
+\draw[->] (aff) -- node[right, font=\footnotesize, align=left]{arousal sets the precision\\on the competition} (syn);
+% broadcast loop back over the top
+\draw[->, thick] (syn.north) to[out=150,in=30,looseness=0.9] node[above, font=\footnotesize, align=center]{broadcast snapshot as shared state\\(next-tick prediction environment)} (mods.north east);
+% workspace -> volition
 \draw[->] (syn) -- node[above, font=\footnotesize, align=center]{conscious\\snapshot} (vol);
-% volition -> praxis
-\draw[->] (vol) -- (prax);
+% volition -> lingua
+\draw[->] (vol) -- node[right, font=\footnotesize]{speak / think} (lin);
 \end{tikzpicture}
 \end{document}
