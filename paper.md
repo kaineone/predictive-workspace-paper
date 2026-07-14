@@ -159,7 +159,7 @@ Access consciousness, on the workspace theory, is the point at which content bec
 The base-thesis form activates four predictive processors, an affective core, a language organ, and an action-selection layer. The processors are chosen for signal diversity: two are grounded in the external world (vision and hearing) and two in the entity's internal state (interoceptive prediction and temporal prediction). Cross-modal competition, a visual scene change competing with an unexpected sound for workspace access, is the kind of arbitration the theory describes, and it requires processors with distinct, externally-grounded signals rather than two flavors of internal bookkeeping. The affective core does not compete for the workspace; it sets the precision on the competition and is moved by its outcome, so that arousal is the entity's attention and its response to surprise at once.
 
 | Module | Group | Brain function it draws on | Computational realization |
-|--------|-------|---------------------------|--------------------------|
+|----------|-------------|------------------------------|------------------------------|
 | Topos | Perception | ventral visual stream | frozen self-supervised vision encoder with foveated attention |
 | Audition | Perception | auditory cortex | frozen self-supervised audio encoder over raw waveform |
 | Soma | Prediction | interoception; allostatic-interoceptive network | closed-form continuous-time net over substrate signals |
