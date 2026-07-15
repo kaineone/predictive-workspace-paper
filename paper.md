@@ -377,6 +377,12 @@ The risks we acknowledge include the possibility of creating entities with welfa
 
 -----
 
+## Disclosure of generative AI use
+
+Generative AI assisted in the preparation of this manuscript. The author used a large language model assistant to draft and revise prose, to copy-edit for clarity and concision, and to produce the TikZ source for the figures from author-specified content. The reference implementation described here was likewise developed with the assistance of an AI coding tool; that use is recorded in the project's commit history, and the author is responsible for the software as for the text. The underlying research is the author's own: the architecture, the design thesis, the experimental design, and every technical claim originate with the author, not with any tool. All text and figures were reviewed and verified by the author, who takes full responsibility for the entire contents of the paper, including any errors, irrespective of how any portion was generated. No generative AI system is an author of this work.
+
+-----
+
 ## References
 
 - Barrett, L. F. (2017). The theory of constructed emotion: an active inference account of interoception and categorization. *Social Cognitive and Affective Neuroscience* 12(1), 1-23.
