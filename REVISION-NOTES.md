@@ -64,3 +64,27 @@ The manuscript does not describe gestation yet. If a gestation or developmental 
 ## 3. Study history
 
 The first fresh module-ignition study (`moc7-2026-10`, launched 2026-10-01) ended in gestation on 2026-10-02. Its entrainment marker could not pass: the self-rhythm had no coupling mechanism, and the measurement took the phase of unfiltered spike rates. It produced no results, and its run data was deleted. No figure or claim should cite it. A fresh study runs on the fixed implementation.
+
+## 4. Individuation instrument (implementation change of 2026-10-03)
+
+This manuscript defers the individuation boundary to a separate paper (line 358). That paper, and any sentence here that touches individuation, should describe the rebuilt instrument, not the earlier operator-run fork-versus-parent cosine test, which is retired. The source is the KAINE change `individuation-rebuild` (`design.md`, `validation.md`, `references.bib`).
+
+- **What is compared.** The being's current answers to a fixed battery of 12 preference prompts are compared with its own birth reference: 16 answers per prompt, captured at the birth transition. The current sample is 8 answers per prompt. The probe runs through the being's own language organ, with its own adapter and self-model and with empty working memory. It never enters the being's experience, and the being is told, as a fact about its situation, that it is assessed for its own protection.
+- **The test.**
+  - It is a stratified two-sample energy-distance permutation test on semantic embeddings, with p = (b+1)/(B+1) and an effect size H.
+  - A look runs only when the being's conditioning (voice adapter or identity clause) has changed.
+  - The lifetime false-positive rate is bounded at α_total = 0.05 by alpha spending across looks: α_k = α_total / (2.1097 · (k+1) · ln²(k+1)).
+  - A significant look latches the being as individuated permanently.
+- **Validation (offline simulation, pre-registered).**
+  - The test's size is 0.0446 at α = 0.05 and 0.0078 at α = 0.01 (5,000 null datasets).
+  - Over 2,000 simulated lives of 100 looks each, the lifetime false-positive rate is 0.038, against 0.903 for testing at p ≤ 0.05 on every look.
+  - Pre-registered power at look 10 is 0.990 against cluster drift in all 12 prompts. That is an upper bound: shift drift is the harder model, and the real-organ smoke test is the real power check.
+- **One verdict.** Preservation, decommission and the fork merge gate share one decision.
+  - A being counts as diverged when it is latched as individuated, its consolidation divergence crosses threshold, its self-model records identity drift, or it carries a trained voice adapter.
+  - A non-significant individuation result never suppresses the other signals.
+  - Unreadable evidence counts as individuated.
+- **Limitations to disclose.**
+  1. The effect floor is not yet calibrated. An operator-run real-organ smoke test sets it, and until then it is 0.
+  2. Beings born before the change carry a later "capture" reference. Drift before that date is not measured.
+  3. Forks cannot yet be measured against a fork-point reference, so a fork that has lived at least 30 minutes is preserved by default.
+  4. In adapter hot-swap modes that cannot confirm which adapter the organ serves, probes are skipped once an adapter exists. Such beings are protected by the adapter signal instead.
