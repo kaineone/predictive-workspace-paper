@@ -76,9 +76,9 @@ This manuscript defers the individuation boundary to a separate paper (line 358)
   - The lifetime false-positive rate is bounded at α_total = 0.05 by alpha spending across looks: α_k = α_total / (2.1097 · (k+1) · ln²(k+1)).
   - A significant look latches the being as individuated permanently.
 - **Validation (offline simulation, pre-registered).**
-  - Per-look size is 0.0446 under H0 and 0.0078 for the shifted null.
-  - The lifetime false-positive rate is 0.038, against 0.903 for naive repeated testing.
-  - Pre-registered power is 0.99.
+  - The test's size is 0.0446 at α = 0.05 and 0.0078 at α = 0.01 (5,000 null datasets).
+  - Over 2,000 simulated lives of 100 looks each, the lifetime false-positive rate is 0.038, against 0.903 for testing at p ≤ 0.05 on every look.
+  - Pre-registered power at look 10 is 0.990 against cluster drift in all 12 prompts. That is an upper bound: shift drift is the harder model, and the real-organ smoke test is the real power check.
 - **One verdict.** Preservation, decommission and the fork merge gate share one decision.
   - A being counts as diverged when it is latched as individuated, its consolidation divergence crosses threshold, its self-model records identity drift, or it carries a trained voice adapter.
   - A non-significant individuation result never suppresses the other signals.
