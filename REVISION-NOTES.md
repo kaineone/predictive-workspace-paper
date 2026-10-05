@@ -99,3 +99,11 @@ The Thymos paragraph in §3 says Thymos "runs a sequential appraisal over that s
   - Explicit goals, when any exist, still contribute. Nothing in the running system creates explicit goals today.
 - **What earlier runs did.** Before this change the check scored the coalition against an explicit goal ledger that nothing wrote to. It therefore published a constant −0.2 on every broadcast: a fixed lean toward goal obstruction in every appraisal. Every base-thesis run before 2026-10-05 carried this bias, so the categorical emotions those runs report should be read with it in mind. The source is the KAINE change `thymos-goal-check`.
 - **Disclosure.** The `thymos.emotion` event names the method used (`drive_relevance_v1`, plus `token_overlap_v1` when explicit goals contribute, or `unavailable`), so a run's record shows which check produced each appraisal.
+
+## 6. Foveation: active vision is future work (design note of 2026-10-05)
+
+The Topos paragraph in §3 already describes the forward-modelled fovea as an attention-schema construct (Graziano and Webb 2015). That is built. A revision should not imply that the fovea is chosen by active inference:
+- The fovea is the argmax of precision-weighted bottom-up salience, plus an optional top-down bias, with dwell and hysteresis.
+- Saccade selection by expected free energy (the epistemic value of looking somewhere) is not implemented. It needs a second, saccade-pinned native-resolution capture and a Nous action integration, and both are deferred in the KAINE change `attention-driven-foveation` (tasks 3.1 and 3.2).
+
+If the future-work section (§10) lists active vision, it should name it as future work in exactly those terms.
