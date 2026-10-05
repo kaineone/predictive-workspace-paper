@@ -88,3 +88,14 @@ This manuscript defers the individuation boundary to a separate paper (line 358)
   2. Beings born before the change carry a later "capture" reference. Drift before that date is not measured.
   3. Forks cannot yet be measured against a fork-point reference, so a fork that has lived at least 30 minutes is preserved by default.
   4. In adapter hot-swap modes that cannot confirm which adapter the organ serves, probes are skipped once an adapter exists. Such beings are protected by the adapter signal instead.
+
+## 5. Thymos goal-relevance check (implementation change of 2026-10-05)
+
+The Thymos paragraph in §3 says Thymos "runs a sequential appraisal over that state (Scherer 2009)". The text stays as it is. A revision should record how the goal-relevance check of that appraisal is computed, and disclose what earlier runs did.
+
+- **What the check measures now.** Goal relevance is scored against the entity's homeostatic drives (curiosity, boredom, social drive, restlessness), which build from its own state.
+  - The dominant drive `v` is compared with the share `f` of the conscious coalition's salience whose sources relieve that drive. Each module declares which drives its events tend to relieve.
+  - The score is `v × (2f − 1)`: content that serves the pressing need is goal-conducive, and content that does not is obstructive, in proportion to how pressing the need is. With no pressing need the score is 0.
+  - Explicit goals, when any exist, still contribute. Nothing in the running system creates explicit goals today.
+- **What earlier runs did.** Before this change the check scored the coalition against an explicit goal ledger that nothing wrote to. It therefore published a constant −0.2 on every broadcast: a fixed lean toward goal obstruction in every appraisal. Every base-thesis run before 2026-10-05 carried this bias, so the categorical emotions those runs report should be read with it in mind. The source is the KAINE change `thymos-goal-check`.
+- **Disclosure.** The `thymos.emotion` event names the method used (`drive_relevance_v1`, plus `token_overlap_v1` when explicit goals contribute, or `unavailable`), so a run's record shows which check produced each appraisal.
