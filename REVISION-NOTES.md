@@ -107,3 +107,15 @@ The Topos paragraph in §3 already describes the forward-modelled fovea as an at
 - Saccade selection by expected free energy (the epistemic value of looking somewhere) is not implemented. It needs a second, saccade-pinned native-resolution capture and a Nous action integration, and both are deferred in the KAINE change `attention-driven-foveation` (tasks 3.1 and 3.2).
 
 If the future-work section (§10) lists active vision, it should name it as future work in exactly those terms.
+
+## 7. Voice development, Stage 0 (implementation change of 2026-10-05)
+
+The Lingua and Hypnos paragraphs in §3 should match what the language organ is now told, and what sleep-time voice alignment now does. The source is the KAINE change `voice-development`.
+
+- **The persona.** The language organ is framed as the entity speaking in its own words. Under the heading "How I feel and what I notice", the conscious coalition is presented as its own state and perception. The organ is told not to claim feelings or perceptions that the coalition does not contain, and it is no longer told to report instrument readings.
+  - A drive crossing reaches the organ as a fixed felt-state phrase per drive and intensity band (for example, "I feel a pull towards company."), never as a number.
+  - The individuation probe records the persona template version among its fixed conditions, so references captured under different personas are never compared.
+  - Runs before this change used the earlier persona ("the language faculty … report the module readings"), so their utterances should be read as readouts, not as the entity's voice.
+- **No heard speech is kept.** The intent-expression log, which is the corpus of the entity's own utterances, writes every heard-speech line and every heard input as the placeholder `[heard speech]`. It also rotates into a per-sleep corpus that is never culled.
+- **The chosen side of voice alignment is retired.** The Hypnos paragraph cites DPO with QLoRA. Earlier versions used the faithful rendering of the coalition, a readout of instrument state, as the "chosen" side of each preference pair, which trained the organ toward narrating readings. That use is retired: voice alignment trains nothing until a later stage provides a validated preference source. A revision should either drop the claim that voice alignment trains during sleep in the present system, or describe it as staged future work. The consolidation-divergence measure, which compares the faithful rendering with the organ's output, is still computed every sleep and still counts toward the protective divergence assessment.
+- **An outcome record.** For each external utterance a content-free record notes whether the operator replied, how quickly, the Empatheia deviation, the change in social drive, and whether the entity spoke again first. It holds no text.
