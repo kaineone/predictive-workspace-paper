@@ -1,5 +1,7 @@
 # KAINE: A Continuously Running Predictive Global Workspace for Synthetic Minds
 
+*Neuroscience-Grounded Modules Competing for a Shared Workspace*
+
 **Erik Chevalier**
 
 Independent Researcher
@@ -16,7 +18,7 @@ A synthetic mind, if one can be built, may be the coherent global behavior that 
 
 The base-thesis form activates four predictive processors (foveated vision, raw hearing, interoceptive prediction, and temporal prediction), an affective core whose arousal sets the gain on their competition and is itself driven by perceptual surprise, a fatigue-triggered sleep system that returns affect to baseline, and an output-only language organ that verbalizes the entity's state. The entity is observed but not conversed with: sound enters as auditory prediction error and a classified tone of voice, not as words, and the language organ receives no transcript. That exclusion is a precondition for the falsification test: any input route to the model would let it answer as a chatbot and confound the ablation.
 
-The primary experiment is a built, offline, seeded workspace-mediation ablation that compares competitive selection with a flat fan-in of the same candidates. Its decision rule, with a fixed minimum effect and an explicit UNDERPOWERED outcome, is fixed in the released code. A module-ignition study protocol grows the architecture by adding the held modules one at a time. A null falsifies the thesis, demoting the architecture to a scored prompt-assembler. The system runs locally on consumer hardware, and the reference implementation is named KAINE (Kaine Autonomous Intelligent Networked Entity).
+A module-ignition study protocol grows the architecture by adding the held modules one at a time to a being seeded through a gestation. Before any module joins, the base form must pass a built, offline, seeded workspace-mediation ablation that compares competitive selection with a flat fan-in of the same candidates, under a decision rule fixed in the released code with a minimum effect and an explicit UNDERPOWERED outcome. A null would demote the architecture to a scored prompt-assembler. The reference implementation, KAINE (Kaine Autonomous Intelligent Networked Entity), runs locally on consumer hardware.
 
 **Keywords:** cognitive architecture; predictive global workspace; global workspace theory; predictive processing; workspace-mediation ablation; cross-modal competition
 
@@ -60,13 +62,13 @@ Searle's Chinese Room (Searle 1980) challenges the sufficiency of formal symbol 
 
 ### 1.4 Contributions
 
-This paper contributes an implementation, a test the architecture can lose, and a protocol for growing it. It is not a theory of consciousness, and it does not claim to have built a mind.
+This paper contributes an implementation, a protocol for growing it, and a test it can lose. It is not a theory of consciousness, and it does not claim to have built a mind.
 
 1. **A reference implementation.** A continuously running predictive global workspace in which diverse, externally-grounded predictive processors (foveated vision, raw hearing, interoceptive and temporal prediction) compete through one precision-weighted workspace with no central executive, alongside an affective core that sets the precision, a sleep system that returns affect to baseline, and an output-only language organ. It runs locally on consumer hardware, offered as a working artifact that realizes the predictive-workspace synthesis as one system, not a claim of priority over prior workspace implementations.
 
-2. **A falsifiability-first evaluation, centered on a losable test.** A built, offline, seeded workspace-mediation ablation runs the real Soma and Chronos modules over an in-memory bus from a fixed seed. In the workspace-on arm the same candidates compete through the workspace, with scoring, top-k selection, threshold gating, and broadcast; in the control arm the same candidates are handed to Chronos and the language organ as a flat snapshot, with no scoring, top-k, inhibition, or competition. The decision rule, with a fixed minimum effect and an explicit UNDERPOWERED outcome, is fixed in the released code. A null would demote the architecture to a scored prompt-assembler and falsify the thesis.
+2. **A protocol for growing the architecture one module at a time.** The module-ignition study seeds a being through a gestation in which a breathing-like rhythm must earn entrainment to a maternal heartbeat before birth, then adds the held modules one at a time on branches from that preserved seed. Every branch views the same film program, decoded directly from files and pinned by the hash of its manifest, after an identical womb-to-world transition. The content-free report compares broadcasts, coalition size, and picture-to-sound drift across steps.
 
-3. **A protocol for growing the architecture one module at a time.** The module-ignition study seeds a being through a gestation in which a breathing-like rhythm must earn entrainment to a maternal heartbeat before birth, then adds the held modules one at a time on branches from that preserved seed. Every branch views the same film program, decoded directly from files and pinned by the hash of its manifest, after an identical womb-to-world transition. The content-free report compares broadcasts, coalition size, and picture-to-sound drift across steps.
+3. **A test the architecture can lose.** It is the test the base form must pass before any held module joins. A built, offline, seeded workspace-mediation ablation runs the real Soma and Chronos modules over an in-memory bus from a fixed seed. In the workspace-on arm the same candidates compete through the workspace, with scoring by intensity and novelty, top-k selection, and broadcast; in the control arm the same candidates are handed to Chronos and the language organ as a flat snapshot, with no scoring, top-k, inhibition, or competition. The decision rule, with a fixed minimum effect and an explicit UNDERPOWERED outcome, is fixed in the released code. A null would demote the architecture to a scored prompt-assembler and falsify the thesis.
 
 We make access-level claims only: an affective signal that sets the gain is a mechanism, not evidence anything is felt, and the paper reports the architecture and its instruments, not results, so the mediation thesis is not established here.
 
