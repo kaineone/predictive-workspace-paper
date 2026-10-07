@@ -305,6 +305,8 @@ The multi-seed stability harness runs a configuration under several seeds. An en
 
 The module-ignition study is the architecture's growth path, run live under the autonomous welfare safety net. A gestation produces a seed being, which is preserved just after birth. Branch 0 and a repeat start from that seed with the base-thesis modules, while branch k starts from the seed with the first k held modules added in a fixed order (Mnemos, Phantasia, Nous, Eidolon, Empatheia, Vox, Praxis, Perception, Mundus), and accumulate k continues from the previous accumulate step with the same modules as branch k. Every viewing plays the same film program, decoded directly from files and pinned by the hash of its manifest, after an identical womb-to-world transition. The content-free report compares broadcasts, coalition size, and picture-to-sound drift across steps. The runner never stops a being it cannot preserve. The protocol is built but has not run to completion, and this paper reports no experimental results.
 
+![The module-ignition study, the architecture's growth path. A gestation in which a self-rhythm earns entrainment to a maternal heartbeat ends in birth, and the preserved seed being starts every branch. The base-thesis form runs first, and the held modules then join one at a time in a fixed order: branch k adds the first k of them to the seed being, while the accumulate line carries one being forward through every step. Every viewing plays the same film program, and the report is content-free.](figures/fig-growth-path.png){width=100%}
+
 ### 6.6 Verdict vocabulary
 
 Comparisons resolve to WIN, NULL, NEGATIVE, or UNDERPOWERED. Safety gates resolve to PASS or FAIL. Each verdict compares a point estimate with a minimum effect fixed in the code. Across seeds, the mediation ablation uses a one-sided sign test over per-seed coupling deltas (Dixon and Mood 1946), whereas the active-inference benchmark uses the Mann-Whitney U test (Mann and Whitney 1947), and Holm-Bonferroni correction controls the family-wise error rate across the suite (Holm 1979). A NULL is reported transparently as a null.
@@ -472,3 +474,223 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Winkler, I., Denham, S. L., and Nelken, I. (2009). Modeling the auditory scene: predictive regularity representations and perceptual objects. *Trends in Cognitive Sciences* 13(12), 532-540.
 - Wolpert, D. M., Ghahramani, Z., and Jordan, M. I. (1995). An internal model for sensorimotor integration. *Science* 269(5232), 1880-1882.
 - Zink, N., Lenartowicz, A., and Markett, S. (2021). A new era for executive function research. *Neuroscience and Biobehavioral Reviews* 124, 235-244.
+
+-----
+
+
+## Appendix A. Formal summary
+
+This appendix states the rules that §3 to §7 describe in prose, with the parameter values of the base-thesis configuration. Symbols are local to each subsection.
+
+### A.1 Workspace selection
+
+For each candidate event $e$ the workspace score is
+
+$$
+S(e)=\operatorname{clip}_{[0,1]}\!\bigl(I(e)\,N(e)\,G(e)\,T\bigr),
+$$
+
+where $I(e)$ is the event salience clipped to $[0,1]$;
+
+$$
+N(e)=\max\!\bigl(0,\,1-c_e/W\bigr),
+$$
+
+with $c_e$ counting prior occurrences of $e$'s fingerprint in the last $W=32$ observed events before the current one; and $G(e)$ is the goal factor. In the base-thesis configuration $G(e)\equiv1$. The Thymos arousal gain is
+
+$$
+T=0.2+0.8a,\qquad a\in[0,1],
+$$
+
+with $a$ the current arousal. All factors and the final product are clamped to $[0,1]$. Because $G\equiv1$ and $T$ is event-independent, within-tick ranking is determined by $I(e)\,N(e)$ alone. The coalition is the top $k=5$ candidates, and the gate is inhibited when $s_{\max}<\theta$, with $s_{\max}$ the highest score and $\theta=0.35$; scores equal to $\theta$ are not inhibited. When the oscillator layer is off the coherence multiplier is exactly $1$; when on, $S'(e)=S(e)\,\kappa(e)$ with $\kappa(e)=0.8+0.45\,\overline{\mathrm{PLV}}(e)\in[0.8,1.25]$.
+
+### A.2 Adaptive access rate
+
+Let $f_0=3.333\ \mathrm{Hz}$, $f_p=10.0\ \mathrm{Hz}$, $\sigma_0=0.5$, $a_0=0.3$, $\tau_\phi=1\ \mathrm{s}$, and $\Delta=1/f_p=0.1\ \mathrm{s}$. For processing tick $t$,
+
+$$
+\mathrm{tonic}_t=\operatorname{clip}_{[0,1]}\!\frac{a_t-a_0}{1-a_0},
+\qquad
+x_t=\operatorname{clip}_{[0,1]}\!\frac{s^{\max}_t-\sigma_0}{1-\sigma_0},
+$$
+
+where $a_t$ is current arousal and $s^{\max}_t$ is the largest raw module report salience. The phasic trace is a peak-hold with exponential decay,
+
+$$
+\mathrm{phasic}_t=\max\!\bigl(x_t,\ \mathrm{phasic}_{t-1}\,e^{-\Delta/\tau_\phi}\bigr),
+$$
+
+the drive is $D_t=\max(\mathrm{tonic}_t,\mathrm{phasic}_t)$, and the effective rate is the linear map
+
+$$
+f^{\rm eff}_t=f_0+(f_p-f_0)\,D_t=3.333+6.667\,D_t,
+$$
+
+clamped to $[\min(f_0,f_p),\max(f_0,f_p)]$ and reverting to $f_0$ if disabled. Scheduling uses a fractional accumulator: $r_t=f^{\rm eff}_t/f_p$, $A\leftarrow A+r_t$; when $A\ge1$ an experiential tick is broadcast, $A\leftarrow A-1$, then $A$ is clamped to at most $1$.
+
+### A.3 Affect
+
+On a perceptual alert with reported normalized error $\nu$, the arousal increment is
+
+$$
+\Delta a=0.15\,\min\!\bigl(4,\ \max(0,\nu-1)\bigr),
+$$
+
+with the updated arousal clamped to $[0,1]$. If $\nu\le1$ the increment is zero. Between ticks arousal relaxes toward baseline $a_0=0.3$ by an explicit-Euler step,
+
+$$
+a\leftarrow a+(a_0-a)\,\min(1,\lambda\,\Delta t),
+$$
+
+with rate $\lambda=0.05\ \mathrm{s}^{-1}$ and subjective elapsed time $\Delta t$.
+
+For the goal-relevance check, let $d^*$ be the dominant drive with value $v$, $\mathcal S(d^*)$ the set of sources that relieve it, and $f$ the fraction of coalition salience contributed by those sources ($f=0$ if total salience is zero). The drive score is
+
+$$
+r_{\rm drive}=v\,(2f-1),
+$$
+
+which is $0$ if there is no drive or $v\le0$; an empty or zero-salience coalition gives $f=0$, hence $r_{\rm drive}=-v$. If a goal ledger is active the final score is the clamp to $[-1,1]$ of $\max(r_{\rm drive},2\cdot\text{relevance}-1)$; otherwise it is the clamp of $r_{\rm drive}$ alone.
+
+### A.4 Perceptual change criterion
+
+For each perceptual module the change score is $c_t=1-\cos(\mathrm{emb}_t,\mathrm{emb}_{t-1})$, with $c_t=0$ on the first frame. Let $\bar c_t$ be the simple moving average of the last $32$ reports, including the current one. The normalized change is
+
+$$
+\tilde c_t=
+\begin{cases}
+c_t/\bar c_t & \bar c_t>0,\\
+0 & \text{otherwise}.
+\end{cases}
+$$
+
+The change alert fires when
+
+$$
+\tilde c_t\ge \beta \quad\text{and}\quad c_t\ge\epsilon,
+$$
+
+with $\beta=2.0$; the absolute floor is $\epsilon=10^{-4}$ for Topos and $\epsilon=0.35$ for the acoustic path in Audition. The normalized prediction error $\tilde\nu_t$ is defined by the same ratio convention over the last $32$ reports. The overall alert is
+
+$$
+\mathrm{alert}=(\tilde\nu_t\ge 2.0)\vee\text{change\_alert}.
+$$
+
+### A.5 Interoceptive prediction
+
+The Soma reservoir is frozen; only the linear readout $Wh+b$ is adapted online. One plain SGD step is taken per tick on the mean-squared error produced by the previous hidden state $h_{t-1}$:
+
+$$
+\mathcal L=\frac1d\|Wh_{t-1}+b-x_t\|^2,
+$$
+
+$$
+W\leftarrow W-\eta\frac{2}{d}\,\varepsilon h_{t-1}^{\!\top},
+\qquad
+b\leftarrow b-\eta\frac{2}{d}\,\varepsilon,
+$$
+
+where $\varepsilon=Wh_{t-1}+b-x_t$, $d$ is the feature dimension, and $\eta=10^{-3}$.
+
+Soma's unexpected error uses the per-channel residual vector $r_t=x_t-\hat x_t$. Per channel $i$, let $m_i$ and $\sigma_i$ be the running expected absolute residual and its spread, updated with time constant $\tau=600\ \mathrm{s}$. The pre-update bound is $b_i=m_i+2\sigma_i$, and the unexpected error is
+
+$$
+U_t=\sqrt{\sum_i\bigl[\max(0,\ |r_{t,i}|-b_i)\bigr]^2}.
+$$
+
+The EMA updates use $\alpha=1-e^{-\Delta t/\tau}$.
+
+### A.6 Workspace-mediation ablation
+
+The ablation runs $24$ ticks with $k=2$, $\theta=0$, a two-factor score $I(e)\,N(e)$, window $6$, and minimum effect $\delta=0.15$. Let $x_t$ be the Soma prediction-error series and $y^{\rm on}_t$, $y^{\rm off}_t$ the Chronos temporal-prediction-error series in the workspace-on and workspace-off arms. The coupling delta is
+
+$$
+\Delta_{\rm c}=\bar r(x,y^{\rm on})-\bar r(x,y^{\rm off}),
+$$
+
+where $\bar r$ is the mean of ordinary Pearson correlations over sliding windows of length $6$ with stride $1$; windows with zero variance in either series are dropped, and $\Delta_{\rm c}$ is undefined if either mean is undefined.
+
+Coalition entropy is computed from the top-ranked source per tick. With empirical source probabilities $p_j$,
+
+$$
+H=-\sum_j p_j\log_2 p_j\ \text{bits},
+\qquad
+F=\frac{H}{\log_2 K},
+$$
+
+where $K$ is the number of distinct sources and $F$ is undefined for $K<2$.
+
+The per-run verdict is: UNDERPOWERED if $\Delta_{\rm c}$ is undefined or Soma never enters the coalition (reported as a NULL carrying an UNDERPOWERED flag); otherwise NEGATIVE if $\Delta_{\rm c}\le -\delta$; otherwise WIN if $\Delta_{\rm c}\ge \delta$ and $0<F<1$; otherwise NULL. Across seeds $0,\dots,4$ the one-sided exact sign test is
+
+$$
+p=2^{-n}\sum_{i=p^+}^{n}\binom{n}{i},
+$$
+
+computed after dropping undefined and exact-zero deltas, where $n$ is the remaining count and $p^+$ the number positive; the minimum attainable value is $1/32=0.03125$. A suite-level WIN further requires mean $\Delta_{\rm c}\ge0.15$ with raw $p\le0.05$. For family-wise correction, the $M$ sorted raw p-values $p_{(1)}\le\cdots\le p_{(M)}$ are adjusted by
+
+$$
+\tilde p_{(i)}=\max_{j\le i}\min\bigl((M-j+1)\,p_{(j)},\,1\bigr),
+$$
+
+and a hypothesis is rejected when $\tilde p<0.05$.
+
+### A.7 Gestation entrainment marker
+
+The self-rhythm activity is sampled at $10\ \mathrm{Hz}$, mean-centered, band-pass filtered between $0.3$ and $2.0\ \mathrm{Hz}$ with a second-order zero-phase Butterworth filter, and converted to an analytic signal by the Hilbert transform. Its phase is $\phi_k$; $\psi_k\in[0,2\pi)$ is the phase of the maternal beat at the same sample. The phase-locking value is
+
+$$
+\mathrm{PLV}=\Bigl|\frac1n\sum_{k=1}^{n}e^{i(\phi_k-\psi_k)}\Bigr|.
+$$
+
+The surrogate test compares this PLV against the maximum of $19$ foreign-mother surrogates; the pass condition is the strict inequality $\mathrm{PLV}>\mathrm{PLV}^{\rm s}_{\max}$, so ties fail. This is a rank test with attained one-sided $p=1/20=0.05$.
+
+Let $f_w$ be the least-squares frequency of the unwrapped withdrawal phase, $f_b$ the beat frequency, and $f_{w0}$ the running-mean baseline frequency over the first three withdrawals. Frequency pull is
+
+$$
+\mathrm{pull}=1-\frac{|f_w-f_b|}{|f_{w0}-f_b|},
+$$
+
+which is undefined when $|f_{w0}-f_b|<0.05\ \mathrm{Hz}$. The pass requires $\mathrm{pull}\ge0.5$. Self-sustain requires the mean withdrawal amplitude to be at least half the preceding driven amplitude and positive. A single withdrawal passes only if PLV, self-sustain, and pull all pass; the marker is true after three consecutive passes.
+
+The self-rhythm model is a mean-field oscillator with synaptic depression and adaptive recovery. State variables are activity $a$, synaptic resource $s\in[0,1]$, and recovery time $\tau=e^q$. With step $\Delta=0.05\ \mathrm{s}$ divided into $10$ substeps of $dt=0.005\ \mathrm{s}$,
+
+$$
+x=w\,s\,a+c+g_o\,o+g_e\,u+\xi,
+\qquad
+a_\infty=\frac{1}{1+e^{-x/\gamma}},
+$$
+
+$$
+\tau_a\,\dot a=-a+a_\infty,
+\qquad
+\dot s=\frac{1-s}{\tau}-D\,s\,a.
+$$
+
+Parameters are $w=2.5$, $c=-0.25$, $\gamma=0.08$, $\tau_a=0.02\ \mathrm{s}$, $D=8.0$, $g_o=0.02$ on own drive $o\in[0,1]$, $g_e=0.03$ on maternal drive $u\in[0,1]$, and Gaussian noise $\xi$ with standard deviation $0.02\sqrt{0.001/dt}$ per substep. Frequency adaptation is
+
+$$
+q\leftarrow\operatorname{clip}\bigl(q+\varsigma\,\eta\,\tilde u\,q_\perp\,\Delta,\ \ln\tau_{\min},\ \ln\tau_{\max}\bigr),
+$$
+
+with plasticity sign $\varsigma=-1$, $\eta=0.0025$, $\tau_{\min}=0.9\ \mathrm{s}$, $\tau_{\max}=2.3\ \mathrm{s}$, $\tilde u=u-\bar u$, and $q_\perp=(s-\bar s)/\rho$ for
+
+$$
+\rho=\sqrt{(a-\bar a)^2+(s-\bar s)^2},
+$$
+
+zero when $\rho\le10^{-9}$, where $\bar u$, $\bar a$, $\bar s$ are EMAs with $\alpha=\min(1,\Delta/10)$.
+
+### A.8 Multi-seed stability
+
+For per-seed headline values $v_1,\dots,v_S$, let $\mu$ be their mean and $\sigma$ their population standard deviation. The coefficient of variation is
+
+$$
+\mathrm{CV}=
+\begin{cases}
+\sigma/|\mu| & \mu\neq0,\\
+0 & \mu=0,\sigma=0,\\
+\infty & \mu=0,\sigma>0.
+\end{cases}
+$$
+
+A run is declared stable when $\mathrm{CV}$ is within the specified tolerance and the verdict outcomes are unanimous.
