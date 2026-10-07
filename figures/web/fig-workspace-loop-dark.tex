@@ -37,12 +37,14 @@
 \draw[->, draw=stroke] (mods.east) -- node[above, font=\footnotesize, align=center, text=fgbody]{prediction errors\\(salience)} (syn.west);
 % affect -> workspace (precision)
 \draw[->, draw=stroke] (aff) -- node[right, font=\footnotesize, align=left, text=fgbody]{arousal sets the gain\\on the competition} (syn);
+% soma -> hypnos (fatigue)
+\draw[->, draw=stroke] (m3.south east) to[out=-30,in=180] node[below, font=\footnotesize, text=fgbody]{fatigue} (hyp.west);
 % hypnos -> thymos
 \draw[->, draw=stroke] (hyp) -- node[right, font=\footnotesize, text=fgbody]{affective reset} (aff);
 % broadcast loop back over the top
 \draw[->, thick, draw=stroke] (syn.north) to[out=150,in=30,looseness=0.9] node[above, font=\footnotesize, align=center, text=fgbody]{broadcast snapshot as shared state\\(next-tick prediction environment)} (mods.north east);
 % workspace -> volition
-\draw[->, draw=stroke] (syn) -- node[above, font=\footnotesize, align=center, text=fgbody]{conscious\\snapshot} (vol);
+\draw[->, draw=stroke] (syn) -- node[above, font=\footnotesize, align=center, text=fgbody]{global\\snapshot} (vol);
 % volition -> lingua
 \draw[->, draw=stroke] (vol) -- node[right, font=\footnotesize, text=fgbody]{speak / think} (lin);
 \end{tikzpicture}

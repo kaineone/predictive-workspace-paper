@@ -30,10 +30,12 @@
 \draw[->] (aff) -- node[right, font=\footnotesize, align=left]{arousal sets the gain\\on the competition} (syn);
 % hypnos -> thymos
 \draw[->] (hyp) -- node[right, font=\footnotesize]{affective reset} (aff);
+% soma -> hypnos (fatigue)
+\draw[->] (m3.south east) to[out=-30,in=180] node[below, font=\footnotesize]{fatigue} (hyp.west);
 % broadcast loop back over the top
 \draw[->, thick] (syn.north) to[out=150,in=30,looseness=0.9] node[above, font=\footnotesize, align=center]{broadcast snapshot as shared state\\(next-tick prediction environment)} (mods.north east);
 % workspace -> volition
-\draw[->] (syn) -- node[above, font=\footnotesize, align=center]{conscious\\snapshot} (vol);
+\draw[->] (syn) -- node[above, font=\footnotesize, align=center]{global\\snapshot} (vol);
 % volition -> lingua
 \draw[->] (vol) -- node[right, font=\footnotesize]{speak / think} (lin);
 \end{tikzpicture}
