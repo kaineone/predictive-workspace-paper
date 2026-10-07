@@ -229,7 +229,7 @@ The codebase provides sixteen modules under one registry, plus the workspace (Sy
 
 ### Module plugins
 
-A plugin replaces the model inside a module at a declared seam (the temporal network in Chronos, the forward model in Soma, the acoustic encoder in Audition, the active-inference engine in Nous, or a module's oscillator) and leaves the module's subscriptions and published events unchanged. Plugins load only when the operator names them, and if one cannot load, the boot stops rather than falling back, and every run records which plugins it used. The workspace-mediation ablation loads no plugins. One optional plugin, installed separately, runs the models inside Chronos and Soma on a simulator of cultured biological neurons. It has never run on living neurons, the simulator does not learn, and running on biological tissue would need its own welfare review.
+A plugin replaces the model inside a module at a declared seam (the temporal network in Chronos, the forward model in Soma, the acoustic encoder in Audition, the active-inference engine in Nous, or a module's oscillator) and leaves the module's subscriptions and published events unchanged. Plugins load only when the operator names them, and if one cannot load, the boot stops rather than falling back, and every run records which plugins it used. The workspace-mediation ablation loads no plugins. Plugins let an operator move a module's model onto a different computational substrate without touching the rest of the architecture.
 
 -----
 
@@ -335,7 +335,11 @@ The architecture realizes a single unified framework instead of several theories
 
 The predictive global neuronal workspace is scaffolding for the project: it motivates the architecture's shape and constrains its design space (§1.2, §1.3), but this project does not confirm or refute it. The engineering choices that exceed the formal sources (the single precision-weighted scalar, the multi-module generalization from a two-level visual model) are consistent with the frame and testable on their own terms. Insulating it from neuroscientific disconfirmation, such as the retreat from neural localization after COGITATE, is appropriate for a computational-level project that implements the workspace's computational properties without reproducing cortical dynamics. The paper's falsifiability therefore rests on the ablation instead of the frame.
 
-### 8.4 What we claim and what we do not
+### 8.4 What a modular architecture is for
+
+Because each faculty is implemented as a separate module behind a fixed interface, a researcher can activate, remove, or replace one faculty at a time and observe how the whole system changes, which makes the architecture an instrument for studying how minds work as well as a candidate for building one. The same approach supports models of impaired or altered function, created by changing one module's parameters or removing it while the rest of the system runs as before. The entity experiences its inputs continuously and in real time, so its behavior unfolds over lived time, in contrast to a language model with attached tools that acts only when prompted, turn by turn. The embodiment layer is a body-agnostic control surface, so the same mind can in principle take different bodies or sensor networks through generic adapters.
+
+### 8.5 What we claim and what we do not
 
 Safety rests on the entity's executive inhibition and on the absence of any effector, and it does not rest on model weights. The reasoning and the full-configuration action gate are in §3.6, and the sovereignty argument is the welfare paper's. On the larger question, the architecture implements computational properties associated with access consciousness. We do not claim any instance is phenomenally conscious, and the design posture is precautionary, applied symmetrically to welfare and deployment. The agential vocabulary ("the entity," "its sovereignty") is the clearest way to describe the system's behavior and does not by itself assert moral patienthood or phenomenal experience, which we leave open.
 
@@ -369,7 +373,7 @@ Safety rests on the entity's executive inhibition and on the absence of any effe
 
 ## 10. Future work
 
-Running the module-ignition study to completion is the immediate next step. Beyond that, the workspace-mediation ablation needs to move from the offline two-module instrument to the live system on the film program, which requires a workspace-off mode in the cycle. Other open directions include an affect-gain ablation that holds arousal constant, a learned Syneidesis with threshold and phase-transition dynamics, active vision that chooses where to look by expected free energy (the epistemic value of a saccade), a validated preference source so sleep-time voice alignment can train, plugins on other substrates including biological tissue under its own welfare review, and longitudinal validation reported in a separate empirical paper.
+Running the module-ignition study to completion is the immediate next step. Beyond that, the workspace-mediation ablation needs to move from the offline two-module instrument to the live system on the film program, which requires a workspace-off mode in the cycle. Other open directions include an affect-gain ablation that holds arousal constant, a learned Syneidesis with threshold and phase-transition dynamics, active vision that chooses where to look by expected free energy (the epistemic value of a saccade), a validated preference source so sleep-time voice alignment can train, plugins that move a module's model onto other computational substrates, and longitudinal validation reported in a separate empirical paper.
 
 -----
 
