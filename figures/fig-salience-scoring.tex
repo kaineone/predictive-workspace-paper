@@ -23,9 +23,8 @@
 \node[align=center, font=\footnotesize, text width=44mm] (scoretitle) at (0,0)
   {score each candidate $=$ product of bounded factors};
 \node[align=left, font=\scriptsize, text width=44mm, below=3mm of scoretitle] (scorelist)
-  {intensity (precision-weighted prediction error)\\[2pt]
+  {intensity (the module's salience)\\[2pt]
    $\times$\, novelty (falls as content recurs)\\[2pt]
-   $\times$\, goal-relevance\\[2pt]
    $\times$\, arousal gain (Thymos)};
 \begin{pgfonlayer}{background}
 \node[draw=bemph, thick, rounded corners, fill=surfemph, fit=(scoretitle)(scorelist), inner sep=3mm] (score) {};
@@ -33,9 +32,9 @@
 % (a) candidate events
 \node[stage, left=22mm of score] (cand) {candidate events\\[2pt]\scriptsize (one batch read per active module, ordered deterministically)};
 % (c) rank
-\node[stage, right=14mm of score] (rank) {rank; keep top-$k$};
+\node[stage, right=14mm of score] (rank) {rank; keep top-$k$ (up to five)};
 % (d) decision
-\node[decide, right=14mm of rank] (dec) {best score $>$ confidence threshold?};
+\node[decide, right=14mm of rank] (dec) {best single score $>$ confidence threshold?};
 % branches
 \node[sel,  below right=20mm and -4mm of dec] (yes) {broadcast conscious snapshot};
 \node[halt, below left=20mm and -4mm of dec] (no) {snapshot marked inhibited: no action this tick};

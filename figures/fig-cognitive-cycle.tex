@@ -14,6 +14,7 @@
 \begin{tikzpicture}[
   font=\small,>=Latex,
   every node/.append style={text=fgbody},
+  every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
   tickmark/.style={draw=stroke, thick},
 ]
 \def\upy{3.0}
@@ -24,15 +25,15 @@
   \pgfmathsetmacro{\x}{\i*1.2}
   \draw[tickmark] (\x,\upy-0.18) -- (\x,\upy+0.18);
 }
-\node[align=center, font=\footnotesize, text width=120mm] at (4.8,\upy+0.85)
-  {processing rate 10\,Hz ($\sim$100\,ms/tick): every active module read and scored};
+\node[align=center, font=\footnotesize, text width=150mm] at (4.8,\upy+0.85)
+  {processing rate 10\,Hz ($\sim$100\,ms/tick): every active module read and scored (alpha-band sampling)};
 % --- lower track: experiential broadcasts (3.333 Hz) ---
 \draw[thick, draw=stroke] (-0.6,\loy) -- (10.2,\loy);
 \foreach \x in {2.4,6.0,9.6} {
   \draw[tickmark] (\x,\loy-0.18) -- (\x,\loy+0.18);
 }
-\node[align=center, font=\footnotesize, text width=95mm] at (4.8,\loy-0.85)
-  {experiential rate 3.333\,Hz: a workspace broadcast is produced};
+\node[align=center, font=\footnotesize, text width=120mm] at (4.8,\loy-0.85)
+  {experiential rate, resting 3.333\,Hz: a workspace broadcast every third tick at rest};
 % --- every third processing tick feeds a broadcast tick ---
 \foreach \x in {2.4,6.0,9.6} {
   \draw[->, thin, draw=stroke] (\x,\upy-0.22) -- (\x,\loy+0.22);
@@ -42,6 +43,6 @@
 \node[font=\footnotesize\itshape, anchor=east] at (-0.8,\loy) {experiential broadcasts};
 % --- caption ---
 \node[draw=bdim, rounded corners, fill=surf, align=center, font=\footnotesize, text width=105mm, inner sep=3mm] at (4.8,-2.4)
-  {Both rates are engineering parameters fit to the host, cleared by a startup benchmark, and not tied to any neuroscientific frequency band.};
+  {At rest, conscious access runs at 3.333\,Hz, the 300\,ms latency of the P3b. It rises with arousal and salient reports, up to one broadcast per processing tick; the processing rate stays fixed.};
 \end{tikzpicture}
 \end{document}

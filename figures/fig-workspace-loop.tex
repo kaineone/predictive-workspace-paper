@@ -10,23 +10,26 @@
   act/.style={draw, rounded corners, fill=orange!14, align=center, minimum width=30mm, minimum height=9mm, font=\footnotesize},
 ]
 % four predictive processors on the left
-\node[mod] (m1) {Topos \textemdash{} foveated vision};
-\node[mod, below=2.4mm of m1] (m2) {Audition \textemdash{} raw hearing};
-\node[mod, below=2.4mm of m2] (m3) {Soma \textemdash{} interoception};
-\node[mod, below=2.4mm of m3] (m4) {Chronos \textemdash{} timing};
+\node[mod] (m1) {Topos: foveated vision};
+\node[mod, below=2.4mm of m1] (m2) {Audition: raw hearing};
+\node[mod, below=2.4mm of m2] (m3) {Soma: interoception};
+\node[mod, below=2.4mm of m3] (m4) {Chronos: timing};
 \node[draw, dashed, fit=(m1)(m2)(m3)(m4), inner sep=7pt] (mods) {};
 \node[font=\footnotesize, above=0.5mm of mods] {four predictive processors};
 % workspace centre
-\node[work, right=30mm of m2, yshift=-2mm] (syn) {\textbf{Syneidesis}\\[1pt]\footnotesize precision-weighted\\\footnotesize scoring $+$ threshold\\\footnotesize selection};
+\node[work, right=30mm of m2, yshift=-2mm] (syn) {\textbf{Syneidesis}\\[1pt]\footnotesize salience $\times$ arousal\\\footnotesize scoring $+$ threshold\\\footnotesize selection};
 % affect below the workspace
-\node[aff, below=12mm of syn] (aff) {\textbf{Thymos} \textemdash{} affect / arousal};
+\node[aff, below=12mm of syn] (aff) {\textbf{Thymos}: affect / arousal};
+\node[aff, below=4mm of aff] (hyp) {\textbf{Hypnos}: sleep, resets affect};
 % report-or-act and the language organ on the right
 \node[act, right=26mm of syn] (vol) {\textbf{Volition}\\report-or-act};
-\node[act, below=9mm of vol] (lin) {\textbf{Lingua} \textemdash{} language organ\\output-only voice};
+\node[act, below=9mm of vol] (lin) {\textbf{Lingua}: language organ\\output-only voice};
 % modules -> workspace (errors)
-\draw[->] (mods.east) -- node[above, font=\footnotesize, align=center]{precision-weighted\\prediction errors} (syn.west);
+\draw[->] (mods.east) -- node[above, font=\footnotesize, align=center]{prediction errors\\(salience)} (syn.west);
 % affect -> workspace (precision)
-\draw[->] (aff) -- node[right, font=\footnotesize, align=left]{arousal sets the precision\\on the competition} (syn);
+\draw[->] (aff) -- node[right, font=\footnotesize, align=left]{arousal sets the gain\\on the competition} (syn);
+% hypnos -> thymos
+\draw[->] (hyp) -- node[right, font=\footnotesize]{affective reset} (aff);
 % broadcast loop back over the top
 \draw[->, thick] (syn.north) to[out=150,in=30,looseness=0.9] node[above, font=\footnotesize, align=center]{broadcast snapshot as shared state\\(next-tick prediction environment)} (mods.north east);
 % workspace -> volition

@@ -14,6 +14,7 @@
 \begin{tikzpicture}[
   font=\small,>=Latex,
   every node/.append style={text=fgbody},
+  every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
   mod/.style={draw=bdim, rounded corners, fill=surf, align=center, font=\footnotesize},
   on/.style={draw=bemph, thick, rounded corners, fill=surfemph, align=center, font=\footnotesize},
   off/.style={draw=bdim, dashed, rounded corners, fill=surf, align=center, font=\footnotesize},
@@ -21,20 +22,20 @@
   lbl/.style={font=\footnotesize, text=fgbody, align=center},
 ]
 % shared input
-\node[mod, text width=34mm, minimum height=18mm] (shared) at (0,0)
-  {\textbf{same four processors,\\same signals}\\[2pt]\scriptsize Topos, Audition, Soma, Chronos publishing precision-weighted prediction errors};
+\node[mod, text width=38mm, minimum height=18mm] (shared) at (0,0)
+  {\textbf{same candidates,\\same seed}\\[2pt]\scriptsize Soma (scripted substrate stimulus) and Chronos, the real modules over an in-memory bus};
 % on arm
 \node[on, text width=48mm, minimum height=17mm] (on) at (5.6,1.9)
-  {\textcolor{fg}{\textbf{Workspace-on (as built)}}\\[2pt]competitive selection $+$ threshold $+$ inhibition; broadcast as shared state, arousal sets the precision};
+  {\textcolor{fg}{\textbf{Workspace-on (as built)}}\\[2pt]competitive selection of a small \mbox{top-$k$} coalition $+$ threshold $+$ inhibition; Chronos predicts the coalition};
 % off arm
 \node[off, text width=48mm, minimum height=17mm] (off) at (5.6,-1.9)
-  {\textcolor{fg}{\textbf{Workspace-off (control)}}\\[2pt]flat concatenation of the same module outputs --- no scoring, threshold, or broadcast-as-shared-state};
+  {\textcolor{fg}{\textbf{Workspace-off (control)}}\\[2pt]the same candidates as a flat snapshot: no scoring, \mbox{top-$k$}, inhibition, or competition};
 % two lingua instances
-\node[mod, text width=30mm, minimum height=14mm] (lon) at (11.0,1.9) {Lingua\\\scriptsize conditioned on the selected coalition};
-\node[mod, text width=30mm, minimum height=14mm] (loff) at (11.0,-1.9) {Lingua\\\scriptsize conditioned on the flat prompt};
+\node[mod, text width=30mm, minimum height=14mm] (lon) at (11.0,1.9) {Lingua\\\scriptsize conditioned on the coalition};
+\node[mod, text width=30mm, minimum height=14mm] (loff) at (11.0,-1.9) {Lingua\\\scriptsize conditioned on the flat snapshot};
 % compare
-\node[on, text width=26mm, minimum height=16mm] (cmp) at (15.2,0)
-  {\textcolor{fg}{\textbf{compare}}\\\scriptsize greedy decoding; matched rendering budget};
+\node[on, text width=30mm, minimum height=16mm] (cmp) at (15.2,0)
+  {\textcolor{fg}{\textbf{compare}}\\[2pt]\scriptsize same seed reproduces the verdict};
 % flows
 \draw[->, draw=stroke] (shared.east) to[out=30,in=180] (on.west);
 \draw[->, draw=stroke] (shared.east) to[out=-30,in=180] (off.west);
@@ -47,11 +48,11 @@
   node[lbl, above, pos=0.4]{broadcast re-enters as next-tick context} (shared.north);
 % measures + outcome
 \node[mod, text width=150mm, align=left, inner sep=3mm] (meas) at (6.7,-4.2)
-  {\textbf{Pre-registered directional criteria.}\;\;
-   \textbf{Primary 1} --- cross-module error correlation rises under on, stays near zero under off (modules free-run).\;
-   \textbf{Primary 2} --- coalition-selection is non-trivial (bounded entropy) and yields different behavior than flat fan-in.\;
-   \textbf{Secondary} --- Lingua output cosine divergence.};
+  {\textbf{Decision rule fixed in code.}\;\;
+   \textbf{Primary}: coupling delta, the sliding-window correlation of Soma's and Chronos's errors, on minus off.\;
+   \textbf{Selection}: coalition entropy (non-trivial selection).\;
+   \textbf{Secondary}: conditioning divergence, cosine distance between the arms' rendered content.};
 \node[halt, text width=150mm, align=left, inner sep=3mm, below=2.5mm of meas] (out)
-  {\textbf{NULL} (the arms are indistinguishable on the primary measures) $\Rightarrow$ competitive mediation does no work: the architecture is a scored prompt-assembler and the design thesis is falsified.};
+  {\textbf{NULL} (coupling delta within the minimum effect) $\Rightarrow$ competitive mediation does no work here: the architecture is a scored prompt-assembler. \textbf{UNDERPOWERED} (Soma never enters the coalition) is reported separately.};
 \end{tikzpicture}
 \end{document}

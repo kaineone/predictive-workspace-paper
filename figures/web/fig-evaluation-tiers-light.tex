@@ -25,9 +25,9 @@
 \node[lbl, above=0.4mm of repro] {reproducible by construction};
 % left: live sources (bottom)
 \node[mod, text width=34mm] (a1) at (0,-0.35) {camera $+$ microphone};
-\node[mod, text width=34mm] (a2) at (0,-1.2) {reference stimulus corpus (public manifest)};
+\node[mod, text width=34mm] (a2) at (0,-1.2) {film programme decoded from files (hash-pinned manifest)};
 \node[draw=bdim, dashed, fit=(a1)(a2), inner sep=6pt] (arb) {};
-\node[lbl, below=0.4mm of arb] {live, operator-chosen stimulus};
+\node[lbl, below=0.4mm of arb] {live stimulus};
 % center: seam and architecture
 \node[mod, text width=20mm, minimum height=11mm] (seam) at (5.0,0.2) {perception\\seam};
 \node[work, text width=24mm, minimum height=14mm] (arch) at (8.2,0.2)
@@ -36,10 +36,10 @@
 \node[work, text width=50mm] (mech) at (13.1,2.1)
   {\textcolor{fg}{\textbf{Mechanism-validation tier}}\\[2pt]computationally reproducible; exact reproduction from a seed; positive / negative / counterfactual controls};
 \node[work, text width=50mm] (field) at (13.1,-1.7)
-  {\textcolor{fg}{\textbf{Field tier}}\\[2pt]statistical validity; pool many content-free records; replication across runs and labs};
+  {\textcolor{fg}{\textbf{Field tier}}\\[2pt]statistical validity; pool many content-free records; replication across runs};
 % bottom note
 \node[mod, text width=94mm] (note) at (6.6,-3.6)
-  {verdicts: WIN $\cdot$ NULL $\cdot$ NEGATIVE \quad$|$\quad safety gates: PASS $\cdot$ FAIL};
+  {verdicts: WIN $\cdot$ NULL $\cdot$ NEGATIVE $\cdot$ UNDERPOWERED \quad$|$\quad safety gates: PASS $\cdot$ FAIL};
 % flows
 \draw[->, draw=stroke] (repro.east) to[out=0,in=150] (seam.north west);
 \draw[->, draw=stroke] (arb.east)   to[out=0,in=210] (seam.south west);
