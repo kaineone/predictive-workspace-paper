@@ -19,27 +19,32 @@
   act/.style={draw=bdim, rounded corners, fill=surf, text=fgbody, align=center, minimum width=30mm, minimum height=9mm, font=\footnotesize},
 ]
 % four predictive processors on the left
-\node[mod] (m1) {Topos \textemdash{} foveated vision};
-\node[mod, below=2.4mm of m1] (m2) {Audition \textemdash{} raw hearing};
-\node[mod, below=2.4mm of m2] (m3) {Soma \textemdash{} interoception};
-\node[mod, below=2.4mm of m3] (m4) {Chronos \textemdash{} timing};
+\node[mod] (m1) {Topos: foveated vision};
+\node[mod, below=2.4mm of m1] (m2) {Audition: raw hearing};
+\node[mod, below=2.4mm of m2] (m3) {Soma: interoception};
+\node[mod, below=2.4mm of m3] (m4) {Chronos: timing};
 \node[draw=bdim, dashed, fit=(m1)(m2)(m3)(m4), inner sep=7pt] (mods) {};
 \node[font=\footnotesize, text=fgbody, above=0.5mm of mods] {four predictive processors};
 % workspace centre
-\node[work, right=30mm of m2, yshift=-2mm] (syn) {\textcolor{fg}{\textbf{Syneidesis}}\\[1pt]\footnotesize precision-weighted\\\footnotesize scoring $+$ threshold\\\footnotesize selection};
+\node[work, right=30mm of m2, yshift=-2mm] (syn) {\textcolor{fg}{\textbf{Syneidesis}}\\[1pt]\footnotesize salience $\times$ arousal\\\footnotesize scoring $+$ threshold\\\footnotesize selection};
 % affect below the workspace
-\node[aff, below=12mm of syn] (aff) {\textcolor{fg}{\textbf{Thymos}} \textemdash{} affect / arousal};
+\node[aff, below=12mm of syn] (aff) {\textcolor{fg}{\textbf{Thymos}}: affect / arousal};
+\node[aff, below=4mm of aff] (hyp) {\textcolor{fg}{\textbf{Hypnos}}: sleep, resets affect};
 % report-or-act and the language organ on the right
 \node[act, right=26mm of syn] (vol) {\textcolor{fg}{\textbf{Volition}}\\report-or-act};
-\node[act, below=9mm of vol] (lin) {\textcolor{fg}{\textbf{Lingua}} \textemdash{} language organ\\output-only voice};
+\node[act, below=9mm of vol] (lin) {\textcolor{fg}{\textbf{Lingua}}: language organ\\output-only voice};
 % modules -> workspace (errors)
-\draw[->, draw=stroke] (mods.east) -- node[above, font=\footnotesize, align=center, text=fgbody]{precision-weighted\\prediction errors} (syn.west);
+\draw[->, draw=stroke] (mods.east) -- node[above, font=\footnotesize, align=center, text=fgbody]{prediction errors\\(salience)} (syn.west);
 % affect -> workspace (precision)
-\draw[->, draw=stroke] (aff) -- node[right, font=\footnotesize, align=left, text=fgbody]{arousal sets the precision\\on the competition} (syn);
+\draw[->, draw=stroke] (aff) -- node[right, font=\footnotesize, align=left, text=fgbody]{arousal sets the gain\\on the competition} (syn);
+% soma -> hypnos (fatigue)
+\draw[->, draw=stroke] (m3.south east) to[out=-30,in=180] node[below, font=\footnotesize, text=fgbody]{fatigue} (hyp.west);
+% hypnos -> thymos
+\draw[->, draw=stroke] (hyp) -- node[right, font=\footnotesize, text=fgbody]{affective reset} (aff);
 % broadcast loop back over the top
 \draw[->, thick, draw=stroke] (syn.north) to[out=150,in=30,looseness=0.9] node[above, font=\footnotesize, align=center, text=fgbody]{broadcast snapshot as shared state\\(next-tick prediction environment)} (mods.north east);
 % workspace -> volition
-\draw[->, draw=stroke] (syn) -- node[above, font=\footnotesize, align=center, text=fgbody]{conscious\\snapshot} (vol);
+\draw[->, draw=stroke] (syn) -- node[above, font=\footnotesize, align=center, text=fgbody]{global\\snapshot} (vol);
 % volition -> lingua
 \draw[->, draw=stroke] (vol) -- node[right, font=\footnotesize, text=fgbody]{speak / think} (lin);
 \end{tikzpicture}
