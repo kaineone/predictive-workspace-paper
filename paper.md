@@ -126,9 +126,9 @@ Five commitments shape the architecture.
 
 ### 3.2 The predictive workspace as competitive selector
 
-Syneidesis is the workspace. Each tick it receives candidate events from every module, and each event carries a salience (for a predictive module, its prediction error weighted against the module's own expected error). Candidates are scored and ranked individually, and the top-ranked (up to five) form the coalition. The coalition is broadcast on every experiential tick. When the best single score falls below the configurable confidence threshold, the snapshot is marked inhibited, so it reaches modules that read the broadcast but drives no report or action. The threshold is the analog of the confidence threshold for global ignition in the predictive workspace (Whyte and Smith 2021), consistent with the categorical prefrontal threshold van Vugt et al. (2018) observe and the threshold-gated ignition Joglekar et al. (2018) model. The single precision-weighted scalar is an engineering simplification, not a result drawn from any source. In the predictive-workspace account the threshold separates contents that ignite from contents that do not, whereas here it separates broadcasts that can drive report and action from those that cannot, a difference the planned experiments must keep in view.
+Syneidesis is the workspace. Each tick it receives candidate events from every module, and each event carries a salience (for a predictive module, set by its prediction error relative to the module's own recent error, at one of two levels for most modules and graded for Soma). Candidates are scored and ranked individually, and the top-ranked (up to five) form the coalition. The coalition is broadcast on every experiential tick. When the best single score falls below the configurable confidence threshold, the snapshot is marked inhibited, so it reaches modules that read the broadcast but drives no report or action. The threshold is the analog of the confidence threshold for global ignition in the predictive workspace (Whyte and Smith 2021), consistent with the categorical prefrontal threshold van Vugt et al. (2018) observe and the threshold-gated ignition Joglekar et al. (2018) model. The single precision-weighted scalar is an engineering simplification, not a result drawn from any source. In the predictive-workspace account the threshold separates contents that ignite from contents that do not, whereas here it separates broadcasts that can drive report and action from those that cannot, a difference the planned experiments must keep in view.
 
-![The predictive workspace loop in the base-thesis form. Foveated vision, raw hearing, interoceptive prediction, and temporal prediction publish prediction errors weighted against their own expected error into Syneidesis, which broadcasts the selected coalition and marks it inhibited when it falls short of the confidence threshold, and the broadcast becomes shared state shaping every module's next-tick prediction. Thymos sets the gain on selection through arousal. Hypnos, active in this form, rests the entity on fatigue and resets its affect. Volition makes the report-or-act decision, and its only outputs speak and think via the output-only language organ Lingua, and no real-world effector exists.](figures/fig-workspace-loop.png){width=95%}
+![The predictive workspace loop in the base-thesis form. Foveated vision, raw hearing, interoceptive prediction, and temporal prediction publish prediction errors, scored against their own recent error, into Syneidesis, which broadcasts the selected coalition and marks it inhibited when it falls short of the confidence threshold, and the broadcast becomes shared state that modules may read as context for their next prediction. Thymos sets the gain on selection through arousal. Hypnos, active in this form, rests the entity on fatigue and resets its affect. Volition makes the report-or-act decision, and its only outputs speak and think via the output-only language organ Lingua, and no real-world effector exists.](figures/fig-workspace-loop.png){width=95%}
 
 The selected coalition is broadcast as a workspace snapshot, the system's momentary globally available state. It imposes no prediction to match and no directive to obey: modules may read it as context for their own prediction (as Chronos does, predicting the next broadcast from its prior state) or ignore it and keep minimizing their own error against their own inputs (as Soma does over substrate telemetry). Affect is a second, deliberate path: Thymos reads the perceptual modules' alerts directly and returns arousal to them as the size of their attended window, so the modules are coupled through the workspace and through the gain that affect sets. The recurrence is the ordinary consequence of a shared prediction environment; it is not a corrective loop closing error against a top-down target. Each broadcast becomes part of the next tick's context, and the selected content shapes what the language organ says, while the organ's speech re-enters the bus as new events that compete for the next broadcast.
 
@@ -171,7 +171,7 @@ The base-thesis form activates four predictive processors, an affective core, a 
 | Lingua | Expression | left perisylvian language network | local chat model, output-only, conditioned on the workspace |
 | Volition | Action | report-or-act decision (Whyte and Smith 2021) | intent derivation from non-inhibited snapshots |
 
-**Topos (foveated vision).** Topos is the architecture's analog of the ventral visual stream (Goodale and Milner 1992). It maintains a frozen self-supervised video encoder over 16-frame clips of the video feed and publishes prediction errors when the visual scene departs from its forward model's expectation of the next clip: scene changes, unexpected motion, novel objects. Salience is computed over embedding-space distances, with change detection, habituation for static scenes, and forward-model predictions. The change criterion is self-calibrating against the module's own recent history (§3.2). The fovea is placed at the argmax of precision-weighted bottom-up salience, with dwell and hysteresis, and sized by arousal. Peripheral gist and foveal crop share one encoder, so attention and scene prediction operate together; the fovea's trajectory is forward-modeled and published as an attention-schema-style construct (Graziano and Webb 2015) without being used to steer attention. Foveation realizes attention as the gain on prediction errors (Clark 2013; Feldman and Friston 2010): the entity sees most sharply where its precision-weighted surprise is greatest, and looks more narrowly when more aroused.
+**Topos (foveated vision).** Topos is the architecture's analog of the ventral visual stream (Goodale and Milner 1992). It maintains a frozen self-supervised video encoder over 16-frame clips of the video feed and publishes prediction errors when the visual scene departs from its forward model's expectation of the next clip: scene changes, unexpected motion, novel objects. Salience is computed over embedding-space distances, with change detection and forward-model predictions; a habituation score for static scenes is published with each report but does not enter salience. The change criterion is self-calibrating against the module's own recent history (§3.2). The fovea is placed at the argmax of precision-weighted bottom-up salience, with dwell and hysteresis, and sized by arousal. Peripheral gist and foveal crop share one encoder, so attention and scene prediction operate together; the fovea's trajectory is forward-modeled and published as an attention-schema-style construct (Graziano and Webb 2015) without being used to steer attention. Foveation realizes attention as the gain on prediction errors (Clark 2013; Feldman and Friston 2010): the entity sees most sharply where its precision-weighted surprise is greatest, and looks more narrowly when more aroused.
 
 ![Attention-driven perception in Topos. A whole-clip embedding and a coarse saliency map feed a precision-weighted competition over bottom-up salience, with dwell and hysteresis. The winner sets the fovea, and arousal sets its size. Peripheral gist and the high-resolution foveal crop share one encoder. The peripheral and foveal embeddings and the fovea's coordinates reach the workspace, while no pixels do.](figures/fig-attention-foveation.png){width=90%}
 
@@ -181,7 +181,7 @@ The base-thesis form activates four predictive processors, an affective core, a 
 
 **Chronos (temporal awareness).** Chronos models interval timing, the brain's estimation of durations in the seconds-to-minutes range that guides expectation and action, a faculty understood to depend on cortico-striatal circuits (Buhusi and Meck 2005). A continuously running mind needs a model of when things happen, not only what, so Chronos carries one: a frozen continuous-time reservoir with an online readout over the sequence of workspace broadcasts. It reads each broadcast as an observation, predicts the next broadcast from its prior state, and publishes temporal prediction errors: timing anomalies, and rumination when content recurs unexpectedly. It also tracks how long it has been since the operator last spoke, which feeds Thymos's social drive. Chronos closes the lateral loop through the workspace: it reads the broadcast as a bottom-up observation it predicts, learning the rhythm and feature structure of broadcasts from its own prior hidden state and publishing the error when the next broadcast departs from expectation, and its errors feed back into the next selection round, which determines the next broadcast.
 
-**Thymos (affect, the precision core).** Thymos is the architecture's analog of core affect, the low-dimensional valence-and-arousal state recent theory places at the base of emotion (Barrett 2017). It maintains a dimensional affective state over valence and arousal (Posner, Russell, and Peterson 2005) and runs a sequential appraisal over that state (Scherer 2009). The appraisal reads the workspace broadcast and the entity's interoceptive condition, in line with the account in which affect arises from prediction over the body's internal state (Seth 2013; Seth and Friston 2016; Tschantz et al. 2022). Thymos holds four homeostatic drives (curiosity, boredom, social drive, restlessness) that build from the entity's own state. The appraisal yields a categorical emotion and scores the coalition against the most pressing drive; content from sources that relieve the drive is goal-conducive and content that does not is obstructive, in proportion to drive pressure. The check feeds the appraisal; it is not a selection weight in the workspace, where the goal factor is held constant (§3.2). Thymos does three kinds of work in the competition. First, arousal sets the precision on the workspace, weighting incoming prediction errors more heavily; that is attention as gain on prediction error (Feldman and Friston 2010; Clark 2013), so arousal is the competition's precision term. Second, arousal sizes the perceptual aperture, narrowing the fovea and auditory window under high arousal and widening them under low. Third, with salient reports from the other modules, arousal raises the rate of conscious access (§3.4). Finally, arousal is itself driven by perception: a discontinuity reaching alert level raises arousal in proportion to how far the surprise exceeds expectation, so what the entity perceives modulates the precision of everything it perceives next. Because that loop is positive feedback, arousal is clipped to its range and relaxes toward baseline with a time constant of about 20 seconds. Perceptual surprise is measured against each module's recent history, so arousal tracks changes in surprise more than its sustained level.
+**Thymos (affect, the precision core).** Thymos is the architecture's analog of core affect, the low-dimensional valence-and-arousal state recent theory places at the base of emotion (Barrett 2017). It maintains a dimensional affective state over valence and arousal (Posner, Russell, and Peterson 2005) and runs a sequential appraisal over that state (Scherer 2009). The appraisal reads the workspace broadcast and the entity's interoceptive condition, in line with the account in which affect arises from prediction over the body's internal state (Seth 2013; Seth and Friston 2016; Tschantz et al. 2022). Thymos holds four homeostatic drives (curiosity, boredom, social drive, restlessness) that build from the entity's own state. The appraisal yields a categorical emotion and scores the coalition against the most pressing drive; content from sources that relieve the drive is goal-conducive and content that does not is obstructive, in proportion to drive pressure. The check feeds the appraisal; it is not a selection weight in the workspace, where the goal factor is held constant (§3.2). Thymos does three kinds of work in the competition. First, arousal sets the precision on the workspace, weighting incoming prediction errors more heavily; that is attention as gain on prediction error (Feldman and Friston 2010; Clark 2013), so arousal is the competition's precision term. Because the gain multiplies every candidate on a tick equally, it does not reorder candidates within a tick: it moves the best score relative to the confidence threshold and the report bars (Appendix A.1). Second, arousal sizes the perceptual aperture, narrowing the fovea and auditory window under high arousal and widening them under low. Third, with salient reports from the other modules, arousal raises the rate of conscious access (§3.4). Finally, arousal is itself driven by perception: a discontinuity reaching alert level raises arousal in proportion to how far the surprise exceeds expectation, so what the entity perceives modulates the precision of everything it perceives next. Because that loop is positive feedback, arousal is clipped to its range and relaxes toward baseline with a time constant of about 20 seconds. Perceptual surprise is measured against each module's recent history, so arousal tracks changes in surprise more than its sustained level.
 
 **Hypnos (sleep).** Hypnos is the architecture's analog of sleep, a regular offline period that restores the system. Sleep begins when Soma's fatigue crosses threshold, when Soma requests maintenance, or at a safety-net interval of one subjective hour. The cycle keeps running through sleep, while the perceptual program pauses and Soma and Topos suspend forward-model adaptation. Because memory and the world model are held, the consolidation phases have nothing to replay; the phase that does work is an affective reset that returns affect to baseline and clears the drives, so arousal cannot drift across a whole run. Voice alignment, the sleep phase that would adapt the language organ, trains nothing in this form.
 
@@ -299,7 +299,7 @@ The offline suite runs eight experiments under one master seed with an independe
 
 The multi-seed stability harness runs a configuration under several seeds; an ensemble is stable only when the headline metric's coefficient of variation is within tolerance and the verdict is unanimous across seeds, since a flipped verdict is a qualitative instability a scalar spread would hide. In the suite it runs on the oscillatory ablation. Whether the competitive workspace stays stable across seeds is itself open: correlated prediction errors across modules could drive it into runaway states, and the architecture carries no proof of convergence. The affective loop sharpens this uncertainty: surprise raises arousal, which raises precision and the access rate, increasing the rate of affective appraisals. A planned check will monitor within-run boundedness of arousal and access-rate excursions over long runs.
 
-The planned affect-gain ablation runs the system with the affective gain live against a matched condition that holds arousal constant, asking whether affective modulation changes coalition selection and the downstream trajectory in directionally structured ways; a null would demote arousal to a logged side channel.
+The planned affect-gain ablation runs the system with the affective gain live against a matched condition that holds arousal constant, asking whether affective modulation changes which broadcasts can drive report and action, the access rate, and the downstream trajectory in directionally structured ways; a null would demote arousal to a logged side channel.
 
 ### 6.5 The module-ignition study
 
@@ -365,6 +365,7 @@ Safety rests on the entity's executive inhibition and on the absence of any effe
 - A single language organ produces one stream at a time, so simultaneous inner and outer speech is a boundary of the current form.
 - The governance framework remains at the proposal stage, and the licensing is legally novel and untested.
 - The linear map from drive to access rate is a modeling assumption, and whether adaptive access changes workspace dynamics is open. The 3.333 Hz resting rate is motivated by, not derived from, the P3b latency, and the 10 Hz upper limit has no physiological anchor.
+- The shipped calibration is provisional. Most modules report at one of two intensity levels and novelty is almost always 1, so ranking within a tick is close to an ordering by module, with Audition's alerts above every visual alert; at resting arousal only Audition and Hypnos alerts clear the confidence threshold, and neither report bar is reachable. The intensity levels, the threshold, and the report bars are to be calibrated together before the live runs (Appendix A.10).
 - The gestation model compresses developmental time: the literature reports effects after weeks of exposure (Feldman and Eidelman 2003; Webb et al. 2015), while here a lock forms within hours (about 14 h at 70 bpm, 3 h to 48 h across 60 to 80 bpm). Its rhythm is continuous, whereas fetal breathing is episodic (about 14% of the time at 24 to 28 weeks; Natale et al. 1988). 1:1 locking is a modeling choice; the literature reports weak and often n:m coupling. Mothers below about 60 bpm cannot demonstrate entrainment, and time dilation has not been tested with the oscillator. The absence of false entrainment rests on six foreign-mother pairs.
 - The module-ignition study as first planned has one being per condition and no significance testing, so its first results will be descriptive.
 - No experiment described here has yet been run on the live system; results will be reported in a revised version of this preprint.
@@ -482,227 +483,448 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 
 ## Appendix A. Formal summary
 
-This appendix states the rules that §3 to §7 describe in prose, with the parameter values of the base-thesis configuration. Symbols are local to each subsection. The rules are those of the reference implementation; parameter values are its current settings, several of which (the salience levels, the threshold, and the report bars) are being calibrated, and the appendix will be updated with the values used in the reported experiments.
+This appendix states the rules that §3 to §7 describe in prose, as the reference implementation computes them. Each symbol denotes one quantity throughout the appendix. The letters $i$, $j$, $l$, $q$, and $t$, used as indices of sums, sequences, and set elements, are local to the formula or subsection in which they appear, and $\mathrm{i}$ is the imaginary unit. Numeric parameter values appear only in Table A1 (A.10). They are the current settings of the base-thesis configuration, several of which (the intensity levels, the confidence threshold, and the report bars) are under calibration, and the table will be updated with the values used in the reported experiments. The text keeps only numbers that define a design, such as the 19 surrogates of the entrainment test.
 
-### A.1 Workspace selection
-
-For each candidate event $e$ the workspace score is
+Three conventions hold throughout. First, $\operatorname{clip}$ with an interval as subscript maps its argument to the nearest point of that interval, and $\mathbf{1}[\cdot]$ is $1$ when the bracketed condition holds and $0$ otherwise. Second, time is read from the entity clock in subjective seconds, which equal wall-clock seconds at the shipped time scale of one; rates in hertz are per subjective second unless Table A1 marks them as wall-clock. Third, for a nonnegative series $X_1,X_2,\dots$ and a window length $W$, the running mean $\bar X_t$ is the mean of the last $\min(t,W)$ values including $X_t$, and the running ratio is
 
 $$
-S(e)=\operatorname{clip}_{[0,1]}\!\bigl(I(e)\,N(e)\,G(e)\,T\bigr),
-$$
-
-where $I(e)$ is the event salience clipped to $[0,1]$. $I(e)$ is set by each module, as a two-level value (a baseline for routine reports and a higher value for alerts) for most modules and as a graded function of prediction error relative to its running mean for Soma.
-
-$$
-N(e)=\max\!\bigl(0,\,1-c_e/W\bigr),
-$$
-
-with $c_e$ counting prior occurrences of $e$'s fingerprint in the last $W=32$ observed events before the current one; and $G(e)$ is the goal factor. In the base-thesis configuration $G(e)\equiv1$. The Thymos arousal gain is
-
-$$
-T=0.2+0.8a,\qquad a\in[0,1],
-$$
-
-with $a$ the current arousal. All factors and the final product are clamped to $[0,1]$. Because $G\equiv1$ and $T$ is event-independent, within-tick ranking is determined by $I(e)\,N(e)$ alone. The coalition is the top $k=5$ candidates, and the gate is inhibited when $s_{\max}<\theta$, with $s_{\max}$ the highest score and $\theta=0.35$, so a score equal to $\theta$ is not inhibited. When the oscillator layer is off the coherence multiplier is exactly $1$; when on, $S'(e)=S(e)\,\kappa(e)$ with $\kappa(e)=0.8+0.45\,\overline{\mathrm{PLV}}(e)\in[0.8,1.25]$. The rescaled score $S'(e)$ is not re-clipped and can reach $1.25$.
-
-### A.2 Adaptive access rate
-
-Let $f_0=3.333\ \mathrm{Hz}$, $f_p=10.0\ \mathrm{Hz}$, $\sigma_0=0.5$, $a_0=0.3$, $\tau_\phi=1\ \mathrm{s}$, and $\Delta=1/f_p=0.1\ \mathrm{s}$. For processing tick $t$,
-
-$$
-\mathrm{tonic}_t=\operatorname{clip}_{[0,1]}\!\left(\frac{a_t-a_0}{1-a_0}\right),
-\qquad
-x_t=\operatorname{clip}_{[0,1]}\!\left(\frac{s^{\max}_t-\sigma_0}{1-\sigma_0}\right),
-$$
-
-where $a_t$ is current arousal and $s^{\max}_t$ is the largest raw module report salience. The phasic trace is a peak-hold with exponential decay,
-
-$$
-\mathrm{phasic}_t=\max\!\bigl(x_t,\ \mathrm{phasic}_{t-1}\,e^{-\Delta/\tau_\phi}\bigr),
-$$
-
-the drive is $D_t=\max(\mathrm{tonic}_t,\mathrm{phasic}_t)$, and the effective rate is the linear map
-
-$$
-f^{\rm eff}_t=f_0+(f_p-f_0)\,D_t=3.333+6.667\,D_t,
-$$
-
-clamped to $[\min(f_0,f_p),\max(f_0,f_p)]$ and reverting to $f_0$ if disabled. Scheduling uses a fractional accumulator: $r_t=f^{\rm eff}_t/f_p$, $A\leftarrow A+r_t$; when $A\ge1$ an experiential tick is broadcast, $A\leftarrow A-1$, then $A$ is clamped to at most $1$.
-
-### A.3 Affect
-
-On a perceptual alert with reported normalized error $\tilde\nu$, the arousal increment is
-
-$$
-\Delta a=0.15\,\min\!\bigl(4,\ \max(0,\tilde\nu-1)\bigr),
-$$
-
-with the updated arousal clamped to $[0,1]$. If $\tilde\nu\le1$ the perceptual increment is zero. Each Soma alert adds $0.05$, and on each broadcast the selected events contribute $0.05\max(0,\operatorname{clip}_{[-1,1]}(4\,\mathrm{Var}(s)-0.2))$, where $\mathrm{Var}(s)$ is the variance of their saliences. On each broadcast Thymos receives, arousal relaxes toward baseline $a_0=0.3$ by an explicit-Euler step,
-
-$$
-a\leftarrow a+(a_0-a)\,\min(1,\lambda\,\Delta t),
-$$
-
-with rate $\lambda=0.05\ \mathrm{s}^{-1}$ and $\Delta t$ the subjective time since the previous one. Because the appraisal increment is applied per broadcast while relaxation is per unit time, a higher access rate raises the rate of increments, a second positive-feedback path.
-
-For the goal-relevance check, let $d^*$ be the dominant drive with value $v$, $\mathcal S(d^*)$ the set of sources that relieve it, and $f$ the fraction of coalition salience contributed by those sources ($f=0$ if total salience is zero). The drive score is
-
-$$
-r_{\rm drive}=v\,(2f-1),
-$$
-
-which is $0$ if there is no drive or $v\le0$; an empty or zero-salience coalition gives $f=0$, hence $r_{\rm drive}=-v$. If a goal ledger is active the final score is the clamp to $[-1,1]$ of $\max(r_{\rm drive},2\cdot\text{relevance}-1)$; otherwise it is the clamp of $r_{\rm drive}$ alone.
-
-### A.4 Perceptual change criterion
-
-For each perceptual module the change score is $c_t=1-\cos(\mathrm{emb}_t,\mathrm{emb}_{t-1})$, with $c_t=0$ on the first frame, where $\cos$ denotes cosine similarity. Let $\bar c_t$ be the simple moving average of the last $32$ reports, including the current one. The normalized change is
-
-$$
-\tilde c_t=
+\tilde X_t=
 \begin{cases}
-c_t/\bar c_t & \bar c_t>0,\\
+X_t/\bar X_t & \bar X_t>0,\\
 0 & \text{otherwise}.
 \end{cases}
 $$
 
-The change alert fires when
+Because the mean includes the current value, $0\le\tilde X_t\le\min(t,W)$, so a running ratio is always finite.
+
+### A.1 Processing cycle, selection, and broadcast
+
+Processing ticks $k=0,1,2,\dots$ occur at the processing rate $f_p$, with tick period $\Delta_p=1/f_p$. On tick $k$ the cycle reads, from the output stream of each active module, the events published since its previous read of that stream, at most $B$ per stream. These events form the candidate set $E_k$, ordered lexicographically by source, event type, and bus entry identifier (arrival order within a stream). The read advances each stream cursor past every event read, so no event is read on two ticks. The operations of a tick run in this order: read $E_k$; update the held arousal $\hat a_k$ (A.4); compute the access drive and the experiential indicator $\chi_k$ (A.3); score every candidate; select; and, if $\chi_k=1$, broadcast.
+
+Each candidate $e\in E_k$ receives the score
 
 $$
-\tilde c_t\ge \beta \quad\text{and}\quad c_t\ge\epsilon,
+S_k(e)=\operatorname{clip}_{[0,1]}\!\left(I(e)\,N_k(e)\,G(e)\,T_k\right),
 $$
 
-with $\beta=2.0$; the absolute floor is $\epsilon=10^{-4}$ for Topos and $\epsilon=0.35$ for the acoustic path in Audition. The normalized prediction error $\tilde\nu_t$ is defined by the same ratio convention over the last $32$ reports. The overall alert is
+where each factor is clipped to $[0,1]$ before the product is formed. $I(e)$ is the intensity the producing module assigned to $e$ (A.2). The novelty factor is
 
 $$
-\mathrm{alert}=(\tilde\nu_t\ge 2.0)\vee\text{change\_alert}.
+N_k(e)=\max\!\left(0,\ 1-\frac{\mathrm{rep}_k(e)}{W_N}\right),
 $$
 
-### A.5 Interoceptive prediction
-
-The Soma reservoir is frozen; only the linear readout $Wh+b$ is adapted online. One plain SGD step is taken per tick on the mean-squared error produced by the previous hidden state $h_{t-1}$:
+where $\mathrm{rep}_k(e)$ counts occurrences of the fingerprint of $e$ among the $W_N$ candidates scored immediately before $e$, in processing order and across all ticks, experiential or not. The fingerprint is a hash of the event's source, type, and complete payload, so $N_k(e)<1$ only for an exact repeat; events whose payloads carry continuous-valued measurements almost never repeat and score $N_k(e)=1$. The goal factor is $G(e)\equiv1$ in the base-thesis form. An implemented alternative, off in this form, is $G(e)=1-\gamma_G\,v^*\bigl(1-\mathbf{1}[\mathrm{src}(e)\in\mathcal{R}(d^*)]\bigr)$ when $v^*>0$ and $G(e)=1$ otherwise, with $\mathrm{src}(e)$ the source of $e$ and $d^*$, $v^*$, and $\mathcal{R}(d^*)$ as in A.4. The arousal gain is
 
 $$
-\mathcal L=\frac1d\|Wh_{t-1}+b-x_t\|^2,
+T_k=T_{\min}+\left(T_{\max}-T_{\min}\right)\hat a_k,
+$$
+
+with $\hat a_k$ the arousal value held by the cycle (A.4).
+
+An optional oscillatory layer multiplies each score by a coherence factor, $S'_k(e)=S_k(e)\,\kappa_k(e)$. With the layer off, as in the base-thesis form, $\kappa_k(e)\equiv1$ and $S'_k=S_k$. With the layer on, $\kappa_k(e)=\kappa_{\min}+(\kappa_{\max}-\kappa_{\min})\,\Lambda_k(e)$, where $\Lambda_k(e)\in[0,1]$ is the mean phase-locking value between the oscillator phase window (the last $L$ tick phases) of the source of $e$ and that of each other source present in $E_k$, with $\Lambda_k(e)=1$ when the source of $e$ is the only one present. The product $S'_k(e)$ is not re-clipped and can exceed $1$, up to $\kappa_{\max}$.
+
+The coalition $\mathcal{C}_k$ consists of the first $\min(K,|E_k|)$ candidates when $E_k$ is sorted by $S'_k$ in decreasing order, with ties kept in the canonical order of $E_k$. With $S^*_k=\max_{e\in E_k}S'_k(e)$, the inhibition flag is
+
+$$
+\iota_k=\mathbf{1}\!\left[S^*_k<\theta\right],
+$$
+
+so a best score equal to $\theta$ is not inhibited. An empty candidate set gives $\mathcal{C}_k=\emptyset$ and $\iota_k=1$, and a candidate whose scoring raises an error receives $S'_k(e)=0$. Because $G\equiv1$, $\kappa_k\equiv1$, and $T_k$ is common to all candidates of a tick, the ranking within a tick is determined by $I(e)\,N_k(e)$ alone; $T_k$ moves $S^*_k$ relative to $\theta$ and to the report bars of A.6 without changing the order.
+
+On a tick with $\chi_k=1$ the cycle publishes the broadcast $b_k=\bigl(\mathcal{C}_k,\ \{S'_k(e)\}_{e\in E_k},\ \iota_k,\ \chi_k\bigr)$, which carries the coalition members with their scores and the full candidate-score table, whatever the value of $\iota_k$. An event $e$ ignites on tick $k$ when $\chi_k=1$, $\iota_k=0$, and $e\in\mathcal{C}_k$. Volition runs only after a successful publication. On a tick with $\chi_k=0$ the candidates of $E_k$ are scored and then discarded, and none is carried to a later tick; their only lasting effects are their entries in the novelty window, their contribution to the phasic access drive (A.3), and any update of $\hat a_k$ (A.4). A selection or bus failure on an experiential tick produces no broadcast and no Volition call. The inhibition flag is honored by Volition, which derives no intent from a broadcast with $\iota_k=1$ (A.6), and by the language organ, which generates only on an intent and conditions only on broadcasts with $\iota_k=0$. Chronos and Thymos process every broadcast whatever its flag, and Chronos encodes $\iota_k$ as one of its input features. Topos, Audition, Soma, and Hypnos do not read the broadcast.
+
+### A.2 Event intensity
+
+A module assigns the intensity $I(e)\in[0,1]$ when it publishes $e$, and the bus rejects values outside $[0,1]$. Within a module, $t$ indexes the module's successive reports. Each module $m$ has a baseline level $I^{\rm lo}_m$ and an alert level $I^{\rm hi}_m$, with $0\le I^{\rm lo}_m\le I^{\rm hi}_m\le1$. Most events follow the two-level rule
+
+$$
+I(e)=I^{\rm lo}_m+\left(I^{\rm hi}_m-I^{\rm lo}_m\right)\mathbf{1}[e\ \text{is an alert}],
+$$
+
+and the graded events use the map
+
+$$
+\Gamma_m(\tilde\nu)=I^{\rm lo}_m+\left(I^{\rm hi}_m-I^{\rm lo}_m\right)\min\!\left(1,\ \tilde\nu/\beta_\Gamma\right),
+$$
+
+which reaches the alert level when the error is $\beta_\Gamma$ times its running mean.
+
+**Topos and Audition (perceptual reports).** For Topos, $z_t$ is the encoder embedding of the current clip, or of the peripheral gist when foveation is on; for the acoustic path of Audition, $z_t$ is the spectral embedding of the current window. The change score is $c_t=1-\cos(z_t,z_{t-1})$, with $c_t=0$ on the first report. A forward model predicts $\hat z_t$ from earlier embeddings, and the prediction error is $\nu_t=\lVert z_t-\hat z_t\rVert_2$, with $\nu_t=0$ on the first report. With running ratios $\tilde c_t$ and $\tilde\nu_t$ over the window $W_P$, the report is an alert when
+
+$$
+\tilde\nu_t\ge\beta_\nu\quad\text{or}\quad\left(\tilde c_t\ge\beta_c\ \ \text{and}\ \ c_t\ge c^{\min}_m\right),
+$$
+
+with the absolute change floor $c^{\min}_m=c^{\min}_{\rm Top}$ for Topos and $c^{\min}_m=c^{\min}_{\rm Aud}$ for Audition. Superscripts distinguish the two error series where needed, $\nu^{\rm Top}_t$ for Topos and $\nu^{\rm Aud}_t$ for Audition, and each report carries its $\tilde\nu_t$ in its payload. The Topos habituation score is published with each report but does not enter $I(e)$.
+
+**Audition (tone events).** For a window detected as speech, a second forward model, over a feature vector of the vocal-emotion scores, the processing duration, and the signal energy, gives the error $\nu^{\rm utt}_t$ and its running ratio $\tilde\nu^{\rm utt}_t$ over $W_P$. A tone event has $I(e)=I^{\rm hi}_{\rm Aud}$ when the classified tone is not neutral and $I(e)=\Gamma_{\rm Aud}(\tilde\nu^{\rm utt}_t)$ when it is neutral.
+
+**Soma.** A Soma report has $I(e)=I^{\rm hi}_{\rm Som}$ when the set $\mathcal{A}_t$ of host metrics strictly above their hard thresholds is nonempty, and $I(e)=\Gamma_{\rm Som}(\tilde\nu^{\rm Som}_t)$ otherwise, with $\nu^{\rm Som}_t$ the interoceptive prediction error of A.5 and $\tilde\nu^{\rm Som}_t$ its running ratio over $W_P$. A non-finite or negative error gives $I^{\rm lo}_{\rm Som}$. Soma's fatigue-crossing and regulation events use $I^{\rm hi}_{\rm Som}$.
+
+**Chronos.** On each broadcast Chronos encodes a feature vector $x^{\rm Chr}_t$ of dimension $n_{\rm Chr}$, advances a frozen reservoir, and predicts the next feature vector $\hat x^{\rm Chr}_t$ from its previous hidden state through an online linear readout. The temporal error is the mean absolute error $\nu^{\rm Chr}_t=\lVert x^{\rm Chr}_t-\hat x^{\rm Chr}_t\rVert_1/n_{\rm Chr}$, with running ratio $\tilde\nu^{\rm Chr}_t$ over $W_P$. The report is an alert when $\tilde\nu^{\rm Chr}_t\ge\beta^{\rm Chr}_\nu$ or when rumination is detected, that is, when one bucket occurs at least $n_{\rm rum}$ times among the buckets of the last $W_{\rm rum}$ hidden states, each state being quantized per dimension with step $\Delta_{\rm rum}$ and hashed to a bucket. Before the first temporal error exists, the alert compares a rolling z-score of the hidden state with $\beta^{\rm Chr}_\nu$ instead.
+
+**Other modules.** Thymos publishes its state at $I^{\rm lo}_{\rm Thy}$, drive crossings and its affective reset at $I^{\rm hi}_{\rm Thy}$, and a changed categorical emotion at $I^{\rm hi}_{\rm Thy}$ unless the emotion is neutral. Hypnos publishes its events at $I^{\rm lo}_{\rm Hyp}$, except a sleep summary with a failed phase at $I^{\rm hi}_{\rm Hyp}$. The language organ publishes each utterance at the fixed level $I^{\rm lo}_{\rm Lin}$. Volition's intents are published on a stream the cycle does not read, so they are never candidates.
+
+### A.3 Adaptive access rate
+
+Let $f_0$ be the resting experiential rate, $a_0$ the baseline arousal, $I_0$ the phasic salience floor, and $\tau_{\rm ph}$ the phasic decay time. On tick $k$ the tonic drive is
+
+$$
+D^{\rm ton}_k=\operatorname{clip}_{[0,1]}\!\left(\frac{\hat a_k-a_0}{1-a_0}\right),
+$$
+
+with $a_0<1$ enforced by configuration. With $\hat I_k$ the largest intensity among the candidates of $E_k$ (events from the cycle's own telemetry and the workspace stream excluded), the phasic input is
+
+$$
+D^{\rm in}_k=\operatorname{clip}_{[0,1]}\!\left(\frac{\hat I_k-I_0}{1-I_0}\right),
+$$
+
+with $D^{\rm in}_k=0$ when $E_k$ is empty. The phasic drive is a peak-hold with exponential decay,
+
+$$
+D^{\rm ph}_k=\max\!\left(D^{\rm in}_k,\ D^{\rm ph}_{k-1}\,e^{-\Delta_p/\tau_{\rm ph}}\right),\qquad D^{\rm ph}_{-1}=0,
+$$
+
+where $\Delta_p$ and $\tau_{\rm ph}$ are both in subjective seconds. The access drive is $D_k=\max(D^{\rm ton}_k,D^{\rm ph}_k)\in[0,1]$, and the effective experiential rate is the linear map
+
+$$
+f^{\rm eff}_k=
+\begin{cases}
+f_0+\left(f_p-f_0\right)D_k & f_0<f_p,\\
+f_0 & f_0\ge f_p,
+\end{cases}
+$$
+
+which lies between $f_0$ and $f_p$. With the controller disabled, $f^{\rm eff}_k=f_0$. The experiential indicator follows from a fractional accumulator with $A_{-1}=0$:
+
+$$
+A'_k=A_{k-1}+\frac{f^{\rm eff}_k}{f_p},\qquad
+\chi_k=\mathbf{1}\!\left[A'_k\ge1\right],\qquad
+A_k=
+\begin{cases}
+\min\!\left(A'_k-1,\ 1\right) & \chi_k=1,\\
+A'_k & \chi_k=0.
+\end{cases}
+$$
+
+Subtracting before clamping keeps the fractional carry, so at the resting rate a broadcast falls on every third processing tick, with an occasional fourth when the carry is exhausted. The drive is computed from $E_k$ before $\chi_k$, so a salient report can make its own tick experiential. If Soma's regulation lowers $f_p$ (A.5) to $f_0$ or below, every processing tick is experiential and the experiential rate equals $f_p$.
+
+### A.4 Affect
+
+Thymos holds arousal $a\in[0,1]$, which starts at $a_0$. Every update below is followed by clipping to $[0,1]$.
+
+1. *Perceptual alert.* For each Topos report or Audition acoustic report that is an alert (A.2), read directly from the module's stream whether or not the report is selected,
+
+$$
+a\leftarrow a+\gamma_\pi\min\!\left(\nu_{\rm cap},\ \max(0,\ \tilde\nu-1)\right),
+$$
+
+where $\tilde\nu$ is the running ratio of the forward-model error that the report carries. An alert raised by the change criterion alone, with $\tilde\nu\le1$, leaves $a$ unchanged.
+
+2. *Interoceptive alert.* For each Soma report with $\mathcal{A}_t\neq\emptyset$, $a\leftarrow a+\gamma_{\rm Som}$.
+
+3. *Broadcast.* On each broadcast $b_k$ that Thymos receives, whatever $\iota_k$, arousal first relaxes toward baseline by an explicit-Euler step,
+
+$$
+a\leftarrow a+\left(a_0-a\right)\min\!\left(1,\ \lambda\,\Delta t_{\rm Thy}\right),
+$$
+
+with relaxation rate $\lambda$ and $\Delta t_{\rm Thy}$ the subjective time since the previous broadcast Thymos handled, so the continuous-time limit has time constant $1/\lambda$. The appraisal then adds
+
+$$
+a\leftarrow a+\gamma_\omega\max(0,\ \omega_k),\qquad
+\omega_k=\operatorname{clip}_{[-1,1]}\!\left(k_\omega V_k-\omega_0\right),
+$$
+
+where $V_k$ is the population variance of the intensities $I(e)$ of the coalition members, and $\omega_k=0$ for an empty coalition. Because the appraisal increment arrives once per broadcast while relaxation is proportional to elapsed time, a higher access rate raises the rate of increments, a second positive-feedback path.
+
+4. *Sleep.* The affective reset of Hypnos sets $a\leftarrow a_0$.
+
+After handling a broadcast, Thymos publishes its state, including $a$, when at least $P_{\rm Thy}$ has passed since its previous state publication. The cycle holds $\hat a_k$, the arousal carried by the last Thymos state event in $E_k$, and keeps $\hat a_k=\hat a_{k-1}$ on a tick without one, starting from the default in Table A1. The gain $T_k$ (A.1), the tonic drive (A.3), and the sizes of the fovea and of the auditory window therefore read arousal as sampled at Thymos's last state publication, which lags the internal $a$ by up to about $P_{\rm Thy}$ plus one tick.
+
+For the goal-relevance check of the appraisal, let $d^*$ be the dominant drive (largest value, ties broken by name) with value $v^*$, let $\mathcal{R}(d^*)$ be the set of sources whose events relieve it, and let $\mathrm{frac}_k$ be the fraction of the coalition's total intensity contributed by events from those sources, with $\mathrm{frac}_k=0$ when the total is zero. The drive score is
+
+$$
+r_{\rm drive}=v^*\left(2\,\mathrm{frac}_k-1\right),
+$$
+
+with $r_{\rm drive}=0$ when there is no drive or $v^*\le0$; an empty coalition gives $\mathrm{frac}_k=0$ and hence $r_{\rm drive}=-v^*$. With an active goal ledger of token-overlap relevance $r_{\rm led}\in[0,1]$, the goal score is $\operatorname{clip}_{[-1,1]}\bigl(\max(r_{\rm drive},\,2r_{\rm led}-1)\bigr)$, and otherwise $\operatorname{clip}_{[-1,1]}(r_{\rm drive})$. The goal score enters the categorical-emotion appraisal and does not enter selection.
+
+### A.5 Interoceptive prediction and regulation
+
+Soma reads the host every $P_{\rm Som}$ and forms a feature vector $x_t\in\mathbb{R}^{n_x}$ of normalized metrics. A frozen closed-form continuous-time reservoir advances $h_t=\mathcal{F}(x_t,h_{t-1})$ with $h_0=0$, and only the linear readout $(\mathbf{W}_{\rm Som},\mathbf{b}_{\rm Som})$ adapts. The prediction of $x_t$ is $\hat x_t=\mathbf{W}_{\rm Som} h_{t-1}+\mathbf{b}_{\rm Som}$; with $\varepsilon_t=\hat x_t-x_t$, the prediction error is $\nu^{\rm Som}_t=\lVert\varepsilon_t\rVert_2$, with $\nu^{\rm Som}_t=0$ on the first tick. One plain SGD step on $\mathcal{L}_t=\lVert\varepsilon_t\rVert^2_2/n_x$ follows,
+
+$$
+\mathbf{W}_{\rm Som}\leftarrow\mathbf{W}_{\rm Som}-\eta_{\rm Som}\,\frac{2}{n_x}\,\varepsilon_t\,h_{t-1}^{\top},\qquad
+\mathbf{b}_{\rm Som}\leftarrow\mathbf{b}_{\rm Som}-\eta_{\rm Som}\,\frac{2}{n_x}\,\varepsilon_t,
+$$
+
+after which the reservoir advances on $x_t$ and the readout predicts $x_{t+1}$. The step is skipped during sleep and when the loss or a gradient is non-finite, and a non-finite $x_t$ skips the whole tick.
+
+For each channel $i$ Soma keeps an expected absolute error $\mu_i$ and a spread $\sigma^U_i$, both starting at $0$. With the bound $\Omega_i=\mu_i+\beta_U\sigma^U_i$ taken before this tick's update, the unexpected error is
+
+$$
+U_t=\sqrt{\sum_{i=1}^{n_x}\Bigl[\max\!\left(0,\ \lvert\varepsilon_{t,i}\rvert-\Omega_i\right)\Bigr]^2}.
+$$
+
+Then, with $\alpha_t=1-e^{-\Delta t_{\rm Som}/\tau_U}$ and $\Delta t_{\rm Som}$ the subjective time since the previous Soma tick, $\sigma^U_i\leftarrow\sigma^U_i+\alpha_t\bigl(\bigl\lvert\lvert\varepsilon_{t,i}\rvert-\mu_i\bigr\rvert-\sigma^U_i\bigr)$ and $\mu_i\leftarrow\mu_i+\alpha_t\bigl(\lvert\varepsilon_{t,i}\rvert-\mu_i\bigr)$, where both right-hand sides use the value of $\mu_i$ before the update. The spread is therefore an exponential moving average of the absolute deviation from $\mu_i$. $U_t$ drives regulation and fatigue and does not enter $I(e)$.
+
+The regulation error is $\nu^{\rm act}_t=\nu^{\rm Som}_t$ when $\mathcal{A}_t\neq\emptyset$ and $U_t$ otherwise. A stress episode starts at the first tick with $\nu^{\rm act}_t\ge\theta_R$ and ends at the first tick with $\nu^{\rm act}_t<\theta_R$. If the episode has lasted $\Delta^{\rm st}_t$ subjective seconds, each increase of $\lfloor\Delta^{\rm st}_t/\Delta_R\rfloor\ge1$ emits one advisory of tier $\min\bigl(\lfloor\Delta^{\rm st}_t/\Delta_R\rfloor,3\bigr)$: reduce the processing rate, shed a low-priority module, or request maintenance. During Soma's warm-up, which ends once at least $n_{\rm wu}$ readout updates and $\Delta_{\rm wu}$ subjective seconds of lived time have both accrued, advisories are withheld unless $\mathcal{A}_t\neq\emptyset$. On a rate advisory the cycle sets $f_p\leftarrow\operatorname{clip}_{[f_p^{\min},\,f_p^{\max}]}(\gamma_f f_p)$.
+
+### A.6 Report rule
+
+Volition derives intents only from a broadcast with $\iota_k=0$; a broadcast with $\iota_k=1$ yields none. The base-thesis policy then applies the following steps, using the subjective time $t_{\rm now}$ for the refractory intervals and the signature expiry, and wall-clock time for the in-flight guards.
+
+1. *Guard release.* The speak guard is released if $\mathcal{C}_k$ contains the language organ's external speech, and the think guard if it contains the organ's internal speech. Either guard is also released once it has been armed for $\Delta_g$ wall-clock seconds, so a failed realization cannot silence the entity.
+
+2. *Report signal.* Let $\mathcal{C}^\circ_k$ be the coalition without the language organ's own events. If $\mathcal{C}^\circ_k=\emptyset$ there is no intent. Otherwise let $e^\dagger_k$ be its highest-scoring member (the first in coalition order), let $Q_k=S'_k(e^\dagger_k)$, and let the signature be $\mathrm{sig}_k=\bigl(\mathrm{src}(e^\dagger_k),\mathrm{typ}(e^\dagger_k)\bigr)$, the source and event type of $e^\dagger_k$.
+
+3. *Signature check.* The signature blocks a spoken report when $\mathrm{blk}_k=\mathbf{1}\bigl[\mathrm{sig}_k=\mathrm{sig}^{\rm last}\ \wedge\ t_{\rm now}-t^{\rm sig}<\Delta_{\rm sig}\bigr]=1$, where $\mathrm{sig}^{\rm last}$ is the signature of the last spoken report and $t^{\rm sig}$ its time.
+
+4. *Speak.* A speak intent is emitted when
+
+$$
+Q_k\ge\theta_{\rm sp},\qquad \text{the speak guard is released},\qquad t_{\rm now}-t^{\rm sp}\ge\Delta_{\rm sp},\qquad \mathrm{blk}_k=0.
+$$
+
+Emitting it arms the speak guard and sets $t^{\rm sp}\leftarrow t_{\rm now}$, $\mathrm{sig}^{\rm last}\leftarrow\mathrm{sig}_k$, and $t^{\rm sig}\leftarrow t_{\rm now}$.
+
+5. *Think.* Otherwise a think intent is emitted when $Q_k\ge\theta_{\rm th}$, the think guard is released, and $t_{\rm now}-t^{\rm th}\ge\Delta_{\rm th}$; emitting it arms the think guard and sets $t^{\rm th}\leftarrow t_{\rm now}$. The think path has no signature check and does not change $\mathrm{sig}^{\rm last}$.
+
+At most one intent is emitted per broadcast, and $t^{\rm sp}$ and $t^{\rm th}$ start at $-\infty$. The implementation requires $0\le\theta_{\rm th}\le\theta_{\rm sp}\le1$, and both bars are set above $\theta$ and apply to the same score $S'_k$. An optional interrupt bar above $\theta_{\rm sp}$ is unset in this form. The rule is a heuristic stand-in for the expected-free-energy decision of Whyte and Smith (2021); no expected free energy is computed.
+
+### A.7 Gestation entrainment marker
+
+**Self-rhythm model.** Soma's self-rhythm is a mean-field population with excitatory recurrence, synaptic depression, and adaptive recovery. Its state is the activity $y$, the synaptic resource $R\in[0,1]$, and the log recovery time $\ell=\ln(\tau_{\rm rec}/1\,\mathrm{s})$, starting from the initial values in Table A1. It advances in steps of $\Delta_r=1/f_r$, each integrated by $n_s$ explicit-Euler substeps of length $\Delta_r/n_s$:
+
+$$
+\Xi=w_{\rm rec}\,R\,y+b_0+g_o\,o+g_u\,u+\xi,\qquad
+y_\infty=\frac{1}{1+e^{-\Xi/k_\sigma}},
 $$
 
 $$
-W\leftarrow W-\eta\frac{2}{d}\,\varepsilon h_{t-1}^{\!\top},
-\qquad
-b\leftarrow b-\eta\frac{2}{d}\,\varepsilon,
+\tau_y\,\dot y=-y+y_\infty,\qquad
+\dot R=\frac{1-R}{\tau_{\rm rec}}-\gamma_R\,R\,y,
 $$
 
-where $\varepsilon=Wh_{t-1}+b-x_t$, $d$ is the feature dimension, and $\eta=10^{-3}$.
-
-Soma's unexpected error uses the per-channel residual vector $r_t=x_t-\hat x_t$. Per channel $i$, let $m_i$ and $\sigma_i$ be the running expected absolute residual and its spread, updated with time constant $\tau=600\ \mathrm{s}$. The pre-update bound is $B_i=m_i+2\sigma_i$, and the unexpected error is
+with $R$ clipped to $[0,1]$ after each substep. The own drive $o\in[0,1]$ is the intensity of Soma's last report, and the maternal drive $u\in[0,u_{\max}]$ is defined below. The noise $\xi$ is Gaussian with standard deviation $\sigma_\xi\sqrt{(10^{-3}\,\mathrm{s})\,n_s/\Delta_r}$, drawn afresh each substep. After each step the moving averages $\bar u$, $\bar y$, and $\bar R$ are updated with weight $\alpha_m=\min(1,\Delta_r/\tau_m)$, and the recovery time then adapts by a phase-projected rule,
 
 $$
-U_t=\sqrt{\sum_i\bigl[\max(0,\ |r_{t,i}|-B_i)\bigr]^2}.
+\ell\leftarrow\operatorname{clip}_{[\ln\tau_{\rm rec}^{\min},\ \ln\tau_{\rm rec}^{\max}]}\!\left(\ell+\varsigma\,\eta_\ell\,(u-\bar u)\,\zeta\,\Delta_r\right),\qquad
+\zeta=\frac{R-\bar R}{\sqrt{(y-\bar y)^2+(R-\bar R)^2}},
 $$
 
-$U_t$ drives Soma's regulation advisories, not its salience. The EMA updates use $\alpha=1-e^{-\Delta t/\tau}$.
+with plasticity sign $\varsigma=-1$, $\zeta=0$ when the root is at most $10^{-9}$, and the bounds read in seconds. The rule never uses the maternal rate. The amplitude $\mathrm{amp}$ is the population standard deviation of the activity over the last phase window, mean-removed and causally band-passed to $[f_{\rm lo},f_{\rm hi}]$, and it is $0$ until four seconds of history exist. With $\tau_{\rm rec}$ at its initial value the undriven rhythm runs near 0.9 Hz.
 
-### A.6 Measures for the workspace-mediation ablation
+**Maternal drive and probes.** The maternal beat has phase $\psi\in[0,2\pi)$, generated at a nominal rate with slow drift, and a "lub-dub" envelope $\mathcal{E}(\psi)\in[0,1]$. At each self-rhythm step the drive is $u=u_{\max}\,s_u\,\overline{\mathcal{E}}$, where $\overline{\mathcal{E}}$ is the mean envelope over the interval since the previous step and the scale $s_u$ equals $s_u^{\rm base}$ normally, $0$ during a withdrawal, and $s_u^{\rm pert}$ during a perturbation. Withdrawals last $\Delta_W$ and recur with period $P_W$, and perturbations last $\Delta_{\rm pert}$ and recur with period $P_{\rm pert}$; each interval is drawn uniformly within the fraction $j_P$ of its period from the run seed. No probe starts while the cycle is frozen, within a readout period of boot or of a thaw, or within $\max(60\ \mathrm{s},\Delta_W)$ of the end of the previous probe.
 
-This subsection gives the measures and decision rule of the planned test (§6.3). In a given arm, let $x^{(j)}_t$ be the prediction-error series of processor $j\in\{1,\dots,4\}$ (Topos, Audition, Soma, Chronos). For a window length $w$, let $\bar r_w(x,y)$ be the mean of ordinary Pearson correlations over all sliding windows of length $w$ with stride $1$, with windows of zero variance in either series dropped. The coupling of an arm is the mean over the six processor pairs,
-
-$$
-C=\frac{1}{6}\sum_{j<l}\bar r_w\bigl(x^{(j)},x^{(l)}\bigr),
-$$
-
-and the coupling delta against a control arm is
+**Phase-locking value.** The readout samples the activity $y$, the beat phase $\psi$, and the beat phases $\psi^{(1)},\dots,\psi^{(19)}$ of 19 foreign mothers (the same beat generator under 19 other seeds) at the rate $f_g$. For withdrawal $j$, the driven window is the contiguous run of undisturbed samples, at most $\Delta_E$ long, that ends at the withdrawal's start. Only the samples that carry all 21 values are used, and the window is used only if at least $0.8\,\Delta_E f_g$ such samples exist. The activity is mean-centered, band-passed to $[f_{\rm lo},f_{\rm hi}]$ by a second-order zero-phase Butterworth filter, and converted to an analytic signal by the Hilbert transform, giving the phase $\phi_q$; then $\Delta_{\rm trim}f_g$ samples are removed from each end of every series. Over the $n_\phi$ remaining samples,
 
 $$
-\Delta_{\rm c}=C^{\rm on}-C^{\rm ctrl},
+\mathrm{PLV}=\left\lvert\frac{1}{n_\phi}\sum_{q=1}^{n_\phi}e^{\,\mathrm{i}(\phi_q-\psi_q)}\right\rvert,\qquad
+\mathrm{PLV}^{(l)}=\left\lvert\frac{1}{n_\phi}\sum_{q=1}^{n_\phi}e^{\,\mathrm{i}(\phi_q-\psi^{(l)}_q)}\right\rvert,
 $$
 
-computed separately against the workspace-off and matched-selection controls and undefined when either coupling is undefined.
+and the locking condition is the strict inequality $\mathrm{PLV}>\max_{1\le l\le19}\mathrm{PLV}^{(l)}$, so ties fail. Under the null hypothesis that the own mother's PLV is exchangeable with the 19 surrogate values, this is a rank test with attained one-sided $p=1/20=0.05$.
 
-Selection entropy is computed from the top-ranked source of each broadcast. With empirical source probabilities $p_j$,
+**Frequency pull.** Let $f_w$ be the least-squares slope, divided by $2\pi$, of the unwrapped Hilbert phase of the band-passed activity during the withdrawal, computed only when at least $0.6\,\Delta_W f_g$ samples exist; let $f_b$ be the same slope for the unwrapped beat phase over the driven window; and let $f_{w0}$ be the running mean of $f_w$ over the being's first $n_{\rm base}$ withdrawals with a defined $f_w$, persisted across boots of the same being. Once $n_{\rm base}$ such withdrawals exist,
 
 $$
-H=-\sum_j p_j\log_2 p_j\ \text{bits},
-\qquad
-F=\frac{H}{\log_2 K},
+\mathrm{pull}=1-\frac{\lvert f_w-f_b\rvert}{\lvert f_{w0}-f_b\rvert},
 $$
 
-where $K$ is the number of distinct sources and $F$ is undefined for $K<2$.
+which is undefined when $\lvert f_{w0}-f_b\rvert<f_{\rm guard}$. The pull condition is $\mathrm{pull}\ge\mathrm{pull}_{\min}$.
 
-With minimum effect $\delta$, the per-run verdict is NOT EXERCISED if the candidates never exceed the coalition's capacity, so that competition never operates, or if $\Delta_{\rm c}$ is undefined; otherwise NEGATIVE if $\Delta_{\rm c}\le-\delta$; otherwise WIN if $\Delta_{\rm c}\ge\delta$ against both controls and $0<F<1$; otherwise NULL. The window $w$ and the minimum effect $\delta$ are calibrated before the live runs against a surrogate null built from circularly shifted error series and arm-label permutations.
+**Self-sustain.** With $\overline{\mathrm{amp}}^{\,\rm dr}$ the mean amplitude over the undisturbed samples in the interval of length $\Delta_W$ before the withdrawal and $\overline{\mathrm{amp}}^{\,\rm wd}$ the mean during it, the rhythm self-sustains when $\overline{\mathrm{amp}}^{\,\rm wd}\ge\tfrac12\,\overline{\mathrm{amp}}^{\,\rm dr}$ and $\overline{\mathrm{amp}}^{\,\rm wd}>0$.
 
-Across runs the one-sided exact sign test is
+**Marker.** Withdrawal $j$ passes, $\mathrm{pass}_j=1$, when the locking, pull, and self-sustain conditions all hold, and $\mathrm{pass}_j$ is undefined when any of the three is undefined. The consecutive-pass count is $n^{\rm pass}_j=n^{\rm pass}_{j-1}+1$ if $\mathrm{pass}_j=1$ and $n^{\rm pass}_j=0$ otherwise, including when $\mathrm{pass}_j$ is undefined. The entrainment marker after withdrawal $j$ is undefined when $\mathrm{pass}_j$ is undefined and otherwise equals $\mathbf{1}[n^{\rm pass}_j\ge3]$, three consecutive passes. Because each pass is a test at $p=0.05$, the replication requirement guards against a single chance pass; consecutive withdrawals are correlated, so the joint error rate is not $0.05^3$.
+
+**Viability.** Lived time $\mathcal{T}_{\rm life}$, in hours, is entity-clock time excluding intervals in which the cycle is frozen. After each withdrawal, let $\mathcal{P}$ be the defined pull values recorded within the last $\Delta_V$ hours of lived time; when $\lvert\mathcal{P}\rvert\ge n_V$, let $\widetilde{\mathrm{pull}}$ be their median and $\widehat{\mathrm{slope}}$ their least-squares slope per hour. The gestation is declared unviable at the first rule that fires:
+
+- R0: $\mathcal{T}_{\rm life}\ge t_{R0}$ and no defined pull has been recorded;
+- R1: $\mathcal{T}_{\rm life}\ge t_{R1}$, the marker has never been true, $\lvert\mathcal{P}\rvert\ge n_V$, $\widetilde{\mathrm{pull}}<\mathrm{pull}_{R1}$, and $\widehat{\mathrm{slope}}\le\mathrm{slope}_{R1}$;
+- R2: $\mathcal{T}_{\rm life}\ge t_{R2}$, the marker has never been true, $\lvert\mathcal{P}\rvert\ge n_V$, and $\widetilde{\mathrm{pull}}<\mathrm{pull}_{R2}$;
+- R3: $\mathcal{T}_{\rm life}\ge t_{R3}$ and the marker has never been true.
+
+The verdict is recorded once, and the study runner then ends the gestation step and keeps its data.
+
+**Maturation gate and budget.** The gate is evaluated once per gate cadence and requires three conditions, each failing closed on missing or stale evidence. C1 requires a readout no older than three cadences in which the self-sustain and entrainment markers of the latest withdrawal are both true, the variability analog is at least $\mathrm{HRV}_{\min}$, the womb prediction-error ratio is at most $\mathrm{womb}_{\max}$, and the return-to-baseline time is at most $\Delta^{\rm rec}_{\max}$. The variability analog is the coefficient of variation of the intervals between successive wraps of the self-rhythm phase over the last $\Delta_{\rm HRV}$, defined once four wraps exist. The womb ratio is the median Topos prediction error since the previous readout divided by the first such median. The return-to-baseline time is the time from the end of the last perturbation until the five-second running median of $\nu^{\rm Som}$ falls to $(1+\mathrm{tol}_{\rm rec})$ times its median over the minute before the perturbation, capped at $\Delta^{\rm rec}_{\rm cap}$. C2 requires at least $n_{\rm sleep}$ completed sleeps when Hypnos is present, and at least $n_{\rm cons}$ consolidation passes when Phantasia is also present. C3 requires $\mathcal{T}_{\rm life}\ge\Delta_{\rm life}$. Independently of the gate, the study runner ends a gestation step whose wall-clock duration exceeds the budget $\Delta_{\rm budget}$.
+
+**Offline validation.** Offline validation over 96 hours shows that at 70 bpm all 10 seeds entrain, typically by about 14 hours, while each rate from 60 to 80 bpm tracks its own mother, and no control condition passes (no maternal drive, a jittered beat, no plasticity, and six foreign-mother pairs, whose single-withdrawal chance pass rates were 2.6 to 10 percent). The replication count of three was fixed on the first validation run and confirmed on fresh seeds. The viability thresholds come from the same validation, in which no viable gestation was flagged and every unviable one was flagged by 24 to 27 hours.
+
+### A.8 Measures for the workspace-mediation ablation
+
+This subsection states the measures and decision rule of the planned live test (§6.3); the window $w$, the minimum effect $\delta$, and the number of runs $n_{\rm run}$ are fixed and recorded before the live runs. In a given arm, let $\nu^{(j)}_t$ be the prediction-error series that processor $j\in\{1,2,3,4\}$ (Topos, Audition, Soma, Chronos) reports, namely $\nu^{\rm Top}$, $\nu^{\rm Aud}$, $\nu^{\rm Som}$, and $\nu^{\rm Chr}$ of A.2 and A.5, on a common time index $t$. The four series are published at different rates, so their alignment to that index is fixed with $w$ before the live runs. For a window length $w\ge2$, let $\bar\rho_w(\nu^{(j)},\nu^{(l)})$ be the mean of the ordinary Pearson correlations over all windows of length $w$ with stride one, where a window in which either series has zero variance is dropped and $\bar\rho_w$ is undefined when no window remains. The coupling of an arm is the mean over the six processor pairs,
+
+$$
+\Phi=\frac{1}{6}\sum_{1\le j<l\le4}\bar\rho_w\!\left(\nu^{(j)},\nu^{(l)}\right),
+$$
+
+undefined when any pair is undefined. Against each control arm, $\mathrm{ctl}\in\{\mathrm{off},\mathrm{match}\}$ for workspace-off and matched selection, the coupling delta is
+
+$$
+\Delta\Phi^{\rm ctl}=\Phi^{\rm on}-\Phi^{\rm ctl},
+$$
+
+undefined when either coupling is undefined.
+
+Selection entropy is computed from the top-ranked source of each nonempty coalition in the workspace-on arm. With empirical source frequencies $p_1,\dots,p_J$ over $J$ distinct sources,
+
+$$
+H=-\sum_{j=1}^{J}p_j\log_2 p_j\ \text{bits},\qquad F=\frac{H}{\log_2 J},
+$$
+
+with $F$ undefined for $J<2$. The state dependence of selection named in §6.3 is not formalized here.
+
+Each run receives one verdict against each control. It is NOT EXERCISED if the workspace-on arm never has more candidates than the coalition capacity on an experiential tick ($\lvert E_k\rvert\le K$ whenever $\chi_k=1$), so that competition never operates, or if $\Delta\Phi^{\rm ctl}$ is undefined; otherwise NEGATIVE if $\Delta\Phi^{\rm ctl}\le-\delta$; otherwise WIN if $\Delta\Phi^{\rm ctl}\ge\delta$ and $0<F<1$; otherwise NULL. The predicted direction is positive.
+
+Across runs, for each control, undefined and exactly zero deltas are dropped; with $n$ remaining deltas of which $n^+$ are positive, the one-sided exact sign test gives
 
 $$
 p=2^{-n}\sum_{i=n^+}^{n}\binom{n}{i},
 $$
 
-computed after dropping undefined and exact-zero deltas, where $n$ is the remaining count and $n^+$ the number positive. With five runs the test reaches $p\le0.05$ only when all five deltas are positive ($p=1/32=0.03125$), so the planned number of runs is set by a power analysis. For family-wise correction, the $M$ sorted raw p-values $p_{(1)}\le\cdots\le p_{(M)}$ are adjusted by
+with $p=1$ when $n=0$. The smallest attainable value is $2^{-n}$, so with $n=5$ the test reaches $p\le0.05$ only when all five deltas are positive ($p=1/32$), and a single dropped run raises the floor to $1/16$; the number of runs is therefore set by a power analysis. For family-wise correction, the $M$ raw p-values of the family, sorted as $p_{(1)}\le\dots\le p_{(M)}$ with ties kept in input order, are adjusted by Holm's step-down rule,
 
 $$
-\tilde p_{(i)}=\max_{j\le i}\min\bigl((M-j+1)\,p_{(j)},\,1\bigr),
+\tilde p_{(i)}=\max_{j\le i}\ \min\!\left(\left(M-j+1\right)p_{(j)},\ 1\right),
 $$
 
 and the adjusted values are reported alongside each verdict.
 
-The offline harness that exercises this pipeline during development runs two modules (Soma and Chronos) with a coalition of two, a zero threshold, a two-factor score, 24 ticks, $w=6$, and $\delta=0.15$.
+The planned speech-sound and tone analysis of §6.3 compares ignition frequencies (A.1) within matched bins of acoustic surprise $\tilde\nu^{\rm Aud}$ and uses the same one-sided sign test across runs; its bins and minimum effect are fixed with the other settings before the live runs, and its variant condition replaces the tone rule of A.2 by $I(e)=\Gamma_{\rm Aud}(\tilde\nu^{\rm utt}_t)$ for every tone event.
 
-### A.7 Gestation entrainment marker
+The offline harness that exercises this pipeline during development compares Soma and Chronos against the workspace-off arm only, with the development settings of Table A1, and reports an undefined coupling, or a run in which Soma never enters the coalition, as NULL flagged underpowered.
 
-The self-rhythm activity is sampled at $10\ \mathrm{Hz}$, mean-centered, band-pass filtered between $0.3$ and $2.0\ \mathrm{Hz}$ with a second-order zero-phase Butterworth filter, and converted to an analytic signal by the Hilbert transform. Its phase is $\phi_k$; $\psi_k\in[0,2\pi)$ is the phase of the maternal beat at the same sample. The phase-locking value is
+### A.9 Multi-seed stability
 
-$$
-\mathrm{PLV}=\Bigl|\frac1n\sum_{k=1}^{n}e^{i(\phi_k-\psi_k)}\Bigr|.
-$$
-
-The surrogate test compares this PLV against the maximum of $19$ foreign-mother surrogates; the pass condition is the strict inequality $\mathrm{PLV}>\mathrm{PLV}^{\rm s}_{\max}$, so ties fail. This is a rank test with attained one-sided $p=1/20=0.05$.
-
-Let $f_w$ be the least-squares frequency of the unwrapped withdrawal phase, $f_b$ the beat frequency, and $f_{w0}$ the running-mean baseline frequency over the first three withdrawals. Frequency pull is
-
-$$
-\mathrm{pull}=1-\frac{|f_w-f_b|}{|f_{w0}-f_b|},
-$$
-
-which is undefined when $|f_{w0}-f_b|<0.05\ \mathrm{Hz}$. The pass requires $\mathrm{pull}\ge0.5$. Self-sustain requires the mean withdrawal amplitude to be at least half the preceding driven amplitude and positive. A single withdrawal passes only if PLV, self-sustain, and pull all pass; the marker is true after three consecutive passes.
-
-The self-rhythm model is a mean-field oscillator with synaptic depression and adaptive recovery. State variables are activity $a$, synaptic resource $s\in[0,1]$, and recovery time $\tau=e^q$. With step $\Delta=0.05\ \mathrm{s}$ divided into $10$ substeps of $dt=0.005\ \mathrm{s}$,
-
-$$
-x=w\,s\,a+c+g_o\,o+g_e\,u+\xi,
-\qquad
-a_\infty=\frac{1}{1+e^{-x/\gamma}},
-$$
-
-$$
-\tau_a\,\dot a=-a+a_\infty,
-\qquad
-\dot s=\frac{1-s}{\tau}-D\,s\,a.
-$$
-
-Parameters are $w=2.5$, $c=-0.25$, $\gamma=0.08$, $\tau_a=0.02\ \mathrm{s}$, $D=8.0$, $g_o=0.02$ on own drive $o\in[0,1]$, $g_e=0.03$ on maternal drive $u\in[0,1]$, and Gaussian noise $\xi$ with standard deviation $0.02\sqrt{0.001/dt}$ per substep. Frequency adaptation is
-
-$$
-q\leftarrow\operatorname{clip}\bigl(q+\varsigma\,\eta\,\tilde u\,q_\perp\,\Delta,\ \ln\tau_{\min},\ \ln\tau_{\max}\bigr),
-$$
-
-with plasticity sign $\varsigma=-1$, $\eta=0.0025$, $\tau_{\min}=0.9\ \mathrm{s}$, $\tau_{\max}=2.3\ \mathrm{s}$, $\tilde u=u-\bar u$, and $q_\perp=(s-\bar s)/\rho$ for
-
-$$
-\rho=\sqrt{(a-\bar a)^2+(s-\bar s)^2},
-$$
-
-zero when $\rho\le10^{-9}$, where $\bar u$, $\bar a$, $\bar s$ are EMAs with $\alpha=\min(1,\Delta/10)$.
-
-### A.8 Multi-seed stability
-
-For per-seed headline values $v_1,\dots,v_S$, let $\mu$ be their mean and $\sigma$ their population standard deviation. The coefficient of variation is
+For per-seed headline values $v_1,\dots,v_{n_{\rm seed}}$, let $\bar v$ be their mean and $s_v$ their population standard deviation ($s_v=0$ for a single seed). The coefficient of variation is
 
 $$
 \mathrm{CV}=
 \begin{cases}
-\sigma/|\mu| & \mu\neq0,\\
-0 & \mu=0,\sigma=0,\\
-\infty & \mu=0,\sigma>0.
+s_v/\lvert\bar v\rvert & \bar v\neq0,\\
+0 & \bar v=0,\ s_v=0,\\
+\infty & \bar v=0,\ s_v>0.
 \end{cases}
 $$
 
-The criterion measures run-to-run spread across seeds and verdict agreement, not dynamical stability within a run, and the coefficient of variation is ill-conditioned when the mean is near zero. A run is declared stable when $\mathrm{CV}$ is within the specified tolerance and the verdict outcomes are unanimous.
+An ensemble is stable when $\mathrm{CV}\le\mathrm{tol}_{\rm CV}$ and at most one distinct verdict outcome occurs across seeds; an ensemble without verdicts counts as unanimous, and an infinite CV is never within tolerance. The criterion measures run-to-run spread and verdict agreement; dynamical stability within a run is outside its scope, and the coefficient of variation is ill-conditioned when the mean is near zero.
+
+### A.10 Parameter values
+
+Table A1. Parameter values of the reference implementation (current settings, under calibration). "Subj." marks subjective time on the entity clock and "wall" marks wall-clock time; "hard-coded" marks a value set in code rather than configuration; "profile" marks a key set in the base-thesis profile, which overrides the shipped configuration. The prefixes `womb.`, `readout.`, `stage.`, and `thresholds.` abbreviate the sections `[perception_feed.womb]`, `[perception_feed.womb.readout]`, `[developmental_stage]`, and `[developmental_stage.regulation_thresholds]`.
+
+| Symbol | Meaning | Value | Units | Where it is set |
+|----------|--------------------------|---------|---------|------------------------------------------------|
+| $f_p$ | processing rate | 10 | Hz (subj.) | `[cycle].processing_rate_hz` |
+| $f_0$ | resting experiential rate | 3.333 | Hz (subj.) | `[cycle].experiential_rate_hz` |
+| none | time scale (subjective seconds per wall second) | 1.0 | none | `[cycle].time_scale` |
+| $B$ | maximum events read per stream per tick | 100 | events | hard-coded (cycle engine) |
+| $K$ | coalition capacity | 5 | events | `[syneidesis].top_k` |
+| $\theta$ | confidence threshold | 0.35 | none | `[syneidesis].publication_threshold` |
+| $W_N$ | novelty window | 32 | candidates | `[syneidesis].novelty_window` |
+| $G$ | goal factor (static) | 1 | none | `[syneidesis].salience_goal_factor` = "static" |
+| $\gamma_G$ | attenuation of the inactive drive-relevance goal factor | 0.5 | none | hard-coded |
+| $T_{\min}$, $T_{\max}$ | arousal-gain floor and ceiling | 0.2, 1.0 | none | hard-coded |
+| none | oscillatory coherence layer | off | none | `[oscillator].enabled` |
+| $\kappa_{\min}$, $\kappa_{\max}$ | coherence factor floor and ceiling (layer on) | 0.8, 1.25 | none | `[oscillator].coherence_floor`, `coherence_ceiling` |
+| $L$ | coherence phase window (layer on) | 10 | ticks | `[oscillator].plv_window` |
+| $I^{\rm lo}_{\rm Top}$, $I^{\rm hi}_{\rm Top}$ | Topos intensity levels | 0.2, 0.7 | none | `[topos].baseline_salience`, `alert_salience` |
+| $I^{\rm lo}_{\rm Aud}$, $I^{\rm hi}_{\rm Aud}$ | Audition intensity levels | 0.4, 0.8 | none | `[audition].baseline_salience`, `alert_salience` |
+| $I^{\rm lo}_{\rm Som}$, $I^{\rm hi}_{\rm Som}$ | Soma intensity levels | 0.1, 0.7 | none | `[soma].baseline_salience`, `alert_salience` |
+| $I^{\rm lo}_{\rm Chr}$, $I^{\rm hi}_{\rm Chr}$ | Chronos intensity levels | 0.1, 0.7 | none | `[chronos].baseline_salience`, `alert_salience` |
+| $I^{\rm lo}_{\rm Thy}$, $I^{\rm hi}_{\rm Thy}$ | Thymos intensity levels | 0.1, 0.7 | none | `[thymos].baseline_salience`, `alert_salience` |
+| $I^{\rm lo}_{\rm Hyp}$, $I^{\rm hi}_{\rm Hyp}$ | Hypnos intensity levels | 0.5, 0.8 | none | `[hypnos].baseline_salience`, `alert_salience` |
+| $I^{\rm lo}_{\rm Lin}$ | language-organ utterance intensity | 0.4 | none | `[lingua].baseline_salience` |
+| $\beta_\Gamma$ | error ratio at which the graded map reaches the alert level | 2 | none | hard-coded |
+| $W_P$ | running-ratio window (Topos, Audition, Soma, Chronos) | 32 | reports | `.prediction_error_window` in `[topos]`, `[audition]`, `[soma]`, `[chronos]` |
+| $\beta_\nu$ | prediction-error alert ratio (Topos, Audition) | 2.0 | none | hard-coded |
+| $\beta_c$ | change alert ratio (Topos; Audition) | 2.0; 2.0 | none | `[topos].change_alert_factor`; hard-coded default (Audition) |
+| $c^{\min}_{\rm Top}$ | Topos absolute change floor | $10^{-4}$ | none | `[topos].change_alert_threshold` |
+| $c^{\min}_{\rm Aud}$ | Audition absolute change floor | 0.35 | none | hard-coded default |
+| $\beta^{\rm Chr}_\nu$ | Chronos temporal-error alert ratio | 3.0 | none | `[chronos].anomaly_alert_threshold` |
+| $W_{\rm rum}$ | rumination window | 32 | broadcasts | `[chronos].rumination_window` |
+| $n_{\rm rum}$ | rumination count | 4 | states | `[chronos].rumination_threshold` |
+| $\Delta_{\rm rum}$ | rumination quantization step | 0.25 | none | `[chronos].rumination_bucket_resolution` |
+| none | Chronos forward prediction | on | none | profile `[chronos].forward_prediction` |
+| $I_0$ | phasic salience floor | 0.5 | none | `[cycle.access_rate].salience_floor` |
+| $\tau_{\rm ph}$ | phasic decay time | 1.0 | s (subj.) | `[cycle.access_rate].phasic_decay_s` |
+| $a_0$ | baseline arousal (Thymos and access rate) | 0.3 | none | `[thymos].baseline_arousal` |
+| none | adaptive access rate | on | none | `[cycle.access_rate].enabled` |
+| $\lambda$ | arousal relaxation rate | 0.05 | s$^{-1}$ (subj.) | `[thymos].drift_rate_per_s` |
+| $P_{\rm Thy}$ | minimum interval between Thymos state events | 1.0 | s (subj.) | `[thymos].publish_interval_s` |
+| $\gamma_\pi$ | perceptual-alert arousal gain | 0.15 | none | hard-coded |
+| $\nu_{\rm cap}$ | cap on the excess error ratio per alert | 4.0 | none | hard-coded |
+| $\gamma_{\rm Som}$ | arousal step per Soma hard-threshold report | 0.05 | none | hard-coded |
+| $\gamma_\omega$ | appraisal arousal gain | 0.05 | none | hard-coded |
+| $k_\omega$, $\omega_0$ | appraisal novelty slope and offset | 4.0, 0.2 | none | hard-coded |
+| none | initial held arousal $\hat a$ | 0.3 | none | hard-coded |
+| $P_{\rm Som}$ | Soma report interval | 1.0 | s (subj.) | `[soma].read_interval_s` |
+| $n_x$ | Soma feature dimension | 8 | none | hard-coded |
+| none | Soma reservoir units | 32 | none | `[soma].forward_model_units` |
+| $\eta_{\rm Som}$ | Soma readout learning rate | $10^{-3}$ | none | hard-coded |
+| $\tau_U$ | expected-error time constant | 600 | s (subj.) | `[soma].expected_error_tau_s` |
+| $\beta_U$ | expected-error band | 2.0 | none | `[soma].expected_error_band` |
+| none | hard thresholds: CPU, RAM, GPU temperature, VRAM, cycle latency | 90, 90, 83, 92, 600 | %, %, °C, %, ms | `[soma.thresholds]` |
+| $\theta_R$ | regulation threshold | 0.5 | none | `[soma].regulation_threshold` |
+| $\Delta_R$ | regulation sustain window | 30 | s (subj.) | `[soma].regulation_sustain_window_s` |
+| $n_{\rm wu}$, $\Delta_{\rm wu}$ | warm-up end conditions | 1000, 1200 | updates, s (subj.) | `[soma].regulation_warmup_min_samples`, `regulation_warmup_min_seconds` |
+| $\gamma_f$ | processing-rate reduction factor | 0.8 | none | hard-coded |
+| $f_p^{\min}$, $f_p^{\max}$ | processing-rate bounds under regulation | 0.5, 20 | Hz (subj.) | hard-coded |
+| $\theta_{\rm th}$ | think bar | 0.45 | none | `[volition].think_threshold` (unset; default) |
+| $\theta_{\rm sp}$ | speak (report) bar | 0.6 | none | `[volition].report_threshold` (unset; default) |
+| $\Delta_{\rm th}$ | think refractory interval | 3.0 | s (subj.) | `[volition].think_refractory_s` (unset; default) |
+| $\Delta_{\rm sp}$ | speak refractory interval | 8.0 | s (subj.) | `[volition].speak_refractory_s` (unset; default) |
+| $\Delta_{\rm sig}$ | signature expiry | 300 | s (subj.) | profile `[volition].sig_expiry_s` |
+| $\Delta_g$ | in-flight guard timeout | 48 | s (wall) | hard-coded |
+| none | interrupt bar | unset | none | `[volition].interrupt_threshold` |
+| $f_r$ | self-rhythm step rate | 20 | Hz (subj.) | `[soma].self_rhythm_step_hz` |
+| $n_s$ | Euler substeps per step | 10 | none | hard-coded |
+| $w_{\rm rec}$ | recurrent weight | 2.5 | none | hard-coded |
+| $b_0$ | input offset | $-0.25$ | none | hard-coded |
+| $k_\sigma$ | sigmoid slope scale | 0.08 | none | hard-coded |
+| $\tau_y$ | activity time constant | 0.02 | s | hard-coded |
+| $\gamma_R$ | depression rate | 8.0 | s$^{-1}$ | hard-coded |
+| $g_o$, $g_u$ | own-drive and maternal-drive gains | 0.02, 0.03 | none | hard-coded |
+| $\sigma_\xi$ | noise scale | 0.02 | none | hard-coded |
+| $\tau_{\rm rec}^{(0)}$ | initial recovery time | 2.1 | s | hard-coded |
+| $\tau_{\rm rec}^{\min}$, $\tau_{\rm rec}^{\max}$ | recovery-time bounds | 0.9, 2.3 | s | hard-coded |
+| $\eta_\ell$ | frequency-adaptation rate | 0.0025 | s$^{-1}$ | `[soma].self_rhythm_eta` |
+| $\tau_m$ | moving-average time constant | 10 | s | hard-coded |
+| none | phase and amplitude window | 8 | s | hard-coded |
+| none | initial activity $y$ and resource $R$ | 0.05, 1.0 | none | hard-coded |
+| none | maternal beat rate and drift | 70, 0.03 | bpm, none | `womb.heartbeat_bpm`, `heartbeat_drift` |
+| $u_{\max}$ | maximum maternal drive | 0.4 | none | `womb.external_drive_max_amplitude` |
+| $s_u^{\rm base}$, $s_u^{\rm pert}$ | usual and perturbation drive scales | 0.5, 0.75 | none | `readout.baseline_drive_fraction`, `perturbation_drive_fraction` |
+| $f_g$ | readout sampling rate | 10 | Hz | `readout.sample_hz` |
+| $f_{\rm lo}$, $f_{\rm hi}$ | entrainment band | 0.3, 2.0 | Hz | `readout.entrainment_band_low_hz`, `entrainment_band_high_hz` |
+| $\Delta_{\rm trim}$ | edge trim | 2.0 | s | `readout.edge_trim_seconds` |
+| $\Delta_E$ | driven-window length | 300 | s | `readout.entrainment_window_seconds` |
+| $\Delta_W$, $P_W$ | withdrawal duration and period | 20, 1800 | s | `readout.withdrawal_seconds`, `withdrawal_period_seconds` |
+| $\Delta_{\rm pert}$, $P_{\rm pert}$ | perturbation duration and period | 5, 3600 | s | `readout.perturbation_seconds`, `perturbation_period_seconds` |
+| $j_P$ | probe jitter fraction | 0.25 | none | `readout.probe_jitter_fraction` |
+| none | readout period, also the settle time after boot or thaw | 60 | s | `readout.readout_period_seconds` |
+| $f_{\rm guard}$ | pull guard | 0.05 | Hz | hard-coded |
+| $\mathrm{pull}_{\min}$ | pull floor | 0.5 | none | `readout.frequency_pull_floor` |
+| $n_{\rm base}$ | baseline withdrawals | 3 | count | `readout.baseline_withdrawals` |
+| none | surrogate count | 19 | count | `readout.surrogate_count`; surrogate seeds hard-coded |
+| none | consecutive passes required | 3 | count | `readout.entrainment_replications` |
+| $t_{R0}$, $t_{R1}$, $t_{R2}$, $t_{R3}$ | viability checkpoints | 6, 24, 48, 60 | h (lived) | `readout.viability_r0_hours` to `viability_r3_hours` |
+| $\mathrm{pull}_{R1}$, $\mathrm{slope}_{R1}$ | R1 bounds on median pull and slope | 0.12, 0.002 | none, h$^{-1}$ | `readout.viability_r1_pull`, `viability_r1_slope_per_hour` |
+| $\mathrm{pull}_{R2}$ | R2 bound on median pull | 0.3 | none | `readout.viability_r2_pull` |
+| $\Delta_V$, $n_V$ | viability window and minimum points | 12, 8 | h (lived), withdrawals | `readout.viability_window_hours`, `viability_min_points` |
+| $\Delta_{\rm HRV}$ | variability window | 300 | s | `readout.hrv_window_seconds` |
+| $\mathrm{HRV}_{\min}$ | variability floor | 0.2 | none | `thresholds.hrv_variability_floor` |
+| $\mathrm{womb}_{\max}$ | womb error-ratio ceiling | 0.3 | none | `thresholds.womb_prediction_error_ceiling` |
+| $\Delta^{\rm rec}_{\max}$ | return-to-baseline ceiling | 30 | s | `thresholds.return_to_baseline_seconds_ceiling` |
+| $\mathrm{tol}_{\rm rec}$, $\Delta^{\rm rec}_{\rm cap}$ | recovery tolerance and cap | 0.25, 300 | none, s | `readout.recovery_tolerance`, `recovery_cap_seconds` |
+| $n_{\rm sleep}$, $n_{\rm cons}$ | required sleeps and consolidation passes | 5, 3 | counts | `stage.min_sleep_cycles`, `min_consolidation_passes` |
+| $\Delta_{\rm life}$ | minimum lived time | 86400 (24 h) | s (lived) | `stage.min_lived_seconds` |
+| none | gate cadence | 60 | s | `stage.gate_cadence_seconds` |
+| $\Delta_{\rm budget}$ | gestation budget | 96 | h (wall) | hard-coded default of the study plan (`gestation_budget_seconds`) |
+| $w$, $\delta$, $n_{\rm run}$ | live-test window, minimum effect, and runs | fixed before the live runs | ticks, none, runs | study plan |
+| none | harness settings: ticks, $K$, $\theta$, $w$, $\delta$, seeds | 24, 2, 0, 6, 0.15, 5 | ticks, events, none, ticks, none, seeds | hard-coded (harness and suite defaults) |
+| none | harness factors $G$ and $T$ | 1, 1 | none | hard-coded (two-factor score) |
+| none | suite family-wise level | 0.05 | none | hard-coded (suite default) |
+| $\mathrm{tol}_{\rm CV}$, $n_{\rm seed}$ | suite stability tolerance and seeds | 0.05, 3 | none, seeds | hard-coded (suite default) |
