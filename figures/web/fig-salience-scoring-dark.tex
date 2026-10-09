@@ -21,11 +21,12 @@
 ]
 % (b) the scoring box, at the origin, factor list inside it
 \node[align=center, font=\footnotesize, text width=44mm] (scoretitle) at (0,0)
-  {score each candidate $=$ product of bounded factors};
+  {priority of each candidate $=$ product of bounded factors};
 \node[align=left, font=\scriptsize, text width=44mm, below=3mm of scoretitle] (scorelist)
   {intensity (the module's salience)\\[2pt]
    $\times$\, novelty (falls as content recurs)\\[2pt]
-   $\times$\, arousal gain (Thymos)};
+   $\times$\, source precision weight\\[5pt]
+   score $=$ arousal level $\times$ arousal contrast of the priority (Thymos)};
 \begin{pgfonlayer}{background}
 \node[draw=bemph, thick, rounded corners, fill=surfemph, fit=(scoretitle)(scorelist), inner sep=3mm] (score) {};
 \end{pgfonlayer}
