@@ -22,9 +22,9 @@
 
 % Stage 1
 \node[mod, text width=40mm] (stage1) at (0,2)
-  {\textbf{Gestation}\\self-rhythm earns entrainment\\to a maternal heartbeat};
+  {\textbf{Gestation}\\self-generated rhythm earns\\entrainment to a simulated\\maternal heartbeat};
 \node[lbl, font=\scriptsize, below=1mm of stage1]
-  {viability watch; at least 24 h lived};
+  {viability watch; at least 24 h awake};
 
 % Stage 2
 \node[mod, text width=22mm] (stage2) at (3.9,2)
@@ -40,34 +40,36 @@
 \draw[->, draw=stroke] (stage2.east) -- (stage3.west);
 
 % Held modules
-\node[held] (m1) at (-1.4,0) {Mnemos};
+\node[held] (m1) at (-1.4,-0.4) {Mnemos};
 \node[held, right=1.5mm of m1] (m2) {Phantasia};
 \node[held, right=1.5mm of m2] (m3) {Nous};
 \node[held, right=1.5mm of m3] (m4) {Eidolon};
 \node[held, right=1.5mm of m4] (m5) {Empatheia};
 \node[held, right=1.5mm of m5] (m6) {Vox};
-\node[held, right=1.5mm of m6] (m7) {Praxis};
-\node[held, right=1.5mm of m7] (m8) {Perception};
-\node[held, right=1.5mm of m8] (m9) {Mundus};
+\node[held, dashed, right=9mm of m6] (m7) {Praxis};
+\node[held, dashed, right=1.5mm of m7] (m8) {Perception};
+\node[held, dashed, right=1.5mm of m8] (m9) {Mundus};
+\node[draw=bdim, dashed, rounded corners, fit=(m7)(m8)(m9), inner sep=2mm] (later) {};
+\node[lbl, font=\scriptsize, text width=48mm, below=1mm of later] {join once an effector, body, or sensor feed is attached};
 
-\draw[->, draw=stroke] (stage3.south) -- (stage3.south |- m1.north) node[midway, left, font=\scriptsize] {held modules join one at a time, left to right};
+\draw[->, draw=stroke] (stage3.south) -- ++(0,-0.8) -| node[pos=0.3, above, font=\scriptsize] {six held modules join one at a time, left to right} (m1.north);
 
-\foreach \i/\j in {1/2,2/3,3/4,4/5,5/6,6/7,7/8,8/9}{
+\foreach \i/\j in {1/2,2/3,3/4,4/5,5/6}{
   \draw[->, draw=stroke] (m\i.east) -- (m\j.west);
 }
 
 % Recurrence arrows
 \draw[->, draw=stroke, thin]
-  ($(m1.south west)+(0,-0.7)$) -- ($(m9.south east)+(0,-0.7)$)
+  ($(m1.south west)+(0,-0.7)$) -- ($(m6.south east)+(0,-0.7)$)
   node[pos=0.5, above, font=\scriptsize] {branch k: seed being + first k modules};
 \draw[->, draw=stroke, thin]
-  ($(m1.south west)+(0,-1.6)$) -- ($(m9.south east)+(0,-1.6)$)
+  ($(m1.south west)+(0,-1.6)$) -- ($(m6.south east)+(0,-1.6)$)
   node[pos=0.5, above, font=\scriptsize] {accumulate k: previous accumulate step + module k};
 
 % Footer
-\node[mod, text width=168mm, font=\scriptsize] at (5.05,-2.6)
-  {Every viewing: the same film program after an identical womb-to-world transition.
-   Content-free report: broadcasts, coalition size, picture-to-sound drift.};
+\node[mod, text width=168mm, font=\scriptsize] at (5.05,-3.0)
+  {Every viewing: the same film program after an identical transition from the gestational stimulus to the films.
+   Content-free report: broadcast rate, coalition size, module share, inhibited share.};
 
 \end{tikzpicture}
 \end{document}

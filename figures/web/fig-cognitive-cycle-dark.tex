@@ -26,23 +26,23 @@
   \draw[tickmark] (\x,\upy-0.18) -- (\x,\upy+0.18);
 }
 \node[align=center, font=\footnotesize, text width=150mm] at (4.8,\upy+0.85)
-  {processing rate 10\,Hz ($\sim$100\,ms/tick): every active module read and scored (alpha-band sampling)};
-% --- lower track: experiential broadcasts (3.333 Hz) ---
+  {processing rate 10\,Hz (about 100\,ms per tick): every active module read and scored};
+% --- lower track: broadcast ticks (about 3.3 Hz at rest) ---
 \draw[thick, draw=stroke] (-0.6,\loy) -- (10.2,\loy);
 \foreach \x in {2.4,6.0,9.6} {
   \draw[tickmark] (\x,\loy-0.18) -- (\x,\loy+0.18);
 }
 \node[align=center, font=\footnotesize, text width=120mm] at (4.8,\loy-0.85)
-  {experiential rate, resting 3.333\,Hz: a workspace broadcast every third tick at rest};
+  {access rate, resting about 3.3\,Hz (one broadcast every third processing tick)};
 % --- every third processing tick feeds a broadcast tick ---
 \foreach \x in {2.4,6.0,9.6} {
   \draw[->, thin, draw=stroke] (\x,\upy-0.22) -- (\x,\loy+0.22);
 }
 % track labels
 \node[font=\footnotesize\itshape, anchor=east] at (-0.8,\upy) {processing ticks};
-\node[font=\footnotesize\itshape, anchor=east] at (-0.8,\loy) {experiential broadcasts};
+\node[font=\footnotesize\itshape, anchor=east] at (-0.8,\loy) {broadcast ticks};
 % --- caption ---
 \node[draw=bdim, rounded corners, fill=surf, align=center, font=\footnotesize, text width=105mm, inner sep=3mm] at (4.8,-2.4)
-  {At rest, conscious access runs at 3.333\,Hz, a period of the same order as the P3b latency. It rises with arousal and salient reports, up to one broadcast per processing tick; the processing rate is fixed unless the host is under load.};
+  {At rest a broadcast falls on every third processing tick (about 3.3\,Hz). The access rate rises with tonic arousal and alerts, up to one broadcast per processing tick; the processing rate is fixed unless the host is under load.};
 \end{tikzpicture}
 \end{document}

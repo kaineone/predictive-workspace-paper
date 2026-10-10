@@ -14,36 +14,41 @@
 \begin{tikzpicture}[
   font=\small,>=Latex,
   every node/.append style={text=fgbody},
+  every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
   stage/.style={draw=bdim, rounded corners, fill=surf, align=center, minimum height=14mm, font=\footnotesize, text width=26mm, inner sep=2mm},
   decide/.style={draw=bemph, thick, rounded corners, fill=surf, align=center, minimum height=14mm, font=\footnotesize, text width=26mm, inner sep=2mm},
-  sel/.style={draw=bemph, thick, rounded corners, fill=surfemph, align=center, minimum height=12mm, font=\footnotesize, text width=30mm, inner sep=2mm},
-  halt/.style={draw=bact, rounded corners, fill=surfact, align=center, minimum height=12mm, font=\footnotesize, text width=30mm, inner sep=2mm},
+  sel/.style={draw=bemph, thick, rounded corners, fill=surfemph, align=center, minimum height=12mm, font=\footnotesize, text width=56mm, inner sep=2mm},
+  halt/.style={draw=bact, rounded corners, fill=surfact, align=center, minimum height=12mm, font=\footnotesize, text width=56mm, inner sep=2mm},
 ]
 % (b) the scoring box, at the origin, factor list inside it
-\node[align=center, font=\footnotesize, text width=44mm] (scoretitle) at (0,0)
-  {priority of each candidate $=$ product of bounded factors};
-\node[align=left, font=\scriptsize, text width=44mm, below=3mm of scoretitle] (scorelist)
-  {intensity (the module's salience)\\[2pt]
-   $\times$\, novelty (falls as content recurs)\\[2pt]
-   $\times$\, source precision weight\\[5pt]
-   score $=$ arousal level $\times$ arousal contrast of the priority (Thymos)};
+\node[align=center, font=\footnotesize, text width=50mm] (scoretitle) at (0,0)
+  {priority $=I\times N\times G$};
+\node[align=left, font=\scriptsize, text width=56mm, below=2.5mm of scoretitle] (scorelist)
+  {$I$, intensity: surprise scaled by estimated\\\hphantom{$I$, }precision, or a fixed level\\[2pt]
+   $N$, novelty: discounts exact repeats\\[2pt]
+   $G$, goal: held at 1 in the base-thesis form};
+\node[align=center, font=\footnotesize, text width=50mm, below=3mm of scorelist] (arousal)
+  {score $=T\,C_g(\mathrm{priority})$\\[2pt]\scriptsize arousal (Thymos) sets the level gain $T$ and the contrast $C_g$; the order is unchanged};
 \begin{pgfonlayer}{background}
-\node[draw=bemph, thick, rounded corners, fill=surfemph, fit=(scoretitle)(scorelist), inner sep=3mm] (score) {};
+\node[draw=bemph, thick, rounded corners, fill=surfemph, fit=(scoretitle)(scorelist)(arousal), inner sep=3mm] (score) {};
 \end{pgfonlayer}
 % (a) candidate events
-\node[stage, left=22mm of score] (cand) {candidate events\\[2pt]\scriptsize (one batch read per active module, ordered deterministically)};
-% (c) rank
-\node[stage, right=14mm of score] (rank) {rank; keep top-$k$ (up to five)};
-% (d) decision
-\node[decide, right=14mm of rank] (dec) {best single score $\ge$ confidence threshold?};
-% branches
-\node[sel,  below right=20mm and -4mm of dec] (yes) {broadcast conscious snapshot};
-\node[halt, below left=20mm and -4mm of dec] (no) {snapshot marked inhibited: no action this tick};
+\node[stage, left=12mm of score] (cand) {candidate events\\[2pt]\scriptsize (read every processing tick, ordered by source, type, arrival)};
+% (c) rank and coalition
+\node[stage, right=12mm of score] (rank) {rank; keep the top $K$ (up to five) $=$ coalition};
+% (d) broadcast
+\node[stage, below=9mm of rank] (bc) {broadcast\\[2pt]\scriptsize (always published)};
+% (e) decision
+\node[decide, below=9mm of bc] (dec) {best score $\ge$ access threshold?};
+% branches, to the left of the decision
+\node[sel,  anchor=east] (yes) at ($(dec.west)+(-16mm,9mm)$) {\textcolor{fg}{\textbf{accessed}}: members whose score reaches the threshold are accessed; they can drive report and action and become context};
+\node[halt, anchor=east] (no) at ($(dec.west)+(-16mm,-9mm)$) {\textcolor{fg}{\textbf{inhibited}}: visible to modules but not adopted as context; no report or action};
 % arrows
 \draw[->, draw=stroke] (cand) -- (score);
-\draw[->, draw=stroke] (score) -- (rank);
-\draw[->, draw=stroke] (rank) -- (dec);
-\draw[->, draw=stroke] (dec.south) to[out=250,in=90] node[left, font=\footnotesize, pos=0.55]{no} (no.north);
-\draw[->, draw=stroke] (dec.south) to[out=290,in=90] node[right, font=\footnotesize, pos=0.55]{yes} (yes.north);
+\draw[->, draw=stroke] (score.east |- rank) -- (rank);
+\draw[->, draw=stroke] (rank) -- (bc);
+\draw[->, draw=stroke] (bc) -- (dec);
+\draw[->, draw=stroke] (dec.west) -- ($(dec.west)+(-8mm,0)$) |- node[above, font=\footnotesize, pos=0.75]{yes} (yes.east);
+\draw[->, draw=stroke] (dec.west) -- ($(dec.west)+(-8mm,0)$) |- node[below, font=\footnotesize, pos=0.75]{no} (no.east);
 \end{tikzpicture}
 \end{document}
