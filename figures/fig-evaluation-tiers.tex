@@ -14,6 +14,7 @@
 \begin{tikzpicture}[
   font=\small,>=Latex,
   every node/.append style={text=fgbody},
+  every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
   mod/.style={draw=bdim, rounded corners, fill=surf, align=center, font=\footnotesize},
   work/.style={draw=bemph, thick, rounded corners, fill=surfemph, align=center},
   lbl/.style={font=\footnotesize, text=fgbody, align=center},
@@ -25,7 +26,7 @@
 \node[lbl, above=0.4mm of repro] {reproducible by construction};
 % left: live sources (bottom)
 \node[mod, text width=34mm] (a1) at (0,-0.35) {camera $+$ microphone};
-\node[mod, text width=34mm] (a2) at (0,-1.2) {film programme decoded from files (hash-pinned manifest)};
+\node[mod, text width=34mm] (a2) at (0,-1.2) {film program decoded from files (hash-pinned manifest)};
 \node[draw=bdim, dashed, fit=(a1)(a2), inner sep=6pt] (arb) {};
 \node[lbl, below=0.4mm of arb] {live stimulus};
 % center: seam and architecture
@@ -38,8 +39,8 @@
 \node[work, text width=50mm] (field) at (13.1,-1.7)
   {\textcolor{fg}{\textbf{Field tier}}\\[2pt]statistical validity; pool many content-free records; replication across runs};
 % bottom note
-\node[mod, text width=94mm] (note) at (6.6,-3.6)
-  {verdicts: WIN $\cdot$ NULL $\cdot$ NEGATIVE $\cdot$ NOT EXERCISED \quad$|$\quad safety gates: PASS $\cdot$ FAIL};
+\node[mod, text width=118mm] (note) at (6.6,-3.6)
+  {verdicts: WIN $\cdot$ NULL $\cdot$ NEGATIVE $\cdot$ NOT EXERCISED\\enforcement red team: PASS $\cdot$ FAIL};
 % flows
 \draw[->, draw=stroke] (repro.east) to[out=0,in=150] (seam.north west);
 \draw[->, draw=stroke] (arb.east)   to[out=0,in=210] (seam.south west);

@@ -14,32 +14,34 @@
 \begin{tikzpicture}[
   font=\small,>=Latex,
   every node/.append style={text=fgbody},
+  every node/.append style={execute at begin node={\hyphenpenalty=10000\exhyphenpenalty=10000}},
   mod/.style={draw=bdim, rounded corners, fill=surf, align=center, font=\footnotesize},
   work/.style={draw=bemph, thick, rounded corners, fill=surfemph, align=center},
   act/.style={draw=bact, rounded corners, fill=surfact, align=center, font=\footnotesize},
   lbl/.style={font=\footnotesize, text=fgbody, align=center},
 ]
-% main vision flow (left -> right)
-\node[mod, text width=22mm, minimum height=11mm] (cam) at (0,0) {video clip\\(in memory)};
-\node[mod, text width=24mm] (emb) at (3.1,0.9) {whole-clip embedding (gist)};
-\node[mod, text width=24mm] (sal) at (3.1,-0.9) {coarse saliency map};
-\node[work, text width=32mm, minimum height=14mm] (comp) at (6.7,0)
-  {\textcolor{fg}{\textbf{precision-weighted competition}}\\[2pt]bottom-up salience, with dwell and hysteresis};
-\node[act, text width=24mm, minimum height=11mm] (fov) at (10.1,0)
-  {\textcolor{fg}{\textbf{fovea}}\\location $+$ size};
-\node[mod, text width=28mm] (crop) at (13.3,0) {peripheral gist $+$ foveal crop (same encoder)};
-\node[mod, text width=30mm] (coord) at (16.5,0) {embeddings and fovea coordinates $\rightarrow$ workspace (no pixels)};
-% arousal source
-\node[act, text width=22mm] (ar) at (10.1,-2.4) {arousal (Thymos)};
+% before encoding: change map and fovea selection on the raw frames
+\node[mod, text width=20mm, minimum height=12mm] (cam) at (0,0) {raw frames\\(in memory)};
+\node[mod, text width=26mm, minimum height=12mm] (grid) at (3.5,0) {coarse tile grid:\\frame change per tile};
+\node[work, text width=38mm, minimum height=14mm, font=\footnotesize] (map) at (7.9,0)
+  {\textcolor{fg}{\textbf{tile change map (z-score)}}\\[2pt]each tile's change minus its running mean, over its running SD};
+\node[act, text width=30mm, minimum height=12mm] (fov) at (12.6,0)
+  {\textcolor{fg}{\textbf{fovea}}: most salient tile, with hysteresis};
+\node[act, text width=22mm] (ar) at (12.6,2.3) {arousal (Thymos)};
+\node[lbl, font=\scriptsize\itshape, anchor=south west] at ($(cam.north west)+(0,1.2mm)$) {before any encoding};
+% after fovea selection: cut, encode, report
+\node[mod, text width=34mm, minimum height=12mm] (crop) at (4.4,-2.6) {cut peripheral gist $+$ foveal crop at the chosen fovea};
+\node[mod, text width=22mm, minimum height=12mm] (enc) at (8.4,-2.6) {one encoder\\(gist and crop)};
+\node[mod, text width=34mm, minimum height=12mm] (coord) at (12.6,-2.6) {embeddings $+$ fovea coordinates $\rightarrow$ workspace (no pixels)};
 % flows
-\draw[->, draw=stroke] (cam.east) to[out=0,in=180] (emb.west);
-\draw[->, draw=stroke] (cam.east) to[out=0,in=180] (sal.west);
-\draw[->, draw=stroke] (emb.east) to[out=0,in=150] (comp.north west);
-\draw[->, draw=stroke] (sal.east) to[out=0,in=210] (comp.south west);
-\draw[->, draw=stroke] (comp.east) -- (fov.west);
-\draw[->, draw=stroke] (fov.east) -- (crop.west);
-\draw[->, draw=stroke] (crop.east) -- (coord.west);
-\draw[->, draw=stroke] (ar.north) --
-  node[lbl, right, text width=34mm]{arousal sizes the fovea (narrows as arousal rises)} (fov.south);
+\draw[->, draw=stroke] (cam) -- (grid);
+\draw[->, draw=stroke] (grid) -- (map);
+\draw[->, draw=stroke] (map) -- (fov);
+\draw[->, draw=stroke] (ar.south) -- node[lbl, right, text width=38mm, align=left]{sets fovea size (narrows as arousal rises)} (fov.north);
+\draw[->, draw=stroke] (cam.south) |- node[lbl, below, pos=0.75, font=\scriptsize]{buffered frames} (crop.west);
+\coordinate (mid) at (0,-1.4);
+\draw[->, draw=stroke] (fov.south) -- (fov.south |- mid) -| node[lbl, below, pos=0.25, font=\scriptsize]{fovea location and size} (crop.north);
+\draw[->, draw=stroke] (crop) -- (enc);
+\draw[->, draw=stroke] (enc) -- (coord);
 \end{tikzpicture}
 \end{document}
