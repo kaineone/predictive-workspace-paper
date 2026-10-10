@@ -36,7 +36,7 @@
    members reaching the\\threshold are accessed\\(all-or-none)};
 % broadcast
 \node[mod, minimum width=0mm, text width=19mm, minimum height=11mm] (bc) at (11.55,1.65)
-  {\textcolor{fg}{\textbf{broadcast}}\\\scriptsize always published};
+  {\textcolor{fg}{\textbf{broadcast}}\\\footnotesize always published};
 % report path
 \node[act, text width=24mm] (vol) at (15.2,1.65) {\textcolor{fg}{\textbf{Volition}}\\report-or-act};
 \node[act, text width=28mm] (lin) at (15.2,-0.45) {\textcolor{fg}{\textbf{Lingua}}: language\\organ, output-only};
@@ -62,7 +62,7 @@
 \coordinate (evtt) at (0,5.25);
 \draw[draw=stroke] (evta) -- (evta |- evtt) -- (-3.1,5.25) -- (-3.1,-3.25) -- (4.9,-3.25);
 \node[lbl, above] at (4.6,5.25) {every broadcast, accessed or inhibited};
-\draw[->, draw=stroke] (-3.1,0 |- m4.west) -- node[lbl, above, font=\scriptsize, pos=0.4]{input} (m4.west);
+\draw[->, draw=stroke] (-3.1,0 |- m4.west) -- node[lbl, above, font=\footnotesize, pos=0.4]{input} (m4.west);
 \draw[->, draw=stroke] (4.9,-3.25) -- (thy.south);
 \node[lbl, above] at (1.0,-3.25) {appraisal (valence, drives)};
 % sleep and its reset
