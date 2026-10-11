@@ -4,9 +4,9 @@
 \definecolor{fg}{HTML}{3B3220}
 \definecolor{fgbody}{HTML}{544736}
 \definecolor{stroke}{HTML}{7A5A10}
-\definecolor{surf}{HTML}{FAF6EE}
-\definecolor{surfemph}{HTML}{F2E9D4}
-\definecolor{surfact}{HTML}{F6E7E0}
+\definecolor{surf}{HTML}{F4F5F8}
+\definecolor{surfemph}{HTML}{E6E8EE}
+\definecolor{surfact}{HTML}{FDE8E8}
 \definecolor{bdim}{HTML}{CFC6B2}
 \definecolor{bemph}{HTML}{7A5A10}
 \definecolor{bact}{HTML}{8F1D1D}
@@ -24,6 +24,9 @@
 % shared input
 \node[mod, text width=40mm, minimum height=18mm] (shared) at (0,0)
   {\textbf{same film program,\\seeds, and calibration}\\[2pt]\scriptsize Topos, Audition, Soma, Chronos report errors scaled by estimated precision; arousal sets the global gain};
+% tone variant of the on arm, secondary
+\node[mod, text width=52mm, minimum height=13mm] (tone) at (5.6,5.4)
+  {\textcolor{fg}{\textbf{Tone variant of the on arm}}\\[2pt]tone rule: error ratio, so each tone event's intensity comes from the tone model's error ratio alone\\[2pt]{\scriptsize\itshape paired by seed with the three arms}};
 % three arms, in the order of the text
 \node[on, text width=52mm, minimum height=17mm] (on) at (5.6,2.9)
   {\textcolor{fg}{\textbf{Workspace on (as built)}}\\[2pt]competitive selection of up to five $+$ access threshold; members reaching it become the context\\[2pt]{\scriptsize\itshape context weighted by intensity in all arms}};
@@ -32,16 +35,19 @@
 \node[off, text width=52mm, minimum height=17mm] (off) at (5.6,-2.9)
   {\textcolor{fg}{\textbf{Pooled (control)}}\\[2pt]every candidate of every tick enters the context, weighted by intensity: no scoring, selection or access gate};
 % context of the predictive processors, one per arm
+\node[mod, text width=32mm, minimum height=13mm] (ltone) at (11.1,5.4) {\textbf{tone analysis}\\\scriptsize accessed fraction, emotional versus neutral tone; secondary};
 \node[mod, text width=32mm, minimum height=14mm] (lon) at (11.1,2.9) {next context of the predictive processors\\\scriptsize Topos, Audition, Soma};
 \node[mod, text width=32mm, minimum height=14mm] (lmatch) at (11.1,0) {next context of the predictive processors\\\scriptsize Topos, Audition, Soma};
 \node[mod, text width=32mm, minimum height=14mm] (loff) at (11.1,-2.9) {next context of the predictive processors\\\scriptsize Topos, Audition, Soma};
 % compare
 \node[on, text width=30mm, minimum height=16mm] (cmp) at (15.5,0)
-  {\textcolor{fg}{\textbf{compare}}\\[2pt]\scriptsize information gain per arm; decision rule fixed before the runs};
+  {\textcolor{fg}{\textbf{compare}}\\[2pt]\scriptsize paired by seed: on minus each control; decision rule fixed before the runs};
 % flows
+\draw[->, draw=stroke, dashed] (shared.north) to[out=90,in=180] (tone.west);
 \draw[->, draw=stroke] (shared.east) to[out=25,in=180] (on.west);
 \draw[->, draw=stroke] (shared.east) -- (match.west);
 \draw[->, draw=stroke] (shared.east) to[out=-25,in=180] (off.west);
+\draw[->, draw=stroke, dashed] (tone) -- (ltone);
 \foreach \a/\c in {on/lon, match/lmatch, off/loff} {
   \draw[->, draw=stroke] (\a) -- (\c);
   \draw[->, draw=stroke] (\c.south) to[out=-90,in=-90,looseness=0.55]
@@ -51,13 +57,14 @@
 \draw[->, draw=stroke] (lmatch.east) -- (cmp.west);
 \draw[->, draw=stroke] (loff.east) to[out=0,in=240] (cmp.south west);
 % measures + outcome
-\node[mod, text width=160mm, align=left, inner sep=3mm] (meas) at (7.5,-6.2)
+\node[mod, text width=160mm, align=left, inner sep=3mm] (meas) at (7.5,-6.6)
   {\textbf{Planned measures.}\;\;
-   \textbf{Primary}: cross-module broadcast information gain, $\mathrm{IG}_j=(\nu_j(b^0_j)-\nu_j(b))/\bar\nu_j$, the reduction in processor $j$'s prediction error when other modules' share of its context is replaced by its running mean; reported per processor (Topos, Audition, Soma) and averaged over processors and reports, on minus each control; the language organ's share of the context is excluded from Soma's gain.\;
-   \textbf{Positive control}: an injected context component carrying known information must be detected.\;
-   \textbf{Secondary}: contrastive analysis at threshold (accessed versus inhibited broadcasts of nearly matched score), matched on context age.\;
+   \textbf{Primary}: cross-module broadcast information gain, $\mathrm{gain}_j=(\nu_j(b^0_j)-\nu_j(b))/\bar\nu_j$, the reduction in processor $j$'s prediction error when other modules' share of its context is replaced by its mean so far in the run; averaged over $j$'s reports to $\mathrm{IG}_j$ (Topos, Audition, Soma) and over the three processors to the headline $\mathrm{IG}$, on minus each control; the language organ's share of the context is excluded from Soma's gain.\;
+   \textbf{Positive control}: the next input projected on its first principal component, with noise set from the pilot runs so that the expected effect equals the minimum effect $\theta_{\rm PC}$; it must be detected for every processor before the live runs.\;
+   \textbf{Secondary}: the contrast at threshold, a local-linear regression discontinuity at the access threshold with robust bias-corrected inference, matched on context age; and the tone analysis, which compares the accessed fractions of emotional and neutral tone events in the tone variant, overall and within bins of the error ratio. Neither enters the verdict.\;
    Utterances are recorded but are not a measure.};
 \node[halt, text width=160mm, align=left, inner sep=3mm, below=2.5mm of meas] (out)
-  {\textbf{Fail state}: competitive selection does not beat both controls (each tested at $\alpha$). \textbf{NOT EXERCISED}: candidates never exceed the coalition's capacity, reported separately.};
+  {\textbf{Fail state}: the gain is at or below the controls, so competition adds nothing beyond its inputs. The thesis needs a WIN against both controls (intersection-union, a one-sided sign test against each at $\alpha_{\rm test}$).\\[3pt]
+   \textbf{NOT EXERCISED}, for a run against a control: competition never operates (candidates never exceed the coalition's capacity on a broadcast tick), the on arm has no accessed broadcast, or the run's contrast is undefined. Such runs stay out of the sign tests, and runs are added until 102 enter each control's test; the verdict is NOT EXERCISED only when every run is.};
 \end{tikzpicture}
 \end{document}
