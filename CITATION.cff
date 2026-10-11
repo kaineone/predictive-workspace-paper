@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you reference this work, please cite it as below."
-title: "KAINE: A Continuously Running Predictive Global Workspace for Synthetic Minds"
+title: "KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace"
 authors:
   - family-names: Chevalier
     given-names: Erik
