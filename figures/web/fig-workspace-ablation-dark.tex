@@ -23,7 +23,7 @@
 ]
 % shared input
 \node[mod, text width=40mm, minimum height=18mm] (shared) at (0,0)
-  {\textbf{same film program,\\seeds, and calibration}\\[2pt]\scriptsize Topos, Audition, Soma, Chronos report errors scaled by estimated precision; arousal sets the global gain};
+  {\textbf{same film program,\\seeds, and calibration}\\[2pt]\scriptsize vision, audition, interoception, and sequence report errors scaled by estimated precision; arousal sets the global gain};
 % tone variant of the on arm, secondary
 \node[mod, text width=52mm, minimum height=13mm] (tone) at (5.6,5.4)
   {\textcolor{fg}{\textbf{Tone variant of the on arm}}\\[2pt]tone rule: error ratio, so each tone event's intensity comes from the tone model's error ratio alone\\[2pt]{\scriptsize\itshape paired by seed with the three arms}};
@@ -36,9 +36,9 @@
   {\textcolor{fg}{\textbf{Pooled (control)}}\\[2pt]every candidate of every tick enters the context, weighted by intensity: no scoring, selection or access gate};
 % context of the predictive processors, one per arm
 \node[mod, text width=32mm, minimum height=13mm] (ltone) at (11.1,5.4) {\textbf{tone analysis}\\\scriptsize accessed fraction, emotional versus neutral tone; secondary};
-\node[mod, text width=32mm, minimum height=14mm] (lon) at (11.1,2.9) {next context of the predictive processors\\\scriptsize Topos, Audition, Soma};
-\node[mod, text width=32mm, minimum height=14mm] (lmatch) at (11.1,0) {next context of the predictive processors\\\scriptsize Topos, Audition, Soma};
-\node[mod, text width=32mm, minimum height=14mm] (loff) at (11.1,-2.9) {next context of the predictive processors\\\scriptsize Topos, Audition, Soma};
+\node[mod, text width=32mm, minimum height=14mm] (lon) at (11.1,2.9) {next context of the predictive processors\\\scriptsize vision, audition, interoception};
+\node[mod, text width=32mm, minimum height=14mm] (lmatch) at (11.1,0) {next context of the predictive processors\\\scriptsize vision, audition, interoception};
+\node[mod, text width=32mm, minimum height=14mm] (loff) at (11.1,-2.9) {next context of the predictive processors\\\scriptsize vision, audition, interoception};
 % compare
 \node[on, text width=30mm, minimum height=16mm] (cmp) at (15.5,0)
   {\textcolor{fg}{\textbf{compare}}\\[2pt]\scriptsize paired by seed: on minus each control; decision rule fixed before the runs};
@@ -59,7 +59,7 @@
 % measures + outcome
 \node[mod, text width=160mm, align=left, inner sep=3mm] (meas) at (7.5,-6.6)
   {\textbf{Planned measures.}\;\;
-   \textbf{Primary}: cross-module broadcast information gain, $\mathrm{gain}_j=(\nu_j(b^0_j)-\nu_j(b))/\bar\nu_j$, the reduction in processor $j$'s prediction error when other modules' share of its context is replaced by its mean so far in the run; averaged over $j$'s reports to $\mathrm{IG}_j$ (Topos, Audition, Soma) and over the three processors to the headline $\mathrm{IG}$, on minus each control; the language organ's share of the context is excluded from Soma's gain.\;
+   \textbf{Primary}: cross-module broadcast information gain, $\mathrm{gain}_j=(\nu_j(b^0_j)-\nu_j(b))/\bar\nu_j$, the reduction in processor $j$'s prediction error when other modules' share of its context is replaced by its mean so far in the run; averaged over $j$'s reports to $\mathrm{IG}_j$ (vision, audition, interoception) and over the three processors to the headline $\mathrm{IG}$, on minus each control; the language organ's share of the context is excluded from the interoception gain.\;
    \textbf{Positive control}: the next input projected on its first principal component, with noise set from the pilot runs so that the expected effect equals the minimum effect $\theta_{\rm PC}$; it must be detected for every processor before the live runs.\;
    \textbf{Secondary}: the contrast at threshold, a local-linear regression discontinuity at the access threshold with robust bias-corrected inference, matched on context age; and the tone analysis, which compares the accessed fractions of emotional and neutral tone events in the tone variant, overall and within bins of the error ratio. Neither enters the verdict.\;
    Utterances are recorded but are not a measure.};
