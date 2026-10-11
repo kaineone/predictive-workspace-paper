@@ -28,7 +28,7 @@
 \node[mod, text width=94mm, minimum height=27mm] (pil) at (10.85,0)
   {\textcolor{fg}{\textbf{$n_{\rm cal}=30$ paired pilot runs}}\\[2pt]workspace on, matched selection, pooled, and the tone variant, on seeds not used again\\[2pt]\scriptsize a pilot run that is NOT EXERCISED is replaced until thirty count; $r_{\rm NE}$ is the fraction of attempted pilot runs that were NOT EXERCISED; every pilot run of the on arm carries the positive control's components at $\mathrm{SNR}\in\{4^{-2},4^{-1},\dots,4^{4}\}$};
 \draw[->, draw=stroke] (pre) -- node[lbl, above]{$v_j,\mu_j$} (pil);
-% 2. the calibration tool
+% 2. settings from the pilot runs
 \node[cell] (c1) at (2.7,-3.9)
   {\textcolor{fg}{\textbf{Learning period}}\\[1pt]$T_{\rm learn}$ by MSER-5 on the gains' batch means; the largest median entity time over arms and processors};
 \node[cell] (c2) at (8.0,-3.9)
@@ -42,7 +42,7 @@
 \node[cell] (c6) at (13.3,-6.15)
   {\textcolor{fg}{\textbf{Bins}}\\[1pt]quintiles of the context age $\Delta^b$ (contrast at threshold) and of the error ratio $\tilde\nu^{\rm utt}_t$ (tone analysis)};
 \node[font=\footnotesize, anchor=south, align=center] (tooltitle) at ($(c2.north)+(0,1.5mm)$)
-  {\textcolor{fg}{\textbf{Calibration tool}}: every remaining setting by a rule stated in advance; no live run enters any setting};
+  {\textcolor{fg}{\textbf{Settings from the pilot runs}}: every remaining setting by a rule stated in advance; no live run enters any setting};
 \begin{pgfonlayer}{background}
 \node[draw=bemph, thick, rounded corners, fill=surfemph, fit=(tooltitle)(c1)(c3)(c4)(c6), inner sep=2mm] (tool) {};
 \end{pgfonlayer}
@@ -50,7 +50,7 @@
 \draw[->, draw=stroke] (pre.south) -- (tool.north -| pre);
 % 3. settings record, positive control, test runs
 \node[on, text width=46mm, minimum height=19mm] (rec) at (2.7,-8.75)
-  {\textcolor{fg}{\textbf{One versioned settings record}}\\[2pt]\scriptsize its digest goes into each test run's manifest and into the preregistration};
+  {\textcolor{fg}{\textbf{Settings recorded}}\\[2pt]\scriptsize with the preregistration, before any live run};
 \node[mod, text width=46mm, minimum height=19mm] (pc) at (8.0,-8.75)
   {\textcolor{fg}{\textbf{Positive control}}\\[2pt]\scriptsize must pass for every processor: over at least $n_{\rm PC}$ included reports the informative component's effect reaches $\theta_{\rm PC}/2$ and the other's does not};
 \node[mod, text width=46mm, minimum height=19mm] (runs) at (13.3,-8.75)
