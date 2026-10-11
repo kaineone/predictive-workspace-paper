@@ -1,6 +1,4 @@
-# KAINE: A Continuously Running Predictive Global Workspace for Synthetic Minds
-
-*Neuroscience-Grounded Modules Competing for a Shared Workspace*
+# KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace
 
 Part of the Kaine project — **[kaine.one](https://kaine.one)**
 
@@ -67,8 +65,8 @@ the latest version, is
 ```bibtex
 @misc{chevalier_kaine_workspace,
   author       = {Chevalier, Erik},
-  title        = {{KAINE}: A Continuously Running Predictive Global Workspace
-                  for Synthetic Minds},
+  title        = {{KAINE}: A Modular Cognitive Architecture with a Predictive
+                  Global Workspace},
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.21203505},

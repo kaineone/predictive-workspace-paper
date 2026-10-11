@@ -1,6 +1,4 @@
-# KAINE: A Continuously Running Predictive Global Workspace for Synthetic Minds
-
-*Neuroscience-Grounded Modules Competing for a Shared Workspace*
+# KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace
 
 **Erik Chevalier**
 
