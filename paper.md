@@ -951,10 +951,10 @@ Because the test is discrete, $\pi(n)$ is not monotone in $n$, and the number of
 *Learning period.* For each arm and each $j\in\mathcal{J}$, the gains of $j$'s reports are averaged across the pilot runs at each report number, and the averages are grouped in consecutive batches of five with means $\bar Y_1,\dots,\bar Y_b$. The truncation point is that of the marginal standard error rule (White 1997), which a comparison of warm-up methods found the most effective for automatic use (Hoad, Robinson, and Davies 2010),
 
 $$
-d^*=\arg\min_{0\le d<b}\ \frac{1}{(b-d)^2}\sum_{i=d+1}^{b}\bigl(\bar Y_i-\bar Y_{(d)}\bigr)^2,
+d^*=\arg\min_{0\le d\le b-5}\ \frac{1}{(b-d)^2}\sum_{i=d+1}^{b}\bigl(\bar Y_i-\bar Y_{(d)}\bigr)^2,
 $$
 
-with $\bar Y_{(d)}$ the mean of $\bar Y_{d+1},\dots,\bar Y_b$. $T_{\rm learn}$ is the largest, over arms and processors, of the median entity time at which report $5d^*$ occurs in the pilot runs, rounded up to a whole second, and it applies unchanged to every test run and to the positive control. A truncation point in the second half of a series means that the pilot runs are too short, and the test does not proceed until longer ones place it in the first half.
+with $\bar Y_{(d)}$ the mean of $\bar Y_{d+1},\dots,\bar Y_b$. The search leaves at least five batch means after $d$, as in that comparison, because a few final batch means that happen to lie close together give the statistic a spuriously small value, and at $d=b-1$ it is 0 for every series. $T_{\rm learn}$ is the largest, over arms and processors, of the median entity time at which report $5d^*$ occurs in the pilot runs, rounded up to a whole second, and it applies unchanged to every test run and to the positive control. A truncation point in the second half of a series, $d^*>b/2$, means that the pilot runs are too short, as does a series of fewer than ten batch means, whose search cannot reach the second half. The test does not proceed until longer pilot runs give $b\ge10$ and $d^*\le b/2$ for every arm and processor.
 
 *Minimum effects.* $c_{\rm eff}=0.5$, half the standard deviation of the contrast, a distribution-based smallest effect of interest (Norman, Sloan, and Wyrwich 2003; Lakens 2017). The minimum effects of the contrast at threshold and of the tone analysis are $c_{\rm eff}$ times the standard deviation of that analysis's run-level statistic over the pilot runs, leaving out runs in which it is undefined.
 
