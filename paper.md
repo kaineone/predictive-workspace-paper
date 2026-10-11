@@ -265,7 +265,7 @@ A local web interface has two surfaces, separated at the bridge from the bus by 
 
 ### 5.4 Implementation status and scope
 
-The reference implementation is research software. This subsection is the one place where the paper states which parts of it are built, held, provisional, or still to be completed; the rest of the paper describes the architecture as designed.
+The reference implementation is research software. This subsection is the one place where the paper states which parts of it are built, held, or provisional, and what has been run; the rest of the paper describes the architecture as designed.
 
 **Built and active.** The workspace, the cognitive cycle, the action layer, and the seven modules of the base-thesis form run together, with the module supervisor, the offline suite (§6.4), the gestation readout (§7), and the runner of the module-addition study. About 7,800 automated tests cover them, with fakes for external services and checks that no raw sense data is persisted and that seeded runs reproduce.
 
@@ -275,9 +275,9 @@ The reference implementation is research software. This subsection is the one pl
 
 **Provisional.** The processors' intensity levels, the access threshold, and the report bars are set provisionally and are to be calibrated together on the live system before the live runs, and the noise floors and margins that let curiosity and boredom build under a steady scene are set by simulation and have not been measured on the live system. The calibrated values are recorded with the preregistration and in Table A1.
 
-**To be completed before the live runs.** The two controls of the planned test (the matched and pooled arms of §6.3), the null-context evaluation behind its measure, and the measure's positive control are to be completed in the live cycle, together with the tool that derives the test's settings from the pilot runs (Appendix A.8), and the study configuration is to set greedy decoding for the language organ. The offline harness that exercises the test's pipeline during development runs a reduced pair of modules against a pooled arm only; it is development tooling, is to be rebuilt around the information-gain measure, and does not test the thesis.
+**Built for the planned test.** The two controls of the planned test (the matched and pooled arms of §6.3) and the null-context evaluation behind its measure are implemented in the live cycle. The measure's positive control, the tone variant and its analysis, the contrast at threshold, and the tool that derives the test's settings from the pilot runs (Appendix A.8) are also implemented. The contrast's bias-corrected local-linear estimator is written from its published derivation (Calonico, Cattaneo, and Titiunik 2014). The study configurations set greedy decoding for the language organ. The offline harness that exercises the test's pipeline during development runs a reduced pair of modules in a workspace-on arm and a pooled arm and compares them by the information gain; it is development tooling and does not test the thesis.
 
-**Results.** The paper presents the architecture, its instruments, and the planned program. No live experiment has been run, and the only result reported is the offline validation of the gestation marker (§7, Appendix A.7).
+**Results.** The paper presents the architecture, its instruments, and the planned program. No pilot run or live experiment has been run, and the only result reported is the offline validation of the gestation marker (§7, Appendix A.7).
 
 -----
 
@@ -418,7 +418,7 @@ The architecture implements computational properties associated with access cons
 
 ## 10. Future work
 
-The immediate steps are completing the two controls, the null-context evaluation, and the positive control in the cycle (§5.4) and then running the workspace-mediation ablation (§6.3) and the module-addition study (§6.5). Beyond them, the program grows the architecture along three lines.
+The immediate steps are calibrating the intensity levels, the access threshold, and the report bars on the live system, making the pilot runs that fix the test's settings (§5.4, Appendix A.8), and then running the workspace-mediation ablation (§6.3) and the module-addition study (§6.5). Beyond them, the program grows the architecture along three lines.
 
 Module addition brings the held faculties into the competition one at a time, each with its own instrument (§4): episodic memory consolidated during sleep, a world model whose prediction error competes alongside perceptual and interoceptive error, a self-model, social cognition, a voice, and bounded active inference. Each addition tests whether the faculty changes what the workspace selects and what the processors predict.
 
