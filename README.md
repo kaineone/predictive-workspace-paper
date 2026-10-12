@@ -1,6 +1,6 @@
 # KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace
 
-Part of the Kaine project — **[kaine.one](https://kaine.one)**
+Part of the Kaine project: **[kaine.one](https://kaine.one)**
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21203505.svg)](https://doi.org/10.5281/zenodo.21203505)
 
