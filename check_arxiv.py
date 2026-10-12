@@ -3,7 +3,8 @@
 
 Reads paper.md and header-preprint.tex from the repository root and reports
 compliance with rules drawn from https://info.arxiv.org/help/prep.html and
-https://info.arxiv.org/help/submit_tex.html.
+https://info.arxiv.org/help/submit_tex.html. The script also enforces house
+word budgets for the main text and Appendix A.
 """
 
 import argparse
@@ -13,6 +14,10 @@ from pathlib import Path
 
 ABSTRACT_LIMIT = 1920
 ACCEPTED_IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".pdf"}
+
+# House limits, not arXiv rules; raising one should be a deliberate edit.
+MAIN_TEXT_WORD_BUDGET = 11800
+APPENDIX_WORD_BUDGET = 10900
 
 
 def parse_args():
@@ -104,6 +109,30 @@ def extract_raw_abstract(paper_text):
     if not raw.strip():
         return None, "abstract is empty"
     return raw, None
+
+
+def extract_main_text(paper_text):
+    lines = paper_text.splitlines()
+    end = None
+    for i, line in enumerate(lines):
+        if line.strip() == "## Disclosure of generative AI use":
+            end = i
+            break
+    if end is None:
+        return None, "## Disclosure of generative AI use marker missing"
+    return "\n".join(lines[:end]), None
+
+
+def extract_appendix(paper_text):
+    lines = paper_text.splitlines()
+    start = None
+    for i, line in enumerate(lines):
+        if line.startswith("## Appendix A"):
+            start = i
+            break
+    if start is None:
+        return None, "## Appendix A marker missing"
+    return "\n".join(lines[start:]), None
 
 
 def figure_paths(paper_text):
@@ -292,6 +321,18 @@ def rule_figures(root, paper_text):
     return True, f"{len(refs)} figures, all present (PNG/JPG/PDF)"
 
 
+def rule_main_text_length(count, headroom):
+    ok = count <= MAIN_TEXT_WORD_BUDGET
+    detail = f"{count} / {MAIN_TEXT_WORD_BUDGET} words, headroom {headroom}"
+    return ok, detail
+
+
+def rule_appendix_length(count, headroom):
+    ok = count <= APPENDIX_WORD_BUDGET
+    detail = f"{count} / {APPENDIX_WORD_BUDGET} words, headroom {headroom}"
+    return ok, detail
+
+
 def add_rule(rows, name, func, *args):
     """Call a rule function and append a (status, name, detail) row."""
     try:
@@ -343,6 +384,8 @@ def main():
     title = extract_title(paper_text)
     author_line = extract_author_line(paper_text)
     raw_abstract, abstract_err = extract_raw_abstract(paper_text)
+    main_text, main_text_err = extract_main_text(paper_text)
+    appendix, appendix_err = extract_appendix(paper_text)
 
     rows = []
 
@@ -363,6 +406,34 @@ def main():
     else:
         rows.append(("FAIL", "abstract length", abstract_err))
 
+    if main_text is not None:
+        m_count = len(main_text.split())
+        m_headroom = MAIN_TEXT_WORD_BUDGET - m_count
+    else:
+        m_count = None
+        m_headroom = None
+
+    if appendix is not None:
+        a_count = len(appendix.split())
+        a_headroom = APPENDIX_WORD_BUDGET - a_count
+    else:
+        a_count = None
+        a_headroom = None
+
+    main_summary = (
+        f"main text {m_count} words "
+        f"(budget {MAIN_TEXT_WORD_BUDGET}, headroom {m_headroom})"
+        if m_count is not None
+        else "main text missing"
+    )
+    appendix_summary = (
+        f"Appendix A {a_count} words "
+        f"(budget {APPENDIX_WORD_BUDGET}, headroom {a_headroom})"
+        if a_count is not None
+        else "Appendix A missing"
+    )
+    print(f"Length: {main_summary}; {appendix_summary}")
+
     add_rule(rows, "title ASCII", rule_title_ascii, title)
     add_rule(rows, "title not all caps", rule_title_not_all_caps, title)
     add_rule(rows, "author ASCII", rule_author_ascii, author_line)
@@ -376,6 +447,28 @@ def main():
         paper_text,
     )
     add_rule(rows, "figures", rule_figures, root, paper_text)
+
+    if main_text is not None:
+        add_rule(
+            rows,
+            "main-text length",
+            rule_main_text_length,
+            m_count,
+            m_headroom,
+        )
+    else:
+        rows.append(("FAIL", "main-text length", main_text_err))
+
+    if appendix is not None:
+        add_rule(
+            rows,
+            "appendix length",
+            rule_appendix_length,
+            a_count,
+            a_headroom,
+        )
+    else:
+        rows.append(("FAIL", "appendix length", appendix_err))
 
     print_table(rows)
 
