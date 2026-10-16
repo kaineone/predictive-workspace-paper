@@ -506,10 +506,12 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Long, R., Sebo, J., Butlin, P., Finlinson, K., Fish, K., Harding, J., Pfau, J., Sims, T., Birch, J., and Chalmers, D. (2024). Taking AI welfare seriously. arXiv:2411.00986. https://doi.org/10.48550/arXiv.2411.00986
 - Mann, H. B., and Whitney, D. R. (1947). On a test of whether one of two random variables is stochastically larger than the other. *Annals of Mathematical Statistics* 18(1), 50-60. https://doi.org/10.1214/aoms/1177730491
 - Maret, S., Faraguna, U., Nelson, A. B., Cirelli, C., and Tononi, G. (2011). Sleep and waking modulate spine turnover in the adolescent mouse cortex. *Nature Neuroscience* 14(11), 1418-1420. https://doi.org/10.1038/nn.2934
+- Marsella, S. C., and Gratch, J. (2009). EMA: A process model of appraisal dynamics. *Cognitive Systems Research* 10(1), 70-90. https://doi.org/10.1016/j.cogsys.2008.03.005
 - Mashour, G. A., Roelfsema, P., Changeux, J.-P., and Dehaene, S. (2020). Conscious processing and the global neuronal workspace hypothesis. *Neuron* 105(5), 776-798. https://doi.org/10.1016/j.neuron.2020.01.026
 - Mather, M., and Sutherland, M. R. (2011). Arousal-biased competition in perception and memory. *Perspectives on Psychological Science* 6(2), 114-133. https://doi.org/10.1177/1745691611400234
 - McClelland, J. L., McNaughton, B. L., and O'Reilly, R. C. (1995). Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory. *Psychological Review* 102(3), 419-457. https://doi.org/10.1037/0033-295x.102.3.419
 - Metzinger, T. (2003). *Being no one: The self-model theory of subjectivity.* MIT Press. https://doi.org/10.7551/mitpress/1551.001.0001
+- Moerland, T. M., Broekens, J., and Jonker, C. M. (2018). Emotion in reinforcement learning agents and robots: A survey. *Machine Learning* 107(2), 443-480. https://doi.org/10.1007/s10994-017-5666-0
 - Näätänen, R., Paavilainen, P., Rinne, T., and Alho, K. (2007). The mismatch negativity (MMN) in basic research of central auditory processing: A review. *Clinical Neurophysiology* 118(12), 2544-2590. https://doi.org/10.1016/j.clinph.2007.04.026
 - Natale, R., Nasello-Paterson, C., and Connors, G. (1988). Patterns of fetal breathing activity in the human fetus at 24 to 28 weeks of gestation. *American Journal of Obstetrics and Gynecology* 158(2), 317-321. https://doi.org/10.1016/0002-9378(88)90146-9
 - National Academies of Sciences, Engineering, and Medicine (2019). *Reproducibility and replicability in science.* National Academies Press. https://doi.org/10.17226/25303
@@ -530,6 +532,7 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Rosenbaum, P. R., and Rubin, D. B. (1984). Reducing bias in observational studies using subclassification on the propensity score. *Journal of the American Statistical Association* 79(387), 516-524. https://doi.org/10.1080/01621459.1984.10478078
 - Safron, A. (2020). An integrated world modeling theory (IWMT) of consciousness: Combining integrated information and global neuronal workspace theories with the free energy principle and active inference framework; toward solving the hard problem and characterizing agentic causation. *Frontiers in Artificial Intelligence* 3, 30. https://doi.org/10.3389/frai.2020.00030
 - Sander, D., Grandjean, D., Pourtois, G., Schwartz, S., Seghier, M. L., Scherer, K. R., and Vuilleumier, P. (2005). Emotion and attention interactions in social cognition: Brain regions involved in processing anger prosody. *NeuroImage* 28(4), 848-858. https://doi.org/10.1016/j.neuroimage.2005.06.023
+- Sander, D., Grandjean, D., and Scherer, K. R. (2005). A systems approach to appraisal mechanisms in emotion. *Neural Networks* 18(4), 317-352. https://doi.org/10.1016/j.neunet.2005.03.001
 - Scherer, K. R. (2009). Emotions are emergent processes: They require a dynamic computational architecture. *Philosophical Transactions of the Royal Society B* 364(1535), 3459-3474. https://doi.org/10.1098/rstb.2009.0141
 - Schmidhuber, J. (2010). Formal theory of creativity, fun, and intrinsic motivation (1990-2010). *IEEE Transactions on Autonomous Mental Development* 2(3), 230-247. https://doi.org/10.1109/TAMD.2010.2056368
 - Searle, J. R. (1980). Minds, brains, and programs. *Behavioral and Brain Sciences* 3(3), 417-424. https://doi.org/10.1017/S0140525X00005756
@@ -790,6 +793,14 @@ r_{\rm drive}=v^*\,\mathrm{frac}_k,
 $$
 
 with $r_{\rm drive}=0$ when there is no drive or $v^*\le0$. With an active goal ledger of token-overlap relevance $r_{\rm led}\in[0,1]$, the goal score is $\max(r_{\rm drive},\,r_{\rm led})$, and otherwise $r_{\rm drive}$; it enters the categorical-emotion appraisal and does not enter selection. The component process model checks relevance before conduciveness (Scherer 2009), so content that serves neither the drive nor a goal scores $0$, as irrelevant. The score is never negative, so anger, which needs an obstructed goal, stays unreachable until an obstruction check exists.
+
+Coping potential is checked only when the goal score is above $0$: the model's later checks follow relevance (Scherer 2009), and computational appraisal derives them only for relevant content (Marsella and Gratch 2009). Otherwise it is undefined, and fear, anger, and sadness, which need it, are not eligible. It estimates power, the entity's ability to change the outcome (Sander, Grandjean and Scherer 2005), as a success ratio, a common reading of control in appraisal for learning agents (Moerland, Broekens and Jonker 2018):
+
+$$
+p=\frac{s+1}{s+f+2},
+$$
+
+where, for the drive term, $s$ counts the dominant drive's past crossings ended by relief and $f$ those ended by decay alone, a sleep reset counting as neither, and, for the ledger term, $s$ and $f$ count completed and abandoned goals. The term that sets the goal score supplies $p$, the drive term on a tie. The coping score is $2p-1$, so $0$ before any history. Arousal does not enter it, since in the component process model arousal follows appraisal.
 
 ### A.5 Interoceptive prediction and regulation
 
