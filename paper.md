@@ -490,6 +490,7 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Imbens, G. W., and Kalyanaraman, K. (2012). Optimal bandwidth choice for the regression discontinuity estimator. *The Review of Economic Studies* 79(3), 933-959. https://doi.org/10.1093/restud/rdr043
 - Imbens, G. W., and Lemieux, T. (2008). Regression discontinuity designs: A guide to practice. *Journal of Econometrics* 142(2), 615-635. https://doi.org/10.1016/j.jeconom.2007.05.001
 - International Conference on Harmonisation (2000). *E10: Choice of control group and related issues in clinical trials.* ICH Harmonised Tripartite Guideline, Step 4 version of 20 July 2000. https://database.ich.org/sites/default/files/E10_Guideline.pdf
+- Jaynes, E. T. (2003). *Probability theory: The logic of science*. Cambridge University Press. https://doi.org/10.1017/CBO9780511790423
 - Joffily, M., and Coricelli, G. (2013). Emotional valence and the free-energy principle. *PLoS Computational Biology* 9(6), e1003094. https://doi.org/10.1371/journal.pcbi.1003094
 - Joglekar, M. R., Mejias, J. F., Yang, G. R., and Wang, X.-J. (2018). Inter-areal balanced amplification enhances signal propagation in a large-scale circuit model of the primate cortex. *Neuron* 98(1), 222-234. https://doi.org/10.1016/j.neuron.2018.02.031
 - Jolliffe, I. T. (2002). *Principal component analysis* (2nd ed.). Springer. https://doi.org/10.1007/b98835
@@ -504,12 +505,14 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Li, W., Ma, L., Yang, G., and Gan, W.-B. (2017). REM sleep selectively prunes and maintains new synapses in development and learning. *Nature Neuroscience* 20(3), 427-437. https://doi.org/10.1038/nn.4479
 - Lipinska, G., Stuart, B., Thomas, K. G. F., Baldwin, D. S., and Bolinger, E. (2019). Preferential consolidation of emotional memory during sleep: A meta-analysis. *Frontiers in Psychology* 10, 1014. https://doi.org/10.3389/fpsyg.2019.01014
 - Long, R., Sebo, J., Butlin, P., Finlinson, K., Fish, K., Harding, J., Pfau, J., Sims, T., Birch, J., and Chalmers, D. (2024). Taking AI welfare seriously. arXiv:2411.00986. https://doi.org/10.48550/arXiv.2411.00986
+- Maier, S. F., and Seligman, M. E. P. (2016). Learned helplessness at fifty: Insights from neuroscience. *Psychological Review* 123(4), 349-367. https://doi.org/10.1037/rev0000033
 - Mann, H. B., and Whitney, D. R. (1947). On a test of whether one of two random variables is stochastically larger than the other. *Annals of Mathematical Statistics* 18(1), 50-60. https://doi.org/10.1214/aoms/1177730491
 - Maret, S., Faraguna, U., Nelson, A. B., Cirelli, C., and Tononi, G. (2011). Sleep and waking modulate spine turnover in the adolescent mouse cortex. *Nature Neuroscience* 14(11), 1418-1420. https://doi.org/10.1038/nn.2934
 - Mashour, G. A., Roelfsema, P., Changeux, J.-P., and Dehaene, S. (2020). Conscious processing and the global neuronal workspace hypothesis. *Neuron* 105(5), 776-798. https://doi.org/10.1016/j.neuron.2020.01.026
 - Mather, M., and Sutherland, M. R. (2011). Arousal-biased competition in perception and memory. *Perspectives on Psychological Science* 6(2), 114-133. https://doi.org/10.1177/1745691611400234
 - McClelland, J. L., McNaughton, B. L., and O'Reilly, R. C. (1995). Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory. *Psychological Review* 102(3), 419-457. https://doi.org/10.1037/0033-295x.102.3.419
 - Metzinger, T. (2003). *Being no one: The self-model theory of subjectivity.* MIT Press. https://doi.org/10.7551/mitpress/1551.001.0001
+- Moerland, T. M., Broekens, J., and Jonker, C. M. (2018). Emotion in reinforcement learning agents and robots: A survey. *Machine Learning* 107(2), 443-480. https://doi.org/10.1007/s10994-017-5666-0
 - Näätänen, R., Paavilainen, P., Rinne, T., and Alho, K. (2007). The mismatch negativity (MMN) in basic research of central auditory processing: A review. *Clinical Neurophysiology* 118(12), 2544-2590. https://doi.org/10.1016/j.clinph.2007.04.026
 - Natale, R., Nasello-Paterson, C., and Connors, G. (1988). Patterns of fetal breathing activity in the human fetus at 24 to 28 weeks of gestation. *American Journal of Obstetrics and Gynecology* 158(2), 317-321. https://doi.org/10.1016/0002-9378(88)90146-9
 - National Academies of Sciences, Engineering, and Medicine (2019). *Reproducibility and replicability in science.* National Academies Press. https://doi.org/10.17226/25303
@@ -530,6 +533,7 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Rosenbaum, P. R., and Rubin, D. B. (1984). Reducing bias in observational studies using subclassification on the propensity score. *Journal of the American Statistical Association* 79(387), 516-524. https://doi.org/10.1080/01621459.1984.10478078
 - Safron, A. (2020). An integrated world modeling theory (IWMT) of consciousness: Combining integrated information and global neuronal workspace theories with the free energy principle and active inference framework; toward solving the hard problem and characterizing agentic causation. *Frontiers in Artificial Intelligence* 3, 30. https://doi.org/10.3389/frai.2020.00030
 - Sander, D., Grandjean, D., Pourtois, G., Schwartz, S., Seghier, M. L., Scherer, K. R., and Vuilleumier, P. (2005). Emotion and attention interactions in social cognition: Brain regions involved in processing anger prosody. *NeuroImage* 28(4), 848-858. https://doi.org/10.1016/j.neuroimage.2005.06.023
+- Sander, D., Grandjean, D., and Scherer, K. R. (2005). A systems approach to appraisal mechanisms in emotion. *Neural Networks* 18(4), 317-352. https://doi.org/10.1016/j.neunet.2005.03.001
 - Scherer, K. R. (2009). Emotions are emergent processes: They require a dynamic computational architecture. *Philosophical Transactions of the Royal Society B* 364(1535), 3459-3474. https://doi.org/10.1098/rstb.2009.0141
 - Schmidhuber, J. (2010). Formal theory of creativity, fun, and intrinsic motivation (1990-2010). *IEEE Transactions on Autonomous Mental Development* 2(3), 230-247. https://doi.org/10.1109/TAMD.2010.2056368
 - Searle, J. R. (1980). Minds, brains, and programs. *Behavioral and Brain Sciences* 3(3), 417-424. https://doi.org/10.1017/S0140525X00005756
@@ -555,6 +559,7 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Westgate, E. C., and Wilson, T. D. (2018). Boring thoughts and bored minds: The MAC model of boredom and cognitive engagement. *Psychological Review* 125(5), 689-713. https://doi.org/10.1037/rev0000097
 - White, K. P., Jr. (1997). An effective truncation heuristic for bias reduction in simulation output. *Simulation* 69(6), 323-334. https://doi.org/10.1177/003754979706900601
 - Whyte, C. J., and Smith, R. (2021). The predictive global neuronal workspace: A formal active inference model of visual consciousness. *Progress in Neurobiology* 199, 101918. https://doi.org/10.1016/j.pneurobio.2020.101918
+- Williams, H., Lee-Johnson, C., Browne, W. N., and Carnegie, D. A. (2015). Emotion inspired adaptive robotic path planning. In *2015 IEEE Congress on Evolutionary Computation (CEC)*, 3004-3011. https://doi.org/10.1109/CEC.2015.7257263
 - Wilson, M. A., and McNaughton, B. L. (1994). Reactivation of hippocampal ensemble memories during sleep. *Science* 265(5172), 676-679. https://doi.org/10.1126/science.8036517
 - Winkler, I., Denham, S. L., and Nelken, I. (2009). Modeling the auditory scene: Predictive regularity representations and perceptual objects. *Trends in Cognitive Sciences* 13(12), 532-540. https://doi.org/10.1016/j.tics.2009.09.003
 - Wolpert, D. M., Ghahramani, Z., and Jordan, M. I. (1995). An internal model for sensorimotor integration. *Science* 269(5232), 1880-1882. https://doi.org/10.1126/science.7569931
@@ -790,6 +795,14 @@ r_{\rm drive}=v^*\,\mathrm{frac}_k,
 $$
 
 with $r_{\rm drive}=0$ when there is no drive or $v^*\le0$. With an active goal ledger of token-overlap relevance $r_{\rm led}\in[0,1]$, the goal score is $\max(r_{\rm drive},\,r_{\rm led})$, and otherwise $r_{\rm drive}$; it enters the categorical-emotion appraisal and does not enter selection. The component process model checks relevance before conduciveness (Scherer 2009), so content that serves neither the drive nor a goal scores $0$, as irrelevant. The score is never negative, so anger, which needs an obstructed goal, stays unreachable until an obstruction check exists.
+
+Coping potential is checked only when the goal score is above $0$. In the component process model relevance is the first filter and coping is assessed against a specific demand, so the checks run in a fixed order (Sander, Grandjean and Scherer 2005). Otherwise coping is undefined, and fear, anger, and sadness, which need it, are not eligible. The score estimates power, the entity's own ability to change the outcome, which the model separates from control, whether any agent could change it (Sander, Grandjean and Scherer 2005). Learning agents derive power from interaction history, one reading being the agent's overall success (Moerland, Broekens and Jonker 2018), measured in path planning as goals reached against goals aborted (Williams et al. 2015). The estimate is that success ratio under Laplace's rule of succession (Jaynes 2003, ch. 18):
+
+$$
+p=\frac{s+1}{s+f+2}.
+$$
+
+An outcome counts as a success only when the entity's own response produced it, since outcomes that arrive independently of responses are what defines helplessness (Maier and Seligman 2016). For the drive term, a past crossing of the dominant drive counts in $s$ when the entity's own response ended it: its learning progress for curiosity and its intents for restlessness, either by relieving the drive or by holding its build input down on the step the drive fell back, the latter credited only if the drive would not have fallen back with the build input at its no-response value. Every other end counts in $f$: decay alone, perceptual novelty for boredom, and another's voice for the social drive. A sleep reset counts as neither. For the ledger term, $s$ and $f$ count completed and abandoned goals. The term that sets the goal score supplies $p$, the drive term on a tie. The coping score is $2p-1$, so $0$ before any history. Arousal does not enter it, since in the component process model arousal follows appraisal.
 
 ### A.5 Interoceptive prediction and regulation
 
