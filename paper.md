@@ -132,7 +132,7 @@ For the four predictive processors, intensity is surprise scaled by an estimate 
 
 Priority is the product of intensity, a novelty factor that discounts exact repeats among recent candidates (mainly state events), and a goal factor held at one in this form (§5.4). Arousal turns priority into a score through a level gain common to all candidates and a contrast gain, zero at baseline and rising above it, that steepens a logistic so that strong candidates rise and weak ones fall.
 
-Arousal is a global, neuromodulatory gain modeled on the adaptive-gain account of the locus coeruleus, the brainstem source of cortical noradrenaline, which sets the gain of the networks it targets (Aston-Jones and Cohen 2005; Eldar, Cohen, and Niv 2013). Surprise drives it, in line with noradrenergic signaling of unexpected uncertainty (Yu and Dayan 2005). Precision, in Feldman and Friston's sense, is a gain local to one channel's errors; arousal is a gain across networks. Aston-Jones and Cohen separate a focusing phasic mode from an exploratory tonic mode; here one scalar sharpens contrast and narrows the sensory apertures, as in focus, and raises the access rate, as in tonic exploration, a simplification of that account. Arousal never reorders a tick's candidates (A.1); in effect it sets a threshold on the top priority, which decides which broadcasts and members reach access and the report bars. Widening the gap between strong and weak scores is a score-magnitude analogue of arousal-biased competition, where arousal changes which representation wins (Mather and Sutherland 2011).
+Arousal is a global, neuromodulatory gain modeled on the adaptive-gain account of the locus coeruleus, the brainstem source of cortical noradrenaline, which sets the gain of the networks it targets (Aston-Jones and Cohen 2005; Eldar, Cohen, and Niv 2013). Surprise drives it, in line with noradrenergic signaling of unexpected uncertainty and the phasic locus coeruleus response to salient change (Yu and Dayan 2005; Bouret and Richmond 2009). Precision, in Feldman and Friston's sense, is a gain local to one channel's errors; arousal is a gain across networks. One scalar here both focuses, sharpening contrast and narrowing the sensory apertures, and explores, raising the access rate, simplifying Aston-Jones and Cohen's phasic and tonic modes. Arousal never reorders a tick's candidates (A.1); in effect it sets the priority that access and the report bars need. Widening the gap between strong and weak scores is a score-magnitude analogue of arousal-biased competition, where arousal changes which representation wins (Mather and Sutherland 2011).
 
 On each broadcast tick the top-ranked candidates, up to five, form the coalition that is broadcast. Access is all-or-none per member: a member is accessed when its score reaches the access threshold, a broadcast when any member is, and the accessed members are the accessed content. A broadcast with no accessed member is still published to every module but marked inhibited: it is not poised for report or action and leaves the processors' context unchanged. It still reaches the sequence and affect modules, so content without access can influence later processing, a design choice in line with evidence that emotional stimuli are processed without reaching awareness (Vuilleumier 2005). The threshold is the analog of the confidence threshold for access in the predictive global neuronal workspace (Whyte and Smith 2021), consistent with the threshold evidence of §2.2; thresholding one scalar score is an engineering simplification (§1.2). Here it separates content that enters the context and can drive report and action from content that cannot (A.1).
 
@@ -195,7 +195,7 @@ A vocal-emotion classifier labels the tone of speech windows. A non-neutral tone
 
 **Affect module.** Modeled on core affect, the low-dimensional state of valence and arousal that constructionist theory places at the base of emotion (Barrett 2017), the module keeps a dimensional affective state (Posner, Russell, and Peterson 2005) and sequentially appraises every broadcast and the interoceptive condition (Scherer 2009), as in accounts where affect arises from prediction over the body's internal state (Seth 2013; Seth and Friston 2016; Tschantz et al. 2022).
 
-The affect module raises arousal, the global gain of §3.2, on each vision or audition alert, in proportion to the error's excess over its expected size, and by a fixed step on each interoceptive alarm (a host metric past its hard threshold), read directly from the processors' streams; its appraisal leaves arousal unchanged, so a higher access rate cannot raise it. High arousal narrows the fovea and the attended auditory window and, with the alerts, raises the access rate (§3.4); low arousal widens both windows. Arousal is clipped to its range and relaxes to baseline with a time constant of about 20 seconds (§6.4). As surprise is relative to each processor's history, arousal tracks changes in surprise more than its sustained level.
+The affect module raises arousal, the global gain of §3.2, on each vision or audition alert, in proportion to the larger excess of its error or its change over their expected sizes, and by a fixed step on each interoceptive alarm (a host metric past its hard threshold), read directly from the processors' streams; its appraisal leaves arousal unchanged, so a higher access rate cannot raise it. High arousal narrows the fovea and the attended auditory window and, with the alerts, raises the access rate (§3.4); low arousal widens both windows. Arousal is clipped to its range and relaxes to baseline with a time constant of about 20 seconds (§6.4). As surprise is relative to each processor's history, arousal tracks changes in surprise more than its sustained level.
 
 Valence follows learning progress: it relaxes toward the appraisal's pleasantness check, which rises as perceptual prediction errors fall and drops as they rise (valence as the negative rate of change of free energy; Joffily and Coricelli 2013), and interoceptive wellness shifts it.
 
@@ -446,6 +446,7 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Bender, R., and Lange, S. (2001). Adjusting for multiple testing: When and how? *Journal of Clinical Epidemiology* 54(4), 343-349. https://doi.org/10.1016/S0895-4356(00)00314-0
 - Bernstein, N. A. (1967). *The co-ordination and regulation of movements.* Pergamon Press.
 - Block, N. (1995). On a confusion about a function of consciousness. *Behavioral and Brain Sciences* 18(2), 227-247. https://doi.org/10.1017/S0140525X00038188
+- Bouret, S., and Richmond, B. J. (2009). Relation of locus coeruleus neurons in monkeys to Pavlovian and operant behaviors. *Journal of Neurophysiology* 101(2), 898-911. https://doi.org/10.1152/jn.91048.2008
 - Browne, R. H. (1995). On the use of a pilot sample for sample size determination. *Statistics in Medicine* 14(17), 1933-1940. https://doi.org/10.1002/sim.4780141709
 - Bruineberg, J., Dołęga, K., Dewhurst, J., and Baltieri, M. (2022). The emperor's new Markov blankets. *Behavioral and Brain Sciences* 45, e183. https://doi.org/10.1017/S0140525X21002351
 - Buhusi, C. V., and Meck, W. H. (2005). What makes us tick? Functional and neural mechanisms of interval timing. *Nature Reviews Neuroscience* 6(10), 755-765. https://doi.org/10.1038/nrn1764
@@ -684,7 +685,7 @@ $$
 \tilde\nu_t\ge\beta_\nu\quad\text{or}\quad\left(\tilde c_t\ge\beta_c\ \ \text{and}\ \ c_t\ge c^{\min}_m\right),
 $$
 
-with the absolute change floor $c^{\min}_m=c^{\min}_{\rm Vis}$ or $c^{\min}_m=c^{\min}_{\rm Aud}$. The error series are $\nu^{\rm Vis}_t$ and $\nu^{\rm Aud}_t$ where needed; reports carry $\nu_t$ and $\tilde\nu_t$.
+with the absolute change floor $c^{\min}_m=c^{\min}_{\rm Vis}$ or $c^{\min}_m=c^{\min}_{\rm Aud}$. The error series are $\nu^{\rm Vis}_t$ and $\nu^{\rm Aud}_t$ where needed; reports carry $\nu_t$, $\tilde\nu_t$, and $\tilde c_t$.
 
 **Fovea.** Under foveation, each coarse-grid tile $j$ has per clip report a frame change $d_j$, the absolute change of its mean gray level since the previous clip report ($0$ on the first, which updates no statistics). Later reports update its exponentially weighted mean $\mu^F_j$ and variance $(\sigma^F_j)^2$ with weight $\alpha_F$, $\mu^F_j\leftarrow\mu^F_j+\alpha_F(d_j-\mu^F_j)$ and $(\sigma^F_j)^2\leftarrow(1-\alpha_F)\bigl((\sigma^F_j)^2+\alpha_F(d_j-\mu^F_j)^2\bigr)$, using the prior $\mu^F_j$; the first update sets $\mu^F_j=d_j$ and $\sigma^F_j=0$. After $n_F$ updates the tile's salience is the z-score
 
@@ -753,10 +754,10 @@ The affect module holds valence $v\in[-1,1]$, arousal $a\in[0,1]$ (starting at $
 1. *Perceptual alert.* For each vision or acoustic audition alert (A.2), read from its stream whether selected or not,
 
 $$
-a\leftarrow a+\gamma_a\min\!\left(\nu_{\rm cap},\ \max(0,\ \tilde\nu-1)\right),
+a\leftarrow a+\gamma_a\min\!\left(\nu_{\rm cap},\ \max(0,\ \max(\tilde\nu,\tilde c)-1)\right),
 $$
 
-where $\tilde\nu$ is the running ratio of the forward-model error the report carries.
+where $\tilde\nu$ and $\tilde c$ are the error and change ratios the report carries (A.2).
 
 2. *Interoceptive alert.* For each interoception report with $\mathcal{A}_t\neq\emptyset$, $a\leftarrow a+\gamma_{\rm Intero}$.
 
