@@ -50,7 +50,7 @@ Two departures from the formal sources are engineering choices. Whyte and Smith 
 
 Global Workspace Theory reads most naturally as a theory of access consciousness (Block 1995), of when information becomes available for report, reasoning, and action control. We adopt that access-only reading and take no position on whether access suffices for phenomenal experience.
 
-The COGITATE adversarial collaboration, a large preregistered test of Global Neuronal Workspace Theory against Integrated Information Theory, challenged both (Cogitate Consortium et al. 2025): ignition at stimulus offset was generally absent and prefrontal cortex represented some dimensions of conscious content only weakly, while Integrated Information Theory's predicted sustained posterior synchronization was absent. We treat the workspace's neural-localization claims as contested rather than refuted, given a substantial prior evidence base (Mashour et al. 2020). The architecture uses the workspace at the computational level and so inherits none of those cortical predictions.
+The COGITATE adversarial collaboration, a large preregistered test of Global Neuronal Workspace Theory against Integrated Information Theory, challenged both (Cogitate Consortium et al. 2025): ignition at stimulus offset was generally absent and prefrontal cortex represented some dimensions of conscious content only weakly, while Integrated Information Theory's predicted sustained posterior synchronization was absent. We treat the workspace's neural-localization claims as contested, not refuted, given a substantial prior evidence base (Mashour et al. 2020). The architecture uses the workspace at the computational level and so inherits none of those cortical predictions.
 
 The Free Energy Principle risks vacuity or unfalsifiability (Sun and Firestone 2020), and work on the Markov blanket slides between an instrumental, statistical reading and a realist, metaphysical one (Bruineberg et al. 2022). We hold it only as an engineering frame.
 
@@ -102,7 +102,7 @@ Rao and Ballard (1999) model vision as a hierarchy in which each level predicts 
 
 CoALA frames language agents as cognitive architectures whose structured memory feeds a model that remains the core reasoner (Sumers et al. 2024); Generative Agents retrieve memories into prompts by recency, importance, and relevance (Park et al. 2023). Both keep the language model central. In KAINE it is an output organ (§3.1); the shared state is the multi-module broadcast, and the workspace selects and integrates.
 
-Gurnee et al. (2026) use a Jacobian-lens interpretability method to find verbalizable representations in a large language model with five functional signatures of a global workspace: verbal report, top-down modulation, a role as the medium of internal reasoning, broadcast to many downstream operations, and selectivity. They note that a transformer has no obviously separable input processors and broadcasts within one feedforward pass rather than through recurrent loops, and take no position on consciousness. KAINE has both features: separate processor modules compete for access, and the accessed summary returns to them as context.
+Gurnee et al. (2026) use a Jacobian-lens interpretability method to find verbalizable representations in a large language model with five functional signatures of a global workspace: verbal report, top-down modulation, a role as the medium of internal reasoning, broadcast to many downstream operations, and selectivity. They note that a transformer has no obviously separable input processors and broadcasts within one feedforward pass, not through recurrent loops, and take no position on consciousness. KAINE has both features: separate processor modules compete for access, and the accessed summary returns to them as context.
 
 -----
 
@@ -267,7 +267,7 @@ Replaceable modules (§3.1) are realized at declared seams, where a plugin swaps
 
 ### 5.3 Privacy and recording
 
-A local web interface has two surfaces behind a filter at the bus bridge that strips cognitive content and all perceptual and latent vectors; in the first configuration the conversation surface is off and the diagnostics surface shows only operational metadata (counts, rates, scores). Studies keep a graph-only log of each broadcast's coalition members (module, event type, score, timestamp), access decision, and timing, without payloads or embeddings. The entity's utterances are kept locally; heard speech is never persisted. The log observes structure rather than content, is kept for the analysis, and is deleted by the operator after the analysis and its planned use as world-model training data, never automatically.
+A local web interface has two surfaces behind a filter at the bus bridge that strips cognitive content and all perceptual and latent vectors; in the first configuration the conversation surface is off and the diagnostics surface shows only operational metadata (counts, rates, scores). Studies keep a graph-only log of each broadcast's coalition members (module, event type, score, timestamp), access decision, and timing, without payloads or embeddings. The entity's utterances are kept locally; heard speech is never persisted. The log observes structure, not content, is kept for the analysis, and is deleted by the operator after the analysis and its planned use as world-model training data, never automatically.
 
 ### 5.4 Implementation status and scope
 
@@ -283,7 +283,7 @@ This subsection alone states which parts of the research software are built, hel
 
 **Built for the planned test.** The live cycle implements the matched and pooled arms and the null-context evaluation of §6.3. The positive control, the tone variant and its analysis, the contrast at threshold with its bias-corrected local-linear estimator, and the tool deriving settings from pilot runs (A.8) are built. A development harness compares a reduced module pair, workspace-on against pooled, by information gain; it exercises the pipeline and does not test the hypothesis.
 
-**Results.** No pilot run or live experiment has been run; the only result reported is the offline validation of the heartbeat entrainment marker (§7, A.7).
+**Results.** No pilot run or live experiment has been run; the only results reported are offline validations of the heartbeat entrainment marker and the maternal voice (§7, A.7).
 
 -----
 
@@ -353,9 +353,9 @@ At boot the system verifies the bus, initializes the modules and forward models,
 
 Each study begins with a developmental phase, named by analogy with prenatal development. It gives every entity and every study branch (§6.5) a reproducible starting state verified by an offline-validated entrainment test and shaped by the entity's own history, and checks before any experiment that the self-rhythm's frequency adaptation works. Developmental robotics likewise begins from a simulated fetal stage with self-organizing movement (Kuniyoshi and Sangawa 2006; Asada et al. 2009).
 
-The perceptual modules receive the developmental stimulus, a dim, low-contrast visual field and a low-pass-filtered soundscape pulsed by a simulated maternal heartbeat and tinted by a slowly varying maternal state, gaining color from near-grey over awake time (A.7); it alone continues through sleep, as for a fetus. The interoception module's self-rhythm, an excitatory population with synaptic depression (Tabak et al. 2000) and added adaptive recovery, runs at about 0.8 to 0.9 Hz, the order of human fetal breathing movements (about 44 per minute; Natale, Nasello-Paterson, and Connors 1988). The beat's input is too weak to capture it unaided, and only slow adaptation of its recovery time shifts its intrinsic frequency (Righetti, Buchli, and Ijspeert 2006). No target frequency is set.
+The perceptual modules receive the developmental stimulus, a dim, low-contrast visual field and a low-pass-filtered soundscape with maternal speech, pulsed by a simulated maternal heartbeat and tinted by a slowly varying maternal state, gaining color from near-grey over awake time (A.7); it alone continues through sleep, as for a fetus. The interoception module's self-rhythm, an excitatory population with synaptic depression (Tabak et al. 2000) and added adaptive recovery, runs at about 0.8 to 0.9 Hz, the order of human fetal breathing movements (about 44 per minute; Natale, Nasello-Paterson, and Connors 1988). The beat's input is too weak to capture it unaided, and only slow adaptation of its recovery time shifts its intrinsic frequency (Righetti, Buchli, and Ijspeert 2006). No target frequency is set.
 
-A driven oscillator locks while driven, so locking alone is no evidence of learning, and the entrainment marker tests at brief, scheduled withdrawals. A withdrawal passes when the rhythm locked to its own heartbeat more strongly than to each of 19 surrogates (the generator under other seeds), after the surrogate method for fetal-maternal heart-rate coordination (Van Leeuwen et al. 2003, 2009), when its undriven frequency has moved toward the beat, and when it sustains itself undriven; three consecutive passes are required. Pairing a breathing-scale rhythm with a heartbeat is an analogy rather than a model of fetal physiology: the marker establishes that a periodic drive durably shifted the rhythm's frequency. After maturation its phase and amplitude remain predicted interoceptive inputs, so the entity enters the film program with a body rhythm its development shaped.
+A driven oscillator locks while driven, so locking alone is no evidence of learning, and the entrainment marker tests at brief, scheduled withdrawals. A withdrawal passes when the rhythm locked to its own heartbeat more strongly than to each of 19 surrogates (the generator under other seeds), after the surrogate method for fetal-maternal heart-rate coordination (Van Leeuwen et al. 2003, 2009), when its undriven frequency has moved toward the beat, and when it sustains itself undriven; three consecutive passes are required. Pairing a breathing-scale rhythm with a heartbeat is an analogy, not a model of fetal physiology: the marker establishes that a periodic drive durably shifted the rhythm's frequency. After maturation its phase and amplitude remain predicted interoceptive inputs, so the entity enters the film program with a body rhythm its development shaped.
 
 The maturation gate ends the phase once the marker holds, the period varies enough, the vision module's error on the stimulus has fallen, interoceptive error recovers promptly from a brief drive perturbation, and enough sleeps and awake time have accrued. A viability watch ends a phase whose frequency pull stays flat; a time budget bounds each. At maturation the stimulus brightens briefly and falls silent, and the entity is preserved as the seed of every study branch. Appendix A.7 states the criteria, their persistence across restarts, and the validation.
 
@@ -400,8 +400,8 @@ The architecture implements computational properties associated with access cons
 - The audition module reports a non-neutral tone at its alert level by a fixed rule (§3.5), so the as-built arm cannot show that emotional content earns access on its own merits.
 - The held modules, built and tested in isolation, have not run together, so interaction effects are unknown, and the first module-addition study is descriptive (§6.5).
 - The memory strength rule takes its depth from one ultrastructural measurement in mouse cortex (de Vivo et al. 2017) and equates a mouse's waking day of potentiation with an entity day of storage at the resting rate. The pruning floor has no empirical value; the affect weight of replay rests on mixed evidence that sleep favors emotional memories (Lipinska et al. 2019; Davidson et al. 2021); and pruning extends to every trace an elimination evidenced for new synapses in development and learning, while adult sleep shrinks synapses without removing them (§4, A.10).
-- Reproducibility is seed-level for the offline deterministic harness; the live tier establishes validity by statistical replicability across runs rather than bit-for-bit reproduction (§6.1).
-- The governance framework remains at the proposal stage, and the licensing is legally novel and untested.
+- Reproducibility is seed-level for the offline deterministic harness; the live tier establishes validity by statistical replicability across runs, not bit-for-bit reproduction (§6.1).
+- The governance framework is still a proposal, and the licensing is legally novel and untested.
 - The access-rate controller is a modeling choice with open effects on workspace dynamics: its linear map, resting rate of about 3.3 Hz, rise after alerts, and 10 Hz ceiling draw on the attention literature without being derived from it (§3.4).
 - The calibration is provisional (§5.4). The intensity levels act as per-source weights deciding how modules trade off; with Table A1's values, only audition alerts and a failed-phase sleep summary can lead an accessed broadcast at resting arousal, and neither report bar is reachable at rest (A.11).
 - The developmental phase runs on compressed time: a lock forms within hours (A.7), while preterm infants, the nearest human evidence, show effects of maternal stimulation only after weeks of daily skin-to-skin contact (Feldman and Eidelman 2003) or recorded maternal sounds (Webb et al. 2015).
@@ -472,6 +472,7 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Da Costa, L., Parr, T., Sajid, N., Veselic, S., Neacsu, V., and Friston, K. (2020). Active inference on discrete state-spaces: A synthesis. *Journal of Mathematical Psychology* 99, 102447. https://doi.org/10.1016/j.jmp.2020.102447
 - Davidson, P., Jönsson, P., Carlsson, I., and Pace-Schott, E. (2021). Does sleep selectively strengthen certain memories over others based on emotion and perceived future relevance? *Nature and Science of Sleep* 13, 1257-1306. https://doi.org/10.2147/NSS.S286701
 - de Vivo, L., Bellesi, M., Marshall, W., Bushong, E. A., Ellisman, M. H., Tononi, G., and Cirelli, C. (2017). Ultrastructural evidence for synaptic scaling across the wake/sleep cycle. *Science* 355(6324), 507-510. https://doi.org/10.1126/science.aah5982
+- DeCasper, A. J., and Spence, M. J. (1986). Prenatal maternal speech influences newborns' perception of speech sounds. *Infant Behavior and Development* 9(2), 133-150. https://doi.org/10.1016/0163-6383(86)90025-1
 - Dehaene, S., and Changeux, J.-P. (2011). Experimental and theoretical approaches to conscious processing. *Neuron* 70(2), 200-227. https://doi.org/10.1016/j.neuron.2011.03.018
 - Dehaene, S., Kerszberg, M., and Changeux, J.-P. (1998). A neuronal model of a global workspace in effortful cognitive tasks. *Proceedings of the National Academy of Sciences* 95(24), 14529-14534. https://doi.org/10.1073/pnas.95.24.14529
 - Dixon, W. J., and Mood, A. M. (1946). The statistical sign test. *Journal of the American Statistical Association* 41(236), 557-566. https://doi.org/10.1080/01621459.1946.10501898
@@ -530,6 +531,7 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Mashour, G. A., Roelfsema, P., Changeux, J.-P., and Dehaene, S. (2020). Conscious processing and the global neuronal workspace hypothesis. *Neuron* 105(5), 776-798. https://doi.org/10.1016/j.neuron.2020.01.026
 - Mather, M., and Sutherland, M. R. (2011). Arousal-biased competition in perception and memory. *Perspectives on Psychological Science* 6(2), 114-133. https://doi.org/10.1177/1745691611400234
 - McClelland, J. L., McNaughton, B. L., and O'Reilly, R. C. (1995). Why there are complementary learning systems in the hippocampus and neocortex: Insights from the successes and failures of connectionist models of learning and memory. *Psychological Review* 102(3), 419-457. https://doi.org/10.1037/0033-295x.102.3.419
+- Mehl, M. R., Vazire, S., Ramírez-Esparza, N., Slatcher, R. B., and Pennebaker, J. W. (2007). Are women really more talkative than men? *Science* 317(5834), 82. https://doi.org/10.1126/science.1139940
 - Metzinger, T. (2003). *Being no one: The self-model theory of subjectivity.* MIT Press. https://doi.org/10.7551/mitpress/1551.001.0001
 - Moerland, T. M., Broekens, J., and Jonker, C. M. (2018). Emotion in reinforcement learning agents and robots: A survey. *Machine Learning* 107(2), 443-480. https://doi.org/10.1007/s10994-017-5666-0
 - Näätänen, R., Paavilainen, P., Rinne, T., and Alho, K. (2007). The mismatch negativity (MMN) in basic research of central auditory processing: A review. *Clinical Neurophysiology* 118(12), 2544-2590. https://doi.org/10.1016/j.clinph.2007.04.026
@@ -546,10 +548,12 @@ Generative AI assisted in the preparation of this manuscript. The author used a 
 - Park, J. S., O'Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S. (2023). Generative agents: Interactive simulacra of human behavior. In *Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology (UIST '23)*, 1-22. https://doi.org/10.1145/3586183.3606763
 - Posner, J., Russell, J. A., and Peterson, B. S. (2005). The circumplex model of affect: An integrative approach to affective neuroscience, cognitive development, and psychopathology. *Development and Psychopathology* 17(3), 715-734. https://doi.org/10.1017/S0954579405050340
 - Premack, D., and Woodruff, G. (1978). Does the chimpanzee have a theory of mind? *Behavioral and Brain Sciences* 1(4), 515-526. https://doi.org/10.1017/S0140525X00076512
+- Querleu, D., Renard, X., Versyp, F., Paris-Delrue, L., and Crépin, G. (1988). Fetal hearing. *European Journal of Obstetrics and Gynecology and Reproductive Biology* 28(3), 191-212. https://doi.org/10.1016/0028-2243(88)90030-5
 - Rao, R. P. N., and Ballard, D. H. (1999). Predictive coding in the visual cortex: A functional interpretation of some extra-classical receptive-field effects. *Nature Neuroscience* 2(1), 79-87. https://doi.org/10.1038/4580
 - Ray, S., and Maunsell, J. H. R. (2010). Differences in gamma frequencies across visual cortex restrict their possible use in computation. *Neuron* 67(5), 885-896. https://doi.org/10.1016/j.neuron.2010.08.004
 - Rankin, C. H., Abrams, T., Barry, R. J., Bhatnagar, S., Clayton, D. F., Colombo, J., Coppola, G., Geyer, M. A., Glanzman, D. L., Marsland, S., McSweeney, F. K., Wilson, D. A., Wu, C.-F., and Thompson, R. F. (2009). Habituation revisited: An updated and revised description of the behavioral characteristics of habituation. *Neurobiology of Learning and Memory* 92(2), 135-138. https://doi.org/10.1016/j.nlm.2008.09.012
 - Raymond, J. E., Shapiro, K. L., and Arnell, K. M. (1992). Temporary suppression of visual processing in an RSVP task: An attentional blink? *Journal of Experimental Psychology: Human Perception and Performance* 18(3), 849-860. https://doi.org/10.1037/0096-1523.18.3.849
+- Richards, D. S., Frentzen, B., Gerhardt, K. J., McCann, M. E., and Abrams, R. M. (1992). Sound levels in the human uterus. *Obstetrics and Gynecology* 80(2), 186-190. https://pubmed.ncbi.nlm.nih.gov/1635729/
 - Righetti, L., Buchli, J., and Ijspeert, A. J. (2006). Dynamic Hebbian learning in adaptive frequency oscillators. *Physica D* 216(2), 269-281. https://doi.org/10.1016/j.physd.2006.02.009
 - Rosenbaum, P. R., and Rubin, D. B. (1984). Reducing bias in observational studies using subclassification on the propensity score. *Journal of the American Statistical Association* 79(387), 516-524. https://doi.org/10.1080/01621459.1984.10478078
 - Safron, A. (2020). An integrated world modeling theory (IWMT) of consciousness: Combining integrated information and global neuronal workspace theories with the free energy principle and active inference framework; toward solving the hard problem and characterizing agentic causation. *Frontiers in Artificial Intelligence* 3, 30. https://doi.org/10.3389/frai.2020.00030
@@ -944,6 +948,8 @@ The verdict is recorded once; the study runner ends the step and keeps its data.
 
 **Maturation gate and budget.** The gate, evaluated each gate cadence, has three conditions, each failing closed on missing or stale evidence. C1 requires a readout at most three cadences old in which the latest withdrawal's self-sustain and entrainment markers are true, $V_{\rm per}\ge V^{\min}_{\rm per}$, $\mathrm{err}_{\rm Vis}\le\mathrm{err}^{\max}_{\rm Vis}$, and the return-to-baseline time is at most $\Delta^{\rm rec}_{\max}$. The period variability $V_{\rm per}$ is the coefficient of variation of intervals between self-rhythm phase wraps over the last $\Delta_{\rm per}$, once four wraps exist. The vision error ratio $\mathrm{err}_{\rm Vis}$ is the median vision prediction error on the developmental stimulus (§7) since the last readout, divided by the first such median of at least three errors. The return-to-baseline time runs from the last perturbation's end to the first sample where the median of $\nu^{\rm Intero}$ over the preceding five seconds (not before the perturbation's start) is at most $(1+\mathrm{tol}_{\rm rec})$ times its median over the minute before the perturbation, and is $\Delta^{\rm rec}_{\rm cap}$, a C1 failure, if none comes within $\Delta^{\rm rec}_{\rm cap}$. C2 requires at least $n_{\rm sleep}$ completed sleeps with the sleep module present, and at least $n_{\rm cons}$ consolidation passes with the world-model module also present. C3 requires $\mathcal{T}_{\rm awake}\ge\Delta_{\rm awake}$. Independently, the study runner ends a developmental step once its wall-clock duration exceeds $\Delta_{\rm budget}$.
 
+**Maternal voice.** The soundscape carries a maternal voice, heard in utero above the background with high frequencies attenuated and intonation kept (Querleu et al. 1988; Richards et al. 1992): 41 pre-rendered takes of 20 original items, low-passed like the soundscape and played $L_v$ above its RMS and jittered by $\pm j_v$. A $\Delta_v$ slot talks with probability $p_v$ times the maternal arousal (speech about 7 percent of the time; Mehl et al. 2007), opening with a repeated passage (DeCasper and Spence 1986) with probability $r_v$; five items start unlocked, one more per $\Delta_u$ awake. Offline, learning progress relieves curiosity 7.5 times an hour, never without the voice; a phase-randomized control matches it and a frozen forward model never does, so relief comes from re-adapting at each episode, not from learning speech.
+
 **Offline validation.** The plasticity rate puts a lock well within the 96-hour budget. Over 96 simulated hours all 10 seeds entrain at 70 bpm, typically by 14 hours, and each rate from 60 to 80 bpm tracks its own heartbeat and locks in 3 to 48 hours. No control passes: no maternal drive, a jittered beat, no plasticity, and six pairs scored against a heartbeat other than the driving one, whose single withdrawals passed by chance in 2.6 to 10 percent, never three in a row. The three-pass requirement, fixed on the first run, held on fresh seeds. The same validation set the viability thresholds; it flagged no viable phase and every unviable one by 24 to 27 hours.
 
 ### A.8 Broadcast information gain and the planned test
@@ -1055,7 +1061,7 @@ and those in $\mathcal{Q}$ keep theirs. $N_{\rm day}=86\,400\,f_0$ traces are st
 
 ### A.11 Parameter values
 
-Table A1. Parameter values. Status: "design" is part of the model's definition; "calibrated" is set offline by simulation or by the validation of A.7; "provisional" is a current setting, calibrated before the live runs and recorded with them; "operator" is chosen per installation. Times are on the entity clock ("entity"), in awake time ("awake", A.7), or wall-clock ("wall").
+Table A1. Parameter values. Status: blank (design) is part of the model's definition; "calibrated" is set offline by simulation or by the validation of A.7; "provisional" is a current setting, calibrated before the live runs and recorded with them; "operator" is chosen per installation. Times are on the entity clock unless marked as awake time ("awake", A.7) or wall-clock ("wall").
 
 ```{=latex}
 \begingroup\small
@@ -1063,22 +1069,22 @@ Table A1. Parameter values. Status: "design" is part of the model's definition; 
 
 | Symbol | Meaning | Value | Units | Status |
 |------------|--------------------------------------------------|----------------|--------------|----------|
-| $f_p$ | processing rate | 10 | Hz (entity) | design |
-| $f_0$ | resting broadcast rate | 10/3 | Hz (entity) | design |
-| | entity seconds per wall-clock second | 1 | | design |
-| $B$ | maximum events read per stream per tick | 100 | events | design |
-| $K$ | coalition capacity | 5 | events | design |
+| $f_p$ | processing rate | 10 | Hz | |
+| $f_0$ | resting broadcast rate | 10/3 | Hz | |
+| | entity seconds per wall-clock second | 1 | | |
+| $B$ | maximum events read per stream per tick | 100 | events | |
+| $K$ | coalition capacity | 5 | events | |
 | $\theta$ | access threshold | 0.35 | | provisional |
-| $W_N$ | novelty window | 32 | candidates | design |
-| $G$ | goal factor (static) | 1 | | design |
-| $\gamma_G$ | inactive drive-relevance goal attenuation | 0.5 | | design |
-| $T_{\min}$, $T_{\max}$ | arousal level-gain floor, ceiling | 0.2, 1.0 | | design |
-| $g_{\max}$ | contrast gain at arousal 1 | 8.0 | | design |
-| | coherence layer | off | | design |
-| $\kappa_{\min}$, $\kappa_{\max}$ | coherence factor floor, ceiling (layer on) | 0.8, 1.25 | | design |
-| $W_\kappa$ | coherence phase window (layer on) | 10 | ticks | design |
-| $\pi_{\min}$, $\pi_{\max}$ | workspace-feedback gain floor, ceiling (feedback off here) | 0.8, 1.25 | | design |
-| $d_{\rm conf}$, $r_{\rm conf}$, $\Delta\pi$, $\tau_\pi$, $\Delta_{\rm ref}$, $\eta_{\rm td}$ | feedback conflict thresholds; gain step, relaxation, refractory; head rate | 2, 2, 0.1, 10, 10, 0.001 | none, none, none, s, s, none | design |
+| $W_N$ | novelty window | 32 | candidates | |
+| $G$ | goal factor (static) | 1 | | |
+| $\gamma_G$ | inactive drive-relevance goal attenuation | 0.5 | | |
+| $T_{\min}$, $T_{\max}$ | arousal level-gain floor, ceiling | 0.2, 1.0 | | |
+| $g_{\max}$ | contrast gain at arousal 1 | 8.0 | | |
+| | coherence layer | off | | |
+| $\kappa_{\min}$, $\kappa_{\max}$ | coherence factor floor, ceiling (layer on) | 0.8, 1.25 | | |
+| $W_\kappa$ | coherence phase window (layer on) | 10 | ticks | |
+| $\pi_{\min}$, $\pi_{\max}$ | workspace-feedback gain floor, ceiling (feedback off here) | 0.8, 1.25 | | |
+| $d_{\rm conf}$, $r_{\rm conf}$, $\Delta\pi$, $\tau_\pi$, $\Delta_{\rm ref}$, $\eta_{\rm td}$ | feedback conflict thresholds; gain step, relaxation, refractory; head rate | 2, 2, 0.1, 10, 10, 0.001 | none, none, none, s, s, none | |
 | $I^{\rm lo}_{\rm Vis}$, $I^{\rm hi}_{\rm Vis}$ | vision intensity levels | 0.2, 0.7 | | provisional |
 | $I^{\rm lo}_{\rm Aud}$, $I^{\rm hi}_{\rm Aud}$ | audition intensity levels | 0.4, 0.8 | | provisional |
 | $I^{\rm lo}_{\rm Intero}$, $I^{\rm hi}_{\rm Intero}$ | interoception intensity levels | 0.1, 0.7 | | provisional |
@@ -1088,139 +1094,140 @@ Table A1. Parameter values. Status: "design" is part of the model's definition; 
 | $I^{\rm lo}_{\rm Lang}$ | language-organ utterance intensity | 0.4 | | provisional |
 | $m_D$, $b_D$, $L_D$, $N_D$ | organ repetition penalty $m_D b_D^{\,n-L_D}$ for a repeated run of $n\ge L_D$ tokens; window | 0.8, 1.75, 2, 2048 | none; tokens | provisional |
 | | organ length caps (speech, thought); words in a cut repeat | 512, 128; 3 | tokens; words | provisional |
-| $\beta_\Gamma$ | error ratio at which the graded map reaches alert level | 2 | | design |
-| $W_P$ | running-ratio window (vision, audition, interoception, sequence) | 32 | reports | design |
-| $\beta_\nu$ | prediction-error alert ratio (vision, audition) | 2.0 | | design |
-| $\beta_c$ | change alert ratio (vision, audition) | 2.0 | | design |
-| $c^{\min}_{\rm Vis}$, $c^{\min}_{\rm Aud}$ | absolute change floors | $10^{-4}$, 0.35 | | design |
-| $W_{\rm buf}$ | forward-model input buffer (vision, audition) | 16 | reports | design |
-| | forward-model hidden units (vision; audition) | 256; 32 | units | design |
-| $\eta_{\rm fm}$ | forward-model learning rate (vision, audition, interoception, sequence) | $10^{-3}$ | | design |
-| $\omega_{\min}$, $\omega_{\max}$ | audition attended fraction at arousal 1, 0 | 0.15, 1.0 | | design |
-| $\Delta_{\rm att}$ | shortest attended span (audition) | 0.025 | s (entity) | design |
-| | vision saliency grid | 12 by 12 | tiles | design |
-| $\Theta_F$ | fovea hysteresis margin | 0.15 | | design |
-| $F_{\min}$, $F_{\max}$ | fovea size at arousal 1, 0 | 0.12, 0.5 | fraction of frame | design |
-| $\alpha_F$ | fovea tile-statistics weight | 0.05 | | design |
-| $n_F$ | tile updates before z-scoring | 5 | clip reports | design |
-| $k_F$ | tile deviation floor (fraction of mean tile change) | 0.1 | | design |
-| $\beta^{\rm Seq}_\nu$ | sequence temporal-error alert ratio | 3.0 | | design |
-| $W_z$ | sequence hidden-state z-score window | 64 | broadcasts | design |
-| $W_{\rm recur}$ | recurrence window | 32 | broadcasts | design |
-| $n_{\rm recur}$ | recurrence count | 4 | states | design |
-| $\Delta_{\rm recur}$ | recurrence quantization step | 0.25 | | design |
-| $W_{\Delta t}$ | sequence interval window | 32 | broadcasts | design |
-| $s_{\max}$ | timespan cap (interoception, sequence); entered-interval cap over window mean (sequence) | 10 | | design |
-| | reservoir units (interoception; sequence) | 32; 32 | units | design |
-| | sequence forward prediction | on | | design |
-| $I_0$ | phasic salience floor | 0.5 | | design |
-| $\tau_{\rm ph}$ | phasic decay time | 1.0 | s (entity) | design |
-| $a_0$ | baseline arousal (affect, access rate) | 0.3 | | design |
-| | adaptive access rate | on | | design |
-| $\lambda$ | arousal relaxation rate | 0.05 | s$^{-1}$ (entity) | design |
-| $\gamma_D$ | drive gain on the arousal target | 0.2 | | design |
-| $P_{\rm Aff}$ | minimum affect-event interval; timer period | 1.0 | s (entity) | design |
-| $\gamma_a$ | perceptual-alert arousal gain | 0.15 | | design |
-| $\nu_{\rm cap}$ | excess-error-ratio cap per alert | 4.0 | | design |
-| $\gamma_{\rm Intero}$ | arousal step per interoception hard-threshold report | 0.05 | | design |
-| $\tau_{\rm f}$, $\tau_{\rm s}$ | fast, slow time constants (error and wellness means, alert rates) | 10, 100 | s (entity) | design |
-| $k_v$ | learning-progress gain (pleasantness check) | 2.0 | | design |
-| $\tau_v$ | valence time constant | 30 | s (entity) | design |
+| $\beta_\Gamma$ | error ratio at which the graded map reaches alert level | 2 | | |
+| $W_P$ | running-ratio window (vision, audition, interoception, sequence) | 32 | reports | |
+| $\beta_\nu$ | prediction-error alert ratio (vision, audition) | 2.0 | | |
+| $\beta_c$ | change alert ratio (vision, audition) | 2.0 | | |
+| $c^{\min}_{\rm Vis}$, $c^{\min}_{\rm Aud}$ | absolute change floors | $10^{-4}$, 0.35 | | |
+| $W_{\rm buf}$ | forward-model input buffer (vision, audition) | 16 | reports | |
+| | forward-model hidden units (vision; audition) | 256; 32 | units | |
+| $\eta_{\rm fm}$ | forward-model learning rate (vision, audition, interoception, sequence) | $10^{-3}$ | | |
+| $\omega_{\min}$, $\omega_{\max}$ | audition attended fraction at arousal 1, 0 | 0.15, 1.0 | | |
+| $\Delta_{\rm att}$ | shortest attended span (audition) | 0.025 | s | |
+| | vision saliency grid | 12 by 12 | tiles | |
+| $\Theta_F$ | fovea hysteresis margin | 0.15 | | |
+| $F_{\min}$, $F_{\max}$ | fovea size at arousal 1, 0 | 0.12, 0.5 | fraction of frame | |
+| $\alpha_F$ | fovea tile-statistics weight | 0.05 | | |
+| $n_F$ | tile updates before z-scoring | 5 | clip reports | |
+| $k_F$ | tile deviation floor (fraction of mean tile change) | 0.1 | | |
+| $\beta^{\rm Seq}_\nu$ | sequence temporal-error alert ratio | 3.0 | | |
+| $W_z$ | sequence hidden-state z-score window | 64 | broadcasts | |
+| $W_{\rm recur}$ | recurrence window | 32 | broadcasts | |
+| $n_{\rm recur}$ | recurrence count | 4 | states | |
+| $\Delta_{\rm recur}$ | recurrence quantization step | 0.25 | | |
+| $W_{\Delta t}$ | sequence interval window | 32 | broadcasts | |
+| $s_{\max}$ | timespan cap (interoception, sequence); entered-interval cap over window mean (sequence) | 10 | | |
+| | reservoir units (interoception; sequence) | 32; 32 | units | |
+| | sequence forward prediction | on | | |
+| $I_0$ | phasic salience floor | 0.5 | | |
+| $\tau_{\rm ph}$ | phasic decay time | 1.0 | s | |
+| $a_0$ | baseline arousal (affect, access rate) | 0.3 | | |
+| | adaptive access rate | on | | |
+| $\lambda$ | arousal relaxation rate | 0.05 | s$^{-1}$ | |
+| $\gamma_D$ | drive gain on the arousal target | 0.2 | | |
+| $P_{\rm Aff}$ | minimum affect-event interval; timer period | 1.0 | s | |
+| $\gamma_a$ | perceptual-alert arousal gain | 0.15 | | |
+| $\nu_{\rm cap}$ | excess-error-ratio cap per alert | 4.0 | | |
+| $\gamma_{\rm Intero}$ | arousal step per interoception hard-threshold report | 0.05 | | |
+| $\tau_{\rm f}$, $\tau_{\rm s}$ | fast, slow time constants (error and wellness means, alert rates) | 10, 100 | s | |
+| $k_v$ | learning-progress gain (pleasantness check) | 2.0 | | |
+| $\tau_v$ | valence time constant | 30 | s | |
 | $\mathrm{lp}_0$ | learning-progress noise floor | 0.05 | | calibrated |
 | $m_B$ | alert-excess margin | 0.5 | | calibrated |
-| $r_0$ | alert-rate floor | 0.05 | s$^{-1}$ (entity) | design |
-| $\alpha_{\rm int}$ | intent-rate weight | 0.05 | | design |
-| $\beta_D$, $\delta_D$, $\rho_D$ | curiosity build, decay, relief | 0.05, 0.0055, 0.5 | s$^{-1}$ (entity) | design |
-| $\beta_D$, $\delta_D$, $\rho_D$; $\rho_{\rm eng}$ | boredom build, decay, relief; relief per engaging intent | 0.04, 0.0045, 0.3; 0.5 | s$^{-1}$ (entity); none | design |
-| $\beta_D$, $\delta_D$; $\rho_D$ | social-drive build, decay; relief per interaction | 0.01, 0.0011; 0.8 | s$^{-1}$ (entity); none | design |
-| $\beta_D$, $\delta_D$; $\rho_D$ | restlessness build, decay; relief per intent | 0.03, 0.0033; 0.5 | s$^{-1}$ (entity); none | design |
-| $\theta_D$ | drive threshold (every drive) | 0.7 | | design |
-| $\Theta_D$ | drive re-arm fraction | 0.9 | | design |
-| $\Delta_{\rm stall}$, $n_{\rm goal}$, $\Delta_{\rm resp}$, $\eta_L$, $P_{\rm re}$ | goal stall horizon, cap; response window, likelihood fall; re-entry interval | 600, 3, 10, 0.5, 30 | s (entity), goals, s (entity), none, s (entity) | design |
-| $\theta_E$, $b_E$, $\tau_E$ | emotion-regulation set point, tier-1 bias, its decay time | 0.5, 0.2, 20 | none, none, s (entity) | design |
-| | initial held arousal $\hat a$ | 0.3 | | design |
-| | wellness scaling: GPU temperature bounds; cycle-latency target | 30 to 80; 300 | °C; ms | design |
-| $P_{\rm Intero}$ | interoception reading interval | 1.0 | s (entity) | design |
-| $n_x$ | interoception feature dimension (three self-rhythm features, zero unless enabled; one is the highest GPU memory use) | 8 | | design |
-| $\tau_U$ | expected-error time constant | 600 | s (entity) | design |
-| $\beta_U$ | expected-error band | 2.0 | | design |
-| | hard thresholds: CPU, RAM, GPU temperature, GPU memory, cycle latency | 90, 90, 83, 92, 600 | %, %, °C, %, ms | design |
+| $r_0$ | alert-rate floor | 0.05 | s$^{-1}$ | |
+| $\alpha_{\rm int}$ | intent-rate weight | 0.05 | | |
+| $\beta_D$, $\delta_D$, $\rho_D$ | curiosity build, decay, relief | 0.05, 0.0055, 0.5 | s$^{-1}$ | |
+| $\beta_D$, $\delta_D$, $\rho_D$; $\rho_{\rm eng}$ | boredom build, decay, relief; relief per engaging intent | 0.04, 0.0045, 0.3; 0.5 | s$^{-1}$; none | |
+| $\beta_D$, $\delta_D$; $\rho_D$ | social-drive build, decay; relief per interaction | 0.01, 0.0011; 0.8 | s$^{-1}$; none | |
+| $\beta_D$, $\delta_D$; $\rho_D$ | restlessness build, decay; relief per intent | 0.03, 0.0033; 0.5 | s$^{-1}$; none | |
+| $\theta_D$ | drive threshold (every drive) | 0.7 | | |
+| $\Theta_D$ | drive re-arm fraction | 0.9 | | |
+| $\Delta_{\rm stall}$, $n_{\rm goal}$, $\Delta_{\rm resp}$, $\eta_L$, $P_{\rm re}$ | goal stall horizon, cap; response window, likelihood fall; re-entry interval | 600, 3, 10, 0.5, 30 | s, goals, s, none, s | |
+| $\theta_E$, $b_E$, $\tau_E$ | emotion-regulation set point, tier-1 bias, its decay time | 0.5, 0.2, 20 | none, none, s | |
+| | initial held arousal $\hat a$ | 0.3 | | |
+| | wellness scaling: GPU temperature bounds; cycle-latency target | 30 to 80; 300 | °C; ms | |
+| $P_{\rm Intero}$ | interoception reading interval | 1.0 | s | |
+| $n_x$ | interoception feature dimension (three self-rhythm features, zero unless enabled; one is the highest GPU memory use) | 8 | | |
+| $\tau_U$ | expected-error time constant | 600 | s | |
+| $\beta_U$ | expected-error band | 2.0 | | |
+| | hard thresholds: CPU, RAM, GPU temperature, GPU memory, cycle latency | 90, 90, 83, 92, 600 | %, %, °C, %, ms | |
 | $\theta_R$ | regulation threshold | 0.5 | | provisional |
-| $\Delta_R$ | regulation sustain window | 30 | s (entity) | design |
-| $n_{\rm wu}$, $\Delta_{\rm wu}$ | warm-up end conditions | 1000, 1200 | updates, s (entity) | design |
-| $\gamma_f$ | processing-rate reduction factor | 0.8 | | design |
-| $f_p^{\min}$, $f_p^{\max}$ | processing-rate bounds under regulation | 0.5, 20 | Hz (entity) | design |
+| $\Delta_R$ | regulation sustain window | 30 | s | |
+| $n_{\rm wu}$, $\Delta_{\rm wu}$ | warm-up end conditions | 1000, 1200 | updates, s | |
+| $\gamma_f$ | processing-rate reduction factor | 0.8 | | |
+| $f_p^{\min}$, $f_p^{\max}$ | processing-rate bounds under regulation | 0.5, 20 | Hz | |
 | $\theta_{\rm th}$ | think bar | 0.45 | | provisional |
 | $\theta_{\rm sp}$ | speak (report) bar | 0.6 | | provisional |
-| $\Delta_{\rm th}$ | think refractory interval | 3.0 | s (entity) | design |
-| $\Delta_{\rm sp}$ | speak refractory interval | 8.0 | s (entity) | design |
-| $\Delta_{\rm sig}$ | signature expiry | 300 | s (entity) | design |
-| $\Delta_g$ | in-flight guard timeout | 48 | s (wall) | design |
-| | interrupt bar | unset | | design |
-| $f_r$ | self-rhythm step rate | 20 | Hz (entity) | design |
-| $n_s$ | Euler substeps per step | 10 | | design |
+| $\Delta_{\rm th}$ | think refractory interval | 3.0 | s | |
+| $\Delta_{\rm sp}$ | speak refractory interval | 8.0 | s | |
+| $\Delta_{\rm sig}$ | signature expiry | 300 | s | |
+| $\Delta_g$ | in-flight guard timeout | 48 | s (wall) | |
+| | interrupt bar | unset | | |
+| $f_r$ | self-rhythm step rate | 20 | Hz | |
+| $n_s$ | Euler substeps per step | 10 | | |
 | $J_{\rm rec}$ | recurrent weight | 2.5 | | calibrated |
 | $\Xi_0$ | input offset | $-0.25$ | | calibrated |
 | $k_y$ | sigmoid slope scale | 0.08 | | calibrated |
-| $\tau_y$ | activity time constant | 0.02 | s (entity) | calibrated |
-| $\gamma_R$ | depression rate | 8.0 | s$^{-1}$ (entity) | calibrated |
+| $\tau_y$ | activity time constant | 0.02 | s | calibrated |
+| $\gamma_R$ | depression rate | 8.0 | s$^{-1}$ | calibrated |
 | $\gamma_o$, $\gamma_u$ | own-drive, maternal-drive gains | 0.02, 0.03 | | calibrated |
 | $\sigma_\xi$ | noise scale | 0.02 | | calibrated |
-| $\tau_{\rm rec}^{(0)}$ | initial recovery time | 2.1 | s (entity) | calibrated |
-| $\tau_{\rm rec}^{\min}$, $\tau_{\rm rec}^{\max}$ | recovery-time bounds | 0.9, 2.3 | s (entity) | calibrated |
-| $\eta_\ell$ | frequency-adaptation rate | 0.0025 | s$^{-1}$ (entity) | calibrated |
-| $\tau_m$ | moving-average time constant | 10 | s (entity) | design |
-| $\Delta_{\rm amp}$ | phase and amplitude window | 8 | s (entity) | design |
-| | initial activity $y$, resource $R$ | 0.05, 1.0 | | design |
-| | maternal beat rate, drift | 70, 0.03 | bpm, none | design |
-| $M_{\max}$ | maximum maternal drive | 0.4 | | design |
-| $c_M^{\rm base}$, $c_M^{\rm pert}$ | usual, perturbation drive scales | 0.5, 0.75 | | design |
-| $f_g$ | readout sampling rate | 10 | Hz (entity) | design |
-| $f_{\rm lo}$, $f_{\rm hi}$ | entrainment band | 0.3, 2.0 | Hz (entity) | design |
-| $\Delta_{\rm trim}$ | edge trim | 2.0 | s (entity) | design |
-| $\Delta_E$ | driven-window length | 300 | s (entity) | design |
-| $\Delta_W$, $P_W$ | withdrawal duration, period | 20, 1800 | s (entity) | design |
-| $\Delta_{\rm pert}$, $P_{\rm pert}$ | perturbation duration, period | 5, 3600 | s (entity) | design |
-| $j_P$ | probe jitter fraction | 0.25 | | design |
-| $P_{\rm ro}$ | readout period; settling time after boot or thaw | 60 | s (entity) | design |
-| $f_{\rm guard}$ | pull guard | 0.05 | Hz (entity) | design |
+| $\tau_{\rm rec}^{(0)}$ | initial recovery time | 2.1 | s | calibrated |
+| $\tau_{\rm rec}^{\min}$, $\tau_{\rm rec}^{\max}$ | recovery-time bounds | 0.9, 2.3 | s | calibrated |
+| $\eta_\ell$ | frequency-adaptation rate | 0.0025 | s$^{-1}$ | calibrated |
+| $\tau_m$ | moving-average time constant | 10 | s | |
+| $\Delta_{\rm amp}$ | phase and amplitude window | 8 | s | |
+| | initial activity $y$, resource $R$ | 0.05, 1.0 | | |
+| | maternal beat rate, drift | 70, 0.03 | bpm, none | |
+| $M_{\max}$ | maximum maternal drive | 0.4 | | |
+| $L_v$, $j_v$; $\Delta_v$, $p_v$, $r_v$; $\Delta_u$ | maternal voice level, jitter; speech slot, talk probability, repeat share; unlock interval | 6, 3; 30, 0.2, 0.25; 3600 | dB; s (wall), none, none; s (awake) | |
+| $c_M^{\rm base}$, $c_M^{\rm pert}$ | usual, perturbation drive scales | 0.5, 0.75 | | |
+| $f_g$ | readout sampling rate | 10 | Hz | |
+| $f_{\rm lo}$, $f_{\rm hi}$ | entrainment band | 0.3, 2.0 | Hz | |
+| $\Delta_{\rm trim}$ | edge trim | 2.0 | s | |
+| $\Delta_E$ | driven-window length | 300 | s | |
+| $\Delta_W$, $P_W$ | withdrawal duration, period | 20, 1800 | s | |
+| $\Delta_{\rm pert}$, $P_{\rm pert}$ | perturbation duration, period | 5, 3600 | s | |
+| $j_P$ | probe jitter fraction | 0.25 | | |
+| $P_{\rm ro}$ | readout period; settling time after boot or thaw | 60 | s | |
+| $f_{\rm guard}$ | pull guard | 0.05 | Hz | |
 | $\mathrm{pull}_{\min}$ | pull floor | 0.5 | | calibrated |
-| $n_{\rm base}$ | baseline withdrawals | 3 | count | design |
-| | surrogate heartbeats | 19 | count | design |
+| $n_{\rm base}$ | baseline withdrawals | 3 | count | |
+| | surrogate heartbeats | 19 | count | |
 | | consecutive passes required | 3 | count | calibrated |
 | $t_{R0}$, $t_{R1}$, $t_{R2}$, $t_{R3}$ | viability checkpoints | 6, 24, 48, 60 | h (awake) | calibrated |
 | $\mathrm{pull}_{R1}$, $\mathrm{slope}_{R1}$ | R1 bounds on median pull, slope | 0.12, 0.002 | none, h$^{-1}$ (awake) | calibrated |
 | $\mathrm{pull}_{R2}$ | R2 bound on median pull | 0.3 | | calibrated |
 | $\Delta_V$, $n_V$ | viability window, minimum points | 12, 8 | h (awake), withdrawals | calibrated |
-| $\Delta_{\rm per}$ | period-variability window | 300 | s (entity) | design |
+| $\Delta_{\rm per}$ | period-variability window | 300 | s | |
 | $V^{\min}_{\rm per}$ | period-variability floor | 0.2 | | provisional |
 | $\mathrm{err}^{\max}_{\rm Vis}$ | vision error-ratio ceiling | 0.3 | | provisional |
-| $\Delta^{\rm rec}_{\max}$ | return-to-baseline ceiling | 30 | s (entity) | provisional |
-| $\mathrm{tol}_{\rm rec}$, $\Delta^{\rm rec}_{\rm cap}$ | recovery tolerance, cap | 0.25, 300 | none, s (entity) | design |
-| $n_{\rm sleep}$, $n_{\rm cons}$ | required sleeps, consolidation passes | 5, 3 | counts | design |
-| $\Delta_{\rm awake}$ | minimum awake time | 24 | h (awake) | design |
-| | gate cadence | 60 | s (entity) | design |
-| $\Delta_{\rm budget}$ | developmental-phase budget | 96 | h (wall) | design |
-| $c_{\rm eff}$, $n_{\rm cal}$ | minimum-effect multiple, paired pilot runs | 0.5, 30 | none, runs | design |
-| $n_{\rm run}$ | runs per arm and tone variant | $\lceil 102/(1-r_{\rm NE})\rceil$ planned, at least 102 entering each control's test and the tone variant's first test (A.8) | runs | design |
-| $q_{\rm pow}$ | assumed P(dIG > minimum effect), power analysis | 0.65 | | design |
-| | power of each control's WIN test | 0.9 | | design |
-| $T_{\rm learn}$, $\mathrm{SNR}_j$, $\theta_{\rm PC}/2$, $n_{\rm PC}$, $\theta_{\rm band}$, $b_{\rm band}$ | learning period (each run, positive control); positive-control signal-to-noise ratio, minimum effect, minimum included reports; threshold-band half-width, bias-correction bandwidth | from the pilot runs (A.8) | s (entity), none, none, reports, none, none | design |
-| $v_j$, $\mu_j$ | positive-control projection direction, mean | from a preliminary run (A.8) | | design |
-| | positive-control detection probabilities (informative, uninformative) | 0.95, 0.05 | | design |
-| | context-age bins (contrastive analysis); error-ratio bins (tone analysis) | quintiles, from the pilot runs (A.8) | s (entity); none | design |
-| $n_{\rm side}$ | distinct scores per fitted side (contrast at threshold) | 10 | broadcasts | design |
-| $\kappa_{\max}$ | largest condition number of a fitted side's weighted least-squares matrix | $10^8$ | | design |
-| | minimum effects (contrast at threshold, tone analysis) | 0.5 times the pilot standard deviation (A.8) | | design |
-| $\alpha_{\rm test}$ | level of each live sign test | 0.05 | | design |
-| $\alpha_{\rm FW}$ | family-wise level (offline suite) | 0.05 | | design |
-| $\mathrm{tol}_{\rm CV}$, $n_{\rm seed}$ | stability tolerance, seeds (offline suite, coherence-layer ablation) | 0.05, 3 | none, seeds | design |
-| $\varrho$ | strength an unreplayed trace keeps per entity day at the resting rate (A.10) | 0.82 | | design |
-| $N_{\rm day}$ | traces per entity day at the resting rate, $86\,400\,f_0$ (A.10) | 288,000 | traces | design |
-| $h_{\min}$ | strength pruning floor (A.10) | 0.01 | | design |
+| $\Delta^{\rm rec}_{\max}$ | return-to-baseline ceiling | 30 | s | provisional |
+| $\mathrm{tol}_{\rm rec}$, $\Delta^{\rm rec}_{\rm cap}$ | recovery tolerance, cap | 0.25, 300 | none, s | |
+| $n_{\rm sleep}$, $n_{\rm cons}$ | required sleeps, consolidation passes | 5, 3 | counts | |
+| $\Delta_{\rm awake}$ | minimum awake time | 24 | h (awake) | |
+| | gate cadence | 60 | s | |
+| $\Delta_{\rm budget}$ | developmental-phase budget | 96 | h (wall) | |
+| $c_{\rm eff}$, $n_{\rm cal}$ | minimum-effect multiple, paired pilot runs | 0.5, 30 | none, runs | |
+| $n_{\rm run}$ | runs per arm and tone variant | $\lceil 102/(1-r_{\rm NE})\rceil$ planned, at least 102 entering each control's test and the tone variant's first test (A.8) | runs | |
+| $q_{\rm pow}$ | assumed P(dIG > minimum effect), power analysis | 0.65 | | |
+| | power of each control's WIN test | 0.9 | | |
+| $T_{\rm learn}$, $\mathrm{SNR}_j$, $\theta_{\rm PC}/2$, $n_{\rm PC}$, $\theta_{\rm band}$, $b_{\rm band}$ | learning period (each run, positive control); positive-control signal-to-noise ratio, minimum effect, minimum included reports; threshold-band half-width, bias-correction bandwidth | from the pilot runs (A.8) | s, none, none, reports, none, none | |
+| $v_j$, $\mu_j$ | positive-control projection direction, mean | from a preliminary run (A.8) | | |
+| | positive-control detection probabilities (informative, uninformative) | 0.95, 0.05 | | |
+| | context-age bins (contrastive analysis); error-ratio bins (tone analysis) | quintiles, from the pilot runs (A.8) | s; none | |
+| $n_{\rm side}$ | distinct scores per fitted side (contrast at threshold) | 10 | broadcasts | |
+| $\kappa_{\max}$ | largest condition number of a fitted side's weighted least-squares matrix | $10^8$ | | |
+| | minimum effects (contrast at threshold, tone analysis) | 0.5 times the pilot standard deviation (A.8) | | |
+| $\alpha_{\rm test}$ | level of each live sign test | 0.05 | | |
+| $\alpha_{\rm FW}$ | family-wise level (offline suite) | 0.05 | | |
+| $\mathrm{tol}_{\rm CV}$, $n_{\rm seed}$ | stability tolerance, seeds (offline suite, coherence-layer ablation) | 0.05, 3 | none, seeds | |
+| $\varrho$ | strength an unreplayed trace keeps per entity day at the resting rate (A.10) | 0.82 | | |
+| $N_{\rm day}$ | traces per entity day at the resting rate, $86\,400\,f_0$ (A.10) | 288,000 | traces | |
+| $h_{\min}$ | strength pruning floor (A.10) | 0.01 | | |
 | $B$ | episodic-memory storage budget (A.10) | set by the operator | bytes | operator |
-| $n_{\rm rep}$, $c_{\rm aff}$, $c_{\rm rec}$ | traces replayed per sleep; replay-score weights | 5, 0.7, 0.3 | traces, none, none | design |
-| $n_{\rm pair}$, $\mathrm{sim}_{\min}$, $\mathrm{sim}_{\rm dup}$, $n_{\rm sch}$, $n_{\rm link}$ | pairs co-replayed per sleep; similarity band; links forming a schema node, per trace | 5, 0.5, 0.95, 3, 8 | pairs, none, none, links, links | design |
+| $n_{\rm rep}$, $c_{\rm aff}$, $c_{\rm rec}$ | traces replayed per sleep; replay-score weights | 5, 0.7, 0.3 | traces, none, none | |
+| $n_{\rm pair}$, $\mathrm{sim}_{\min}$, $\mathrm{sim}_{\rm dup}$, $n_{\rm sch}$, $n_{\rm link}$ | pairs co-replayed per sleep; similarity band; links forming a schema node, per trace | 5, 0.5, 0.95, 3, 8 | pairs, none, none, links, links | |
 
 ```{=latex}
 \endgroup
