@@ -299,7 +299,7 @@ The offline mechanism-validation tier uses seeded harnesses, deterministic clien
 
 ### 6.2 Data collection
 
-Studies record the graph-only broadcast log (§5.3), a content-free research log of rates and drives, the processors' paired evaluations behind the information-gain measure (§6.3), the entity's external utterances kept locally, a run manifest of configuration, seeds, and plugins, and the welfare records, which give the awake-time share with $v<-\theta_E$ and each drive's share of goal ends without the entity's own response; §5.4 lists their offline admissibility checks.
+Studies record the graph-only broadcast log (§5.3), a content-free research log, the processors' paired evaluations behind the information-gain measure (§6.3), the entity's external utterances kept locally, a run manifest of configuration, seeds, and plugins, and the welfare records, which give the awake-time shares with $v<-\theta_E$ and with each $D\ge\theta_D$, and each drive's share of crossings ended without the entity's own response; §5.4 lists their offline admissibility checks.
 
 ### 6.3 The workspace-mediation ablation
 
@@ -841,7 +841,7 @@ $$
 
 An outcome counts as a success only when the entity's own response produced it, since response-independent outcomes define helplessness (Maier and Seligman 2016). For the drive term, a past crossing of the dominant drive counts in $s$ when the entity's own response ended it: its learning progress for curiosity and its intents for restlessness and boredom, by relieving the drive or holding its build input down on the step the drive fell back, the latter only if it would not have fallen back at the no-response build input. Every other end counts in $f$: decay alone, perceptual novelty for boredom, and another's voice for the social drive. A sleep reset counts as neither. For the ledger term, $s$ and $f$ count completed and abandoned goals. The term that sets the goal score supplies $p$, the drive term on a tie. The coping score is $2p-1$, $0$ before any history.
 
-*Goals.* A crossing of $\theta_D$ creates the goal of relieving $D$, with priority $D$ at the crossing, unless one exists; intents never create goals. The goal completes when $D$ falls below $\Theta_D\theta_D$ with the credit rule crediting the entity's own response, and is abandoned when the fall came without one, when $D$ stays above $\theta_D$ for $\Delta_{\rm stall}$, or, as the lowest priority, when active goals exceed $n_{\rm goal}$. While a goal is active and $D\ge\theta_D$, its drive event recurs, not as an alert, at intensity $D$ each $P_{\rm Aff}$ until a broadcast accesses it, then $P_{\rm re}$ after that access.
+*Goals.* A crossing of $\theta_D$ creates the goal of relieving $D$, with priority $D$ at the crossing, unless one exists; intents never create goals. The goal completes when $D$ falls below $\Theta_D\theta_D$ with the credit rule crediting the entity's own response, and is abandoned when the fall came without one, when $D$ stays above $\theta_D$ for $\Delta_{\rm stall}$, or, as the lowest priority, when active goals exceed $n_{\rm goal}$, the last two leaving the crossing open. While a goal is active and $D\ge\theta_D$, its drive event recurs, not as an alert, at intensity $D$ each $P_{\rm Aff}$ until a broadcast accesses it, then $P_{\rm re}$ after that access.
 
 *Obstruction.* Each active goal carries an expected-relief likelihood $L\in[0,1]$, set to the coping ratio $p$ at creation. When an intent other than rest made while the goal is active brings no fall of its drive within $\Delta_{\rm resp}$, $L$ falls by $\Delta L=\eta_L L$; for the dominant drive's goal the next appraisal takes $o=v^*\Delta L$, and otherwise $o=0$.
 
@@ -935,7 +935,7 @@ $$
 \mathrm{pull}=1-\frac{\lvert f_w-f_b\rvert}{\lvert f_{w0}-f_b\rvert},
 $$
 
-undefined when $f_w$ or $f_b$ is undefined or $\lvert f_{w0}-f_b\rvert<f_{\rm guard}$. The pull condition is $\mathrm{pull}\ge\mathrm{pull}_{\min}$. Below about 60 bpm the heartbeat lies too close to the rhythm's natural rate for the pull to be defined, so the maternal model uses 60 to 80 bpm.
+undefined when $f_w$ or $f_b$ is undefined or $\lvert f_{w0}-f_b\rvert<f_{\rm guard}$. The pull condition is $\mathrm{pull}\ge\mathrm{pull}_{\min}$. Below about 60 bpm, too near the natural rate, the pull is undefined, so the maternal model uses 60 to 80 bpm.
 
 **Self-sustain.** With $\overline{\mathrm{amp}}^{\,\rm dr}$ the mean amplitude over undisturbed samples in the $\Delta_W$ before the withdrawal and $\overline{\mathrm{amp}}^{\,\rm wd}$ the mean during it, the rhythm self-sustains when $\overline{\mathrm{amp}}^{\,\rm wd}\ge\tfrac12\,\overline{\mathrm{amp}}^{\,\rm dr}$ and $\overline{\mathrm{amp}}^{\,\rm wd}>0$.
 
