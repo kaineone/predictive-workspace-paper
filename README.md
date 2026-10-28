@@ -34,7 +34,7 @@ KAINE is source-available software, a cognitive architecture for synthetic minds
 
 The first configuration activates four predictive processors (foveated vision, raw hearing, interoception of the compute substrate, and temporal prediction), an affective core, a fatigue-triggered sleep analog, and an output-only language organ. Nine further modules are built and held. A module-addition study seeds an entity through a developmental phase, in which a self-generated rhythm must entrain to a simulated maternal heartbeat by a marker validated offline, and then adds the held modules one at a time.
 
-A planned test asks whether competition does work that pooling does not. It compares competitive selection with a score-blind coalition of the same size and with a pool of every candidate, by cross-module broadcast information gain. No live experiment has been run; the results reported are offline validations and one test boot's language output.
+A planned test asks whether competition does work that pooling does not. It compares competitive selection with a score-blind coalition of the same size and with a pool of every candidate, by cross-module broadcast information gain. No live experiment has been run; the results reported are offline validations and records from test boots.
 
 ## Related repositories
 
