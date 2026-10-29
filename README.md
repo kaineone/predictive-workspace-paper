@@ -22,7 +22,7 @@ This version describes the architecture as designed and built, its instruments, 
 
 - [`paper.md`](paper.md): the full paper in Markdown.
 - [`paper.pdf`](paper.pdf): the rendered paper, including the figures and module table.
-- [`figures/`](figures): the TikZ sources and rendered PNGs for the nine figures, with theme-matched light and dark web versions of all nine in `figures/web`.
+- [`figures/`](figures): the TikZ sources and rendered PNGs for the eight figures, with theme-matched light and dark web versions of all eight in `figures/web`.
 - [`EMPIRICAL-NOTES.md`](EMPIRICAL-NOTES.md): implementation history that bears on interpreting data from runs, kept for the empirical paper.
 - [`LICENSE`](LICENSE): the Creative Commons Attribution 4.0 International license for the text.
 - [`COPYRIGHT`](COPYRIGHT): copyright and licensing summary for the text of the paper.

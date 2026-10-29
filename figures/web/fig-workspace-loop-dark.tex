@@ -31,7 +31,7 @@
 % workspace
 \node[work, text width=38mm, inner sep=2.5mm] (syn) at (7.7,1.65)
   {\textcolor{fg}{\textbf{Workspace}}\\[2pt]
-   score each candidate\\with the arousal gain\\(no per-source weight)\\[2pt]
+   score each candidate\\with the arousal gain;\\a source is weighted only\\by interest and regulation\\[2pt]
    rank; coalition of up to five\\[2pt]
    members reaching the\\threshold are accessed\\(all-or-none)};
 % broadcast
@@ -66,7 +66,7 @@
 \draw[->, draw=stroke] (4.9,-3.25) -- (thy.south);
 \node[lbl, above] at (1.0,-3.25) {appraisal (valence, drives)};
 % sleep and its reset
-\draw[->, draw=stroke] (-0.9,0 |- mods.south) -- node[lbl, left]{interoceptive\\fatigue} (-0.9,0 |- hyp.north);
+\draw[->, draw=stroke] (-0.9,0 |- mods.south) -- node[lbl, left]{fatigue,\\maintenance\\request} (-0.9,0 |- hyp.north);
 \draw[->, draw=stroke] (hyp.east) -- (thy.west);
 \node[lbl, above] at ($(hyp.east)!0.5!(thy.west)$) {reset};
 % alerts in, apertures out, arousal to selection
