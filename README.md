@@ -44,9 +44,9 @@ A planned test asks whether competition does work that pooling does not, against
 
 ## arXiv requirements
 
-Although it is not being submitted now, this paper is kept within arXiv's submission requirements at all times, so that a future submission does not start with cleanup.
+This paper is kept within arXiv's submission requirements at all times, and every iteration can produce a submission-ready source bundle (see "Building the arXiv source bundle"). Nothing is uploaded automatically.
 
-`check_arxiv.py` enforces the rules. It checks that the abstract stays within arXiv's 1,920-character limit, that the title, authors, and abstract use plain ASCII, that the title avoids all capitals, that the abstract carries no Markdown emphasis, links, or math markup, that the source avoids double-spaced referee formatting and line numbers, and that every figure referenced in `paper.md` exists as a PNG, JPG, or PDF. The rules come from [arXiv's metadata help](https://info.arxiv.org/help/prep.html) and [arXiv's TeX submission help](https://info.arxiv.org/help/submit_tex.html).
+`check_arxiv.py` enforces the rules. It checks that the abstract stays within arXiv's 1,920-character limit, that the title, authors, and abstract use plain ASCII, that the title avoids all capitals, that the abstract carries no Markdown emphasis, links, or math markup, that the source avoids double-spaced referee formatting and line numbers, that every figure referenced in `paper.md` exists as a PNG, JPG, or PDF and meets arXiv's file-name, case, and PNG rules, that the author name has the "Firstname Lastname" form, that body characters stay within Latin-1 and Latin Extended, that the generative-AI disclosure is present, that the text does not call itself a position paper, review, or proposal, that it contains no raw TeX arXiv rejects, and that the arXiv build leaves out the margin note. The abstract is counted as arXiv's form receives it, with paragraphs on separate lines. `python3 check_arxiv.py --check-links` also confirms that the repository links resolve publicly. The rules come from [arXiv's metadata help](https://info.arxiv.org/help/prep.html) and [arXiv's TeX submission help](https://info.arxiv.org/help/submit_tex.html).
 
 The same script also holds the paper to two length budgets: the main text, from the title through the line before "Disclosure of generative AI use", stays within `MAIN_TEXT_WORD_BUDGET` words, and Appendix A stays within `APPENDIX_WORD_BUDGET` words, counting whitespace-separated words with LaTeX and captions included. These budgets are house rules, not arXiv rules, so raising one should be a deliberate edit to its constant at the top of `check_arxiv.py`, never a side effect of a content change.
 
@@ -69,6 +69,23 @@ pandoc paper.md -o paper.pdf \
   -V colorlinks=true -V linkcolor=blue \
   --include-in-header=header-preprint.tex
 ```
+
+## Building the arXiv source bundle
+
+arXiv accepts TeX source, not a PDF made from TeX, so the submission is a `.tar.gz` of a standalone `.tex` file and its figures. `arxiv/build-arxiv.sh` builds it from `paper.md` in Docker; nothing is installed on the host.
+
+```bash
+arxiv/build-arxiv.sh [git-ref [out-dir]]          # default: HEAD, arxiv/out/<short-sha>
+ARXIV_VECTOR_FIGURES=1 arxiv/build-arxiv.sh       # figures as vector PDFs built from their TikZ sources
+```
+
+The script reads the sources with `git archive`, so uncommitted changes are not included. It converts `paper.md` to `paper.tex` with a pinned Pandoc image, packs `paper.tex`, the figures it references, and a `00README.json` that selects `xelatex` and TeX Live 2025, and writes a reproducible tarball. It then unpacks the tarball in a fresh directory and compiles it with xelatex in the official `texlive/texlive` image, pinned by digest to the TeX Live 2025 release that arXiv uses by default. The result is the PDF that arXiv will produce. Both images run without network access.
+
+The output directory holds `kaine-arxiv-<sha>.tar.gz` (the file to upload), `kaine-arxiv-<sha>-proof.pdf`, `abstract.txt` and `comments.txt` (the abstract and Comments fields in arXiv's ASCII form), `compile.log`, `MANIFEST.txt`, and `VERIFY.txt`. `arxiv/tools/verify_bundle.py` writes `VERIFY.txt` and the build fails on any failing check: file names, no auxiliary or hidden files, figures present and in an accepted format, fonts loaded by file name, TeX errors, missing glyphs, undefined references, embedded fonts, and the abstract limit.
+
+The bundle differs from the pandoc PDF in three ways. The front matter becomes a LaTeX title block and abstract environment. The rotated "Preprint. Not peer-reviewed." note is omitted, because arXiv does not allow margin notes and adds its own stamp; the same words appear under the author. The font is Noto Serif loaded by file name, because arXiv has no fontconfig.
+
+The rules come from arXiv's [TeX Live](https://info.arxiv.org/help/faq/texlive.html), [TeX submission](https://info.arxiv.org/help/submit_tex.html), [00README](https://info.arxiv.org/help/00README.html), [format requirements](https://info.arxiv.org/help/policies/format_requirements.html), and [metadata](https://info.arxiv.org/help/prep.html) help pages.
 
 ## Citation
 

@@ -23,3 +23,8 @@
 *~
 .vscode/
 .idea/
+
+# arXiv source bundle build
+arxiv/out/
+arxiv/work.*/
+*.tar.gz
