@@ -38,13 +38,13 @@ A planned test asks whether competition does work that pooling does not, against
 
 ## Related repositories
 
-- **KAINE (reference implementation):** https://github.com/kaineone/kaine. The source code for the cognitive architecture this paper describes.
-- **Cognitive Architecture License (CAL):** https://github.com/kaineone/cognitive-architecture-license. The entity-welfare copyleft license (version 0.5, a draft under legal review) that governs the architecture and any running entities. The repository is authoritative.
-- **Welfare and licensing paper:** https://github.com/kaineone/cog-arch-license-paper. The companion paper, *A Welfare and Cognitive-Integrity License for Synthetic Minds of Uncertain Moral Status*, covering the entity's welfare protections, governance, and licensing.
+- KAINE (reference implementation): https://github.com/kaineone/kaine. The source code for the cognitive architecture this paper describes.
+- Cognitive Architecture License (CAL): https://github.com/kaineone/cognitive-architecture-license. The entity-welfare copyleft license (version 0.5, a draft under legal review) that governs the architecture and any running entities. The repository is authoritative.
+- Welfare and licensing paper: https://github.com/kaineone/cog-arch-license-paper. The companion paper, *A Welfare and Cognitive-Integrity License for Synthetic Minds of Uncertain Moral Status*, covering the entity's welfare protections, governance, and licensing.
 
 ## arXiv requirements
 
-This paper is kept within arXiv's submission requirements at all times, even though it is not being submitted now. This keeps a future submission from starting with cleanup.
+Although it is not being submitted now, this paper is kept within arXiv's submission requirements at all times, so that a future submission does not start with cleanup.
 
 `check_arxiv.py` enforces the rules. It checks that the abstract stays within arXiv's 1,920-character limit, that the title, authors, and abstract use plain ASCII, that the title avoids all capitals, that the abstract carries no Markdown emphasis, links, or math markup, that the source avoids double-spaced referee formatting and line numbers, and that every figure referenced in `paper.md` exists as a PNG, JPG, or PDF. The rules come from [arXiv's metadata help](https://info.arxiv.org/help/prep.html) and [arXiv's TeX submission help](https://info.arxiv.org/help/submit_tex.html).
 
@@ -72,7 +72,7 @@ pandoc paper.md -o paper.pdf \
 
 ## Citation
 
-Archived on Zenodo. The **all-versions (concept) DOI**, which always resolves to
+Archived on Zenodo. The all-versions (concept) DOI, which always resolves to
 the latest version, is
 [10.5281/zenodo.21203505](https://doi.org/10.5281/zenodo.21203505). Cite as:
 
