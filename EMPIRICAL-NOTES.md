@@ -1,6 +1,6 @@
 # Notes for the empirical paper
 
-The theory paper describes the implementation as built and reports no results. These notes record implementation history that bears on how data from particular runs must be read, so the empirical paper can disclose it. Sources are the KAINE repository's archived OpenSpec changes (`openspec/changes/archive/`). Change names and event types quote the implementation's identifiers, which still carry the earlier module names.
+The theory paper describes the architecture as designed, states in §5.4 which parts are built, and reports no pilot or live experiment; its only results are offline validations and test-boot records. These notes record implementation history that bears on how data from particular runs must be read, so the empirical paper can disclose it. Sources are the KAINE repository's archived OpenSpec changes (`openspec/changes/archive/`). Change names and event types quote the implementation's identifiers, which still carry the earlier module names.
 
 ## Defects that affected earlier runs
 
