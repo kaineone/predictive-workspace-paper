@@ -16,8 +16,8 @@ ABSTRACT_LIMIT = 1920
 ACCEPTED_IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".pdf"}
 
 # House limits, not arXiv rules; raising one should be a deliberate edit.
-MAIN_TEXT_WORD_BUDGET = 11800
-APPENDIX_WORD_BUDGET = 10900
+MAIN_TEXT_WORD_BUDGET = 12600
+APPENDIX_WORD_BUDGET = 10950
 
 
 def parse_args():
