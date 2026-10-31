@@ -29,7 +29,7 @@
   {\textcolor{fg}{\textbf{Tone variant of the on arm}}\\[2pt]tone rule: error ratio, so each tone event's intensity comes from the tone model's error ratio alone\\[2pt]{\scriptsize\itshape paired by seed with the three arms}};
 % three arms, in the order of the text
 \node[on, text width=52mm, minimum height=17mm] (on) at (5.6,2.9)
-  {\textcolor{fg}{\textbf{Workspace on (as built)}}\\[2pt]competitive selection of up to five $+$ access threshold; members reaching it become the context\\[2pt]{\scriptsize\itshape context weighted by intensity in all arms}};
+  {\textcolor{fg}{\textbf{Workspace on (as built)}}\\[2pt]competitive selection of up to $K$ $+$ access threshold; members reaching it become the context; $K$ and the candidate supply are set before the pilot runs so that competition operates\\[2pt]{\scriptsize\itshape context weighted by intensity in all arms}};
 \node[off, text width=52mm, minimum height=17mm] (match) at (5.6,0)
   {\textcolor{fg}{\textbf{Matched selection (control)}}\\[2pt]a coalition of the same size drawn without regard to score; same access rule};
 \node[off, text width=52mm, minimum height=17mm] (off) at (5.6,-2.9)
@@ -65,6 +65,6 @@
    Utterances are recorded but are not a measure.};
 \node[halt, text width=160mm, align=left, inner sep=3mm, below=2.5mm of meas] (out)
   {\textbf{Fail state}: the gain is at or below the controls, so competition adds nothing beyond its inputs. The hypothesis needs a WIN against both controls (intersection-union, a one-sided sign test against each at $\alpha_{\rm test}$).\\[3pt]
-   \textbf{NOT EXERCISED}, for a run against a control: competition never operates (candidates never exceed the coalition's capacity on a broadcast tick), the on arm has no accessed broadcast, or the run's contrast is undefined. Such runs stay out of the sign tests, and runs are added until 102 enter each control's test; the verdict is NOT EXERCISED only when every run is.};
+   \textbf{NOT EXERCISED}, for a run against a control: competition rarely operates (fewer than a share $\phi_{\min}$ of the on arm's broadcasts, fixed before the pilot runs, have more candidates than the coalition holds; \textit{share rule designed, not yet built: the built check asks for one such broadcast}), the on arm has no accessed broadcast, or the run's contrast is undefined. Such runs stay out of the sign tests, and runs are added until 102 enter each control's test; the verdict is NOT EXERCISED only when every run is.};
 \end{tikzpicture}
 \end{document}

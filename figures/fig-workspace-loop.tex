@@ -20,6 +20,7 @@
   work/.style={draw=bemph, thick, rounded corners, fill=surfemph, align=center, font=\footnotesize},
   act/.style={draw=bdim, rounded corners, fill=surf, align=center, minimum height=9mm, font=\footnotesize},
   lbl/.style={font=\footnotesize, text=fgbody, align=center},
+  direct/.style={draw=stroke, dashed},
 ]
 % four predictive processors on the left
 \node[mod] (m1) at (0,3.0) {Vision: foveated};
@@ -31,7 +32,7 @@
 % workspace
 \node[work, text width=38mm, inner sep=2.5mm] (syn) at (7.7,1.65)
   {\textcolor{fg}{\textbf{Workspace}}\\[2pt]
-   score each candidate\\with the arousal gain;\\no further weight\\per source\\[2pt]
+   score each candidate\\with the arousal gain;\\only interest and\\regulation weight\\a source\\[2pt]
    rank; coalition of up to five\\[2pt]
    members reaching the\\threshold are accessed\\(all-or-none)};
 % broadcast
@@ -39,7 +40,7 @@
   {\textcolor{fg}{\textbf{broadcast}}\\\footnotesize always published};
 % report path
 \node[act, text width=28mm] (vol) at (15.2,1.65) {\textcolor{fg}{\textbf{Action selection}}\\report-or-act};
-\node[act, text width=28mm] (lin) at (15.2,-0.45) {\textcolor{fg}{\textbf{Language}}\\output-only organ};
+\node[act, text width=28mm] (lin) at (15.2,-0.45) {\textcolor{fg}{\textbf{Language}}\\hears no speech;\\voices accessed content};
 % affect and sleep below
 \node[aff, text width=36mm] (thy) at (4.9,-2.0) {\textcolor{fg}{\textbf{Affect}}\\arousal, the global gain};
 \node[aff, text width=24mm] (hyp) at (-0.55,-2.0) {\textcolor{fg}{\textbf{Sleep}}};
@@ -66,15 +67,20 @@
 \draw[->, draw=stroke] (4.9,-3.25) -- (thy.south);
 \node[lbl, above] at (1.0,-3.25) {appraisal (valence, drives)};
 % sleep and its reset
-\draw[->, draw=stroke] (-0.9,0 |- mods.south) -- node[lbl, left]{fatigue,\\maintenance\\request} (-0.9,0 |- hyp.north);
-\draw[->, draw=stroke] (hyp.east) -- (thy.west);
-\node[lbl, above] at ($(hyp.east)!0.5!(thy.west)$) {reset};
+\draw[->, direct] (-0.9,0 |- mods.south) -- node[lbl, left]{interoception:\\fatigue,\\maintenance\\request} (-0.9,0 |- hyp.north);
+\draw[->, direct] ($(hyp.east)+(0,0.18)$) -- node[lbl, above]{reset} ($(thy.west)+(0,0.18)$);
+\draw[->, direct] ($(thy.west)+(0,-0.18)$) -- node[lbl, below]{rest request} ($(hyp.east)+(0,-0.18)$);
 % alerts in, apertures out, arousal to selection
-\draw[->, draw=stroke] (mods.south east) to[out=0,in=90] ($(thy.north)+(-0.3,0)$);
-\node[lbl, anchor=south west, align=left] at ($(mods.south east)+(0.15,0.12)$) {alerts (perceptual;\\interoceptive alarm)};
-\draw[->, draw=stroke] ($(thy.north)+(-1.4,0)$) to[out=90,in=-90]  (1.2,0 |- mods.south);
+\draw[->, direct] (mods.south east) to[out=0,in=90] ($(thy.north)+(-0.3,0)$);
+\node[lbl, anchor=south west, align=left] at ($(mods.south east)+(0.15,0.12)$) {reports, accessed or\\not: alerts, wellness,\\learning progress};
+\draw[->, direct] ($(thy.north)+(-1.4,0)$) to[out=90,in=-90]  (1.2,0 |- mods.south);
 \node[lbl] at (0.45,-1.0) {fovea size,\\attended\\window};
 \coordinate (aro) at ($(thy.north)+(1.4,0)$);
-\draw[->, draw=stroke] (aro) -- node[lbl, right, align=left]{arousal: global gain\\and contrast; access rate} (aro |- syn.south);
+\draw[->, direct] (aro) -- node[lbl, right, align=left]{arousal: global gain\\and contrast; access rate} (aro |- syn.south);
+% the action layer's intents, read directly by affect (restlessness, boredom)
+\draw[->, direct] (vol.east) -- ++(0.45,0) |- node[lbl, below, pos=0.75]{own intents (restlessness, boredom)} (thy.east);
+% legend
+\draw[draw=stroke] (10.6,-3.25) -- ++(0.9,0) node[lbl, right]{through the workspace or the action layer};
+\draw[direct] (10.6,-3.75) -- ++(0.9,0) node[lbl, right]{read or set directly, bypassing the competition};
 \end{tikzpicture}
 \end{document}

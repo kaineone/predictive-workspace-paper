@@ -37,7 +37,7 @@
 % (c) rank and coalition
 \node[stage, right=12mm of score] (rank) {rank; keep the top $K$ (up to five) $=$ coalition};
 % (d) broadcast
-\node[stage, below=9mm of rank] (bc) {broadcast\\[2pt]\scriptsize (always published)};
+\node[stage, below=9mm of rank] (bc) {broadcast\\[2pt]\scriptsize (on each broadcast tick, accessed or not)};
 % (e) decision
 \node[decide, below=9mm of bc] (dec) {best score $\ge$ access threshold?};
 % branches, to the left of the decision

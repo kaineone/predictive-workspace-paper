@@ -28,6 +28,11 @@
 \node[mod, text width=94mm, minimum height=27mm] (pil) at (10.85,0)
   {\textcolor{fg}{\textbf{$n_{\rm cal}=30$ paired pilot runs}}\\[2pt]workspace on, matched selection, pooled, and the tone variant, on seeds not used again\\[2pt]\scriptsize a pilot run that is NOT EXERCISED is replaced until thirty count; $r_{\rm NE}$ is the fraction of attempted pilot runs that were NOT EXERCISED; every pilot run of the on arm carries the positive control's components at $\mathrm{SNR}\in\{4^{-2},4^{-1},\dots,4^{4}\}$};
 \draw[->, draw=stroke] (pre) -- node[lbl, above]{$v_j,\mu_j$} (pil);
+% 0. settings fixed before any pilot run (paper 6.3)
+\node[mod, anchor=south west, minimum height=11mm, text width=151.5mm] (pre0) at ($(pre.north west)+(0,7mm)$)
+  {\textcolor{fg}{\textbf{Set before the pilot runs}}: the test's coalition capacity $K$ and candidate supply, so that competition operates, and the share $\phi_{\rm min}$ below which a run is NOT EXERCISED\\[1pt]\scriptsize\itshape the share rule is designed, not yet built; the built check asks for one broadcast with more candidates than $K$};
+\draw[->, draw=stroke] (pre0.south -| pre) -- (pre.north);
+\draw[->, draw=stroke] (pre0.south -| pil) -- (pil.north);
 % 2. settings from the pilot runs
 \node[cell] (c1) at (2.7,-3.9)
   {\textcolor{fg}{\textbf{Learning period}}\\[1pt]$T_{\rm learn}$ by MSER-5 on the gains' batch means; the largest median entity time over arms and processors};
