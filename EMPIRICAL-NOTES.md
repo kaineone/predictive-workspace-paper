@@ -32,3 +32,10 @@ The rebuilt instrument's limitations an individuation paper must disclose are:
 2. Entities that reached maturation before the change carry a later "capture" reference. Drift before that date is not measured.
 3. Forks cannot yet be measured against a fork-point reference, so a fork that has lived at least 30 minutes is preserved by default.
 4. In adapter hot-swap modes that cannot confirm which adapter the organ serves, probes are skipped once an adapter exists. Such entities are protected by the adapter signal instead.
+
+## Language-organ prompt replays
+The theory paper (§3.5) gives only the headline result of the offline replays that chose the organ's persona prompt and kept the launch name and self-facts out of it. The full figures are:
+
+- Prompt choice. A replay of a test boot's 190 organ requests, five seeded samples each at the organ's general-use temperature of 0.7, kept the persona prompt by a rule fixed in advance: a variant would replace it only if the share of texts with meta-commentary (self-description as an AI, second person, the situation's themes, lists, prompt echoes, template loops) fell reliably while the share grounded in a modality of the accessed content fell by under 5 points. Under the kept prompt 14.8 percent of 950 texts carried meta-commentary and 2 described the entity as an AI (one-sided 95 percent bound 0.7 percent).
+- The eight-hour test boot ran another prompt, with the situation only on waking and no self-category. Replaying its 1508 requests under that prompt gave 22.7 percent meta-commentary and 0.2 percent self-descriptions as an AI, against 23.2 percent and 4 texts (0.27 percent) in the boot itself.
+- Name and self-facts. In the replay of the eight-hour boot's 1508 requests and 240 self-referential ones, giving the organ the launch name alone raised human-life claims from 35 to 76 texts. With the facts about what the entity is, it raised identity leakage on self-referential requests by 2.6 points (95 percent interval 0.2 to 5.0), though the facts raised grounding by 11 to 13 points.
