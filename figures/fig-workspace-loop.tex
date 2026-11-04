@@ -29,12 +29,20 @@
 \node[mod] (m4) at (0,0.3) {Sequence: temporal prediction};
 \node[draw=bdim, dashed, fit=(m1)(m2)(m3)(m4), inner sep=7pt] (mods) {};
 \node[lbl, above=0.5mm of mods] {four predictive processors};
-% workspace
+% workspace (selection)
 \node[work, text width=38mm, inner sep=2.5mm] (syn) at (7.7,1.65)
-  {\textcolor{fg}{\textbf{Workspace}}\\[2pt]
+  {\textcolor{fg}{\textbf{Workspace (selection)}}\\[2pt]
    score each candidate\\with the arousal gain;\\only interest and\\regulation weight\\a source\\[2pt]
    rank; coalition of up to five\\[2pt]
    members reaching the\\threshold are accessed\\(all-or-none)};
+% content workspace (held)
+\node[work, text width=38mm, inner sep=2.5mm, draw=bemph, dashed, fill=surfemph!40] (content) at (7.7,-4.6)
+  {\textcolor{fg}{\textbf{Content workspace (held)}}\\[2pt]
+   per-source encoders map\\processor latents into a\\shared code; per-processor\\decoders return descending\\predictions blended by\\precision (§3.2)};
+% encoders: processors -> content workspace (dashed, held)
+\draw[->, direct, thick] (mods.south) -- ++(0,-1.35) -| node[lbl, below left, pos=0.25]{latents} (content.north west);
+% decoders: content workspace -> processors (dashed, held)
+\draw[->, direct, thick] (content.north east) -- ++(0.5,0) |- node[lbl, right, pos=0.3]{descending\\predictions} (-2.0,0 |- mods.south west);
 % broadcast
 \node[mod, minimum width=0mm, text width=19mm, minimum height=11mm] (bc) at (11.55,1.65)
   {\textcolor{fg}{\textbf{broadcast}}\\\footnotesize always published};
