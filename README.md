@@ -1,4 +1,4 @@
-# KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace
+# KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace and Latent Content
 
 Part of the Kaine project: **[kaine.one](https://kaine.one)**
 
@@ -97,7 +97,7 @@ the latest version, is
 @misc{chevalier_kaine_workspace,
   author       = {Chevalier, Erik},
   title        = {{KAINE}: A Modular Cognitive Architecture with a Predictive
-                  Global Workspace},
+                  Global Workspace and Latent Content},
   year         = {2026},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.21203505},

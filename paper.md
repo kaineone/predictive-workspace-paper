@@ -1,4 +1,4 @@
-# KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace
+# KAINE: A Modular Cognitive Architecture with a Predictive Global Workspace and Latent Content
 
 **Erik Chevalier**
 
